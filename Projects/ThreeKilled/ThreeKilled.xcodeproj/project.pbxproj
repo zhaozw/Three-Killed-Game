@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4EB2F66F15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2F66E15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m */; };
+		4EB2F67215D8EE7200FD9F05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB2F67115D8EE7200FD9F05 /* MainWindow.xib */; };
 		4EFC97A115D8D941003587DD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFC97A015D8D941003587DD /* UIKit.framework */; };
 		4EFC97A315D8D941003587DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFC97A215D8D941003587DD /* Foundation.framework */; };
 		4EFC97A515D8D941003587DD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFC97A415D8D941003587DD /* CoreGraphics.framework */; };
@@ -16,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4EB2F66D15D8EDC500FD9F05 /* AppDelegate+TKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+TKAdditions.h"; sourceTree = "<group>"; };
+		4EB2F66E15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+TKAdditions.m"; sourceTree = "<group>"; };
+		4EB2F67115D8EE7200FD9F05 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		4EFC979C15D8D941003587DD /* ThreeKilled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreeKilled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EFC97A015D8D941003587DD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4EFC97A215D8D941003587DD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -42,9 +47,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4EB2F66B15D8ED8F00FD9F05 /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				4EB2F66D15D8EDC500FD9F05 /* AppDelegate+TKAdditions.h */,
+				4EB2F66E15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m */,
+			);
+			name = Applications;
+			path = ../../Applications;
+			sourceTree = "<group>";
+		};
+		4EB2F67015D8EE7200FD9F05 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4EB2F67115D8EE7200FD9F05 /* MainWindow.xib */,
+			);
+			name = Resources;
+			path = ../../Resources;
+			sourceTree = "<group>";
+		};
 		4EFC979115D8D941003587DD = {
 			isa = PBXGroup;
 			children = (
+				4EB2F67015D8EE7200FD9F05 /* Resources */,
+				4EB2F66B15D8ED8F00FD9F05 /* Applications */,
 				4EFC97A615D8D941003587DD /* ThreeKilled */,
 				4EFC979F15D8D941003587DD /* Frameworks */,
 				4EFC979D15D8D941003587DD /* Products */,
@@ -142,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EFC97AB15D8D941003587DD /* InfoPlist.strings in Resources */,
+				4EB2F67215D8EE7200FD9F05 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +181,7 @@
 			files = (
 				4EFC97AD15D8D941003587DD /* main.m in Sources */,
 				4EFC97B115D8D941003587DD /* AppDelegate.m in Sources */,
+				4EB2F66F15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +283,7 @@
 				4EFC97B615D8D941003587DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

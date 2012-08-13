@@ -20,9 +20,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    UIViewController *vc = [[UIViewController alloc] init];
+    vc.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    _appNavController = [[UINavigationController alloc] initWithRootViewController:vc];
+    self.window.rootViewController = _appNavController;
     [self.window makeKeyAndVisible];
     return YES;
 }
