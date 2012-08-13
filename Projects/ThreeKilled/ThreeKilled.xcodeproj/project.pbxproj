@@ -66,9 +66,27 @@
 			path = ../../Resources;
 			sourceTree = "<group>";
 		};
+		4EB2F67315D8F21600FD9F05 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Common;
+			path = ../../Common;
+			sourceTree = "<group>";
+		};
+		4EB2F73A15D8F26300FD9F05 /* Contrib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Contrib;
+			path = ../../Contrib;
+			sourceTree = "<group>";
+		};
 		4EFC979115D8D941003587DD = {
 			isa = PBXGroup;
 			children = (
+				4EB2F73A15D8F26300FD9F05 /* Contrib */,
+				4EB2F67315D8F21600FD9F05 /* Common */,
 				4EB2F67015D8EE7200FD9F05 /* Resources */,
 				4EB2F66B15D8ED8F00FD9F05 /* Applications */,
 				4EFC97A615D8D941003587DD /* ThreeKilled */,
@@ -248,6 +266,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThreeKilled/ThreeKilled-Prefix.pch";
 				INFOPLIST_FILE = "ThreeKilled/ThreeKilled-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../Contrib/GoogleAnalytics\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -259,6 +281,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThreeKilled/ThreeKilled-Prefix.pch";
 				INFOPLIST_FILE = "ThreeKilled/ThreeKilled-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../Contrib/GoogleAnalytics\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

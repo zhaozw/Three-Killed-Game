@@ -22,6 +22,7 @@
 {
     UIViewController *vc = [[UIViewController alloc] init];
     vc.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    vc.title = @"Three Killed Game";
     _appNavController = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = _appNavController;
     [self.window makeKeyAndVisible];
