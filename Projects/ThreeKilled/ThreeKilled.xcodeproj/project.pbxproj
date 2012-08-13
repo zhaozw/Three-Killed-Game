@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4EB2F66F15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2F66E15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m */; };
 		4EB2F67215D8EE7200FD9F05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB2F67115D8EE7200FD9F05 /* MainWindow.xib */; };
+		4EB2F96415D8FEEC00FD9F05 /* module.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4EB2F96315D8FEEC00FD9F05 /* module.txt */; };
 		4EFC97A115D8D941003587DD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFC97A015D8D941003587DD /* UIKit.framework */; };
 		4EFC97A315D8D941003587DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFC97A215D8D941003587DD /* Foundation.framework */; };
 		4EFC97A515D8D941003587DD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFC97A415D8D941003587DD /* CoreGraphics.framework */; };
@@ -21,6 +22,7 @@
 		4EB2F66D15D8EDC500FD9F05 /* AppDelegate+TKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+TKAdditions.h"; sourceTree = "<group>"; };
 		4EB2F66E15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+TKAdditions.m"; sourceTree = "<group>"; };
 		4EB2F67115D8EE7200FD9F05 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		4EB2F96315D8FEEC00FD9F05 /* module.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = module.txt; sourceTree = "<group>"; };
 		4EFC979C15D8D941003587DD /* ThreeKilled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreeKilled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EFC97A015D8D941003587DD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4EFC97A215D8D941003587DD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -82,9 +84,19 @@
 			path = ../../Contrib;
 			sourceTree = "<group>";
 		};
+		4EB2F96215D8FEEC00FD9F05 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				4EB2F96315D8FEEC00FD9F05 /* module.txt */,
+			);
+			name = Modules;
+			path = ../../Modules;
+			sourceTree = "<group>";
+		};
 		4EFC979115D8D941003587DD = {
 			isa = PBXGroup;
 			children = (
+				4EB2F96215D8FEEC00FD9F05 /* Modules */,
 				4EB2F73A15D8F26300FD9F05 /* Contrib */,
 				4EB2F67315D8F21600FD9F05 /* Common */,
 				4EB2F67015D8EE7200FD9F05 /* Resources */,
@@ -187,6 +199,7 @@
 			files = (
 				4EFC97AB15D8D941003587DD /* InfoPlist.strings in Resources */,
 				4EB2F67215D8EE7200FD9F05 /* MainWindow.xib in Resources */,
+				4EB2F96415D8FEEC00FD9F05 /* module.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
