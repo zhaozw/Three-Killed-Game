@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E9A5FB015D9DBD900BD8EC6 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A5FAF15D9DBD900BD8EC6 /* Config.plist */; };
 		4EB2F66F15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2F66E15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m */; };
 		4EB2F67215D8EE7200FD9F05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB2F67115D8EE7200FD9F05 /* MainWindow.xib */; };
 		4EB2F96415D8FEEC00FD9F05 /* module.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4EB2F96315D8FEEC00FD9F05 /* module.txt */; };
+		4ED3766315D9E2ED003EE814 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ED3765D15D9E2ED003EE814 /* Default-Portrait.png */; };
+		4ED3766415D9E2ED003EE814 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ED3765E15D9E2ED003EE814 /* Default.png */; };
+		4ED3766515D9E2ED003EE814 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ED3765F15D9E2ED003EE814 /* Default@2x.png */; };
+		4ED3766615D9E2ED003EE814 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ED3766015D9E2ED003EE814 /* Icon-72.png */; };
+		4ED3766715D9E2ED003EE814 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ED3766115D9E2ED003EE814 /* Icon.png */; };
+		4ED3766815D9E2ED003EE814 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ED3766215D9E2ED003EE814 /* Icon@2x.png */; };
 		4EFC97A115D8D941003587DD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFC97A015D8D941003587DD /* UIKit.framework */; };
 		4EFC97A315D8D941003587DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFC97A215D8D941003587DD /* Foundation.framework */; };
 		4EFC97A515D8D941003587DD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFC97A415D8D941003587DD /* CoreGraphics.framework */; };
@@ -19,10 +26,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E9A5FAF15D9DBD900BD8EC6 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		4EB2F66D15D8EDC500FD9F05 /* AppDelegate+TKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+TKAdditions.h"; sourceTree = "<group>"; };
 		4EB2F66E15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+TKAdditions.m"; sourceTree = "<group>"; };
 		4EB2F67115D8EE7200FD9F05 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		4EB2F96315D8FEEC00FD9F05 /* module.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = module.txt; sourceTree = "<group>"; };
+		4ED3765D15D9E2ED003EE814 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
+		4ED3765E15D9E2ED003EE814 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4ED3765F15D9E2ED003EE814 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4ED3766015D9E2ED003EE814 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		4ED3766115D9E2ED003EE814 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		4ED3766215D9E2ED003EE814 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4EFC979C15D8D941003587DD /* ThreeKilled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreeKilled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EFC97A015D8D941003587DD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4EFC97A215D8D941003587DD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -49,6 +63,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E9A5FAA15D9DB7E00BD8EC6 /* HomeModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HomeModule;
+			sourceTree = "<group>";
+		};
+		4E9A5FAB15D9DB7E00BD8EC6 /* LoginModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoginModule;
+			sourceTree = "<group>";
+		};
 		4EB2F66B15D8ED8F00FD9F05 /* Applications */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,10 +115,25 @@
 		4EB2F96215D8FEEC00FD9F05 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4E9A5FAA15D9DB7E00BD8EC6 /* HomeModule */,
+				4E9A5FAB15D9DB7E00BD8EC6 /* LoginModule */,
 				4EB2F96315D8FEEC00FD9F05 /* module.txt */,
 			);
 			name = Modules;
 			path = ../../Modules;
+			sourceTree = "<group>";
+		};
+		4ED3765C15D9E2ED003EE814 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4ED3765D15D9E2ED003EE814 /* Default-Portrait.png */,
+				4ED3765E15D9E2ED003EE814 /* Default.png */,
+				4ED3765F15D9E2ED003EE814 /* Default@2x.png */,
+				4ED3766015D9E2ED003EE814 /* Icon-72.png */,
+				4ED3766115D9E2ED003EE814 /* Icon.png */,
+				4ED3766215D9E2ED003EE814 /* Icon@2x.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		4EFC979115D8D941003587DD = {
@@ -138,6 +181,8 @@
 		4EFC97A715D8D941003587DD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4ED3765C15D9E2ED003EE814 /* Resources */,
+				4E9A5FAF15D9DBD900BD8EC6 /* Config.plist */,
 				4EFC97A815D8D941003587DD /* ThreeKilled-Info.plist */,
 				4EFC97A915D8D941003587DD /* InfoPlist.strings */,
 				4EFC97AC15D8D941003587DD /* main.m */,
@@ -200,6 +245,13 @@
 				4EFC97AB15D8D941003587DD /* InfoPlist.strings in Resources */,
 				4EB2F67215D8EE7200FD9F05 /* MainWindow.xib in Resources */,
 				4EB2F96415D8FEEC00FD9F05 /* module.txt in Resources */,
+				4E9A5FB015D9DBD900BD8EC6 /* Config.plist in Resources */,
+				4ED3766315D9E2ED003EE814 /* Default-Portrait.png in Resources */,
+				4ED3766415D9E2ED003EE814 /* Default.png in Resources */,
+				4ED3766515D9E2ED003EE814 /* Default@2x.png in Resources */,
+				4ED3766615D9E2ED003EE814 /* Icon-72.png in Resources */,
+				4ED3766715D9E2ED003EE814 /* Icon.png in Resources */,
+				4ED3766815D9E2ED003EE814 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,10 +331,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThreeKilled/ThreeKilled-Prefix.pch";
 				INFOPLIST_FILE = "ThreeKilled/ThreeKilled-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../Contrib/GoogleAnalytics\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -294,10 +343,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThreeKilled/ThreeKilled-Prefix.pch";
 				INFOPLIST_FILE = "ThreeKilled/ThreeKilled-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../Contrib/GoogleAnalytics\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
