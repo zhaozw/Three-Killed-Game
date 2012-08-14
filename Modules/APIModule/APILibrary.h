@@ -42,4 +42,8 @@ getAvalibelGamesWithParam:(id)param
           metError:(NSString **)error
  joinGameWithGameID:(NSString *)gameID
       withDelegate:(id<APILibraryDelegate>)delegate;
++ (BOOL)apiLibrary:(BOOL *)status
+          metError:(NSString **)error
+getMyRoleWithGameID:(NSString *)gameID
+      withDelegate:(id<APILibraryDelegate>)delegate;
 @end

@@ -174,12 +174,12 @@ joinGameWithGameID:(NSString *)gameID
         NSDictionary *obj = [parser objectWithString:response];
         if (obj) {
             *status = YES;
-            NSArray *games = [obj arrayForKey:@"response"];
+            NSString *gameID = [obj objectForKey:@"response"];
             if ([delegate respondsToSelector:@selector(apiLibraryDidReceivedResult:)]) {
-                [delegate apiLibraryDidReceivedResult:games];
+                [delegate apiLibraryDidReceivedResult:gameID];
             }
         } else {
-            *error = @"hello request error";
+            *error = @"join game request error";
         }
     } else {
         *error = [errorRequest description];
@@ -192,5 +192,39 @@ joinGameWithGameID:(NSString *)gameID
     return *status;
 }
 
++ (BOOL)apiLibrary:(BOOL *)status
+          metError:(NSString **)error
+getMyRoleWithGameID:(NSString *)gameID
+withDelegate:(id<APILibraryDelegate>)delegate {
+    NSString *host = [[APILibrary sharedInstance] host];
+    NSString *urlString = [NSString stringWithFormat:@"%@/games/myrole/api?token=%@&id=%@",host,[APILibrary sharedInstance].uniqueIdentifier,gameID];
+    NSURL *url = [NSURL URLWithString:urlString];
+    ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    [request startSynchronous];
+    
+    NSError *errorRequest = [request error];
+    if (!errorRequest) {
+        NSString *response = [request responseString];
+        SBJsonParser *parser = [[[SBJsonParser alloc] init] autorelease];
+        NSDictionary *obj = [parser objectWithString:response];
+        if (obj) {
+            *status = YES;
+            NSString *gameID = [obj objectForKey:@"response"];
+            if ([delegate respondsToSelector:@selector(apiLibraryDidReceivedResult:)]) {
+                [delegate apiLibraryDidReceivedResult:gameID];
+            }
+        } else {
+            *error = @"join game request error";
+        }
+    } else {
+        *error = [errorRequest description];
+    }
+    if (!*status) {
+        if ([delegate respondsToSelector:@selector(apiLibraryDidReceivedError:)]) {
+            [delegate apiLibraryDidReceivedError:*error];
+        }
+    }
+    return *status;
+}
 
 @end
