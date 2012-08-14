@@ -19,7 +19,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tabBarController.tabBarItem.title = @"hello";
     usrLabel.text = NSLocalizedString(@"_UserNameLabel_", nil);
     pwdLabel.text = NSLocalizedString(@"_PasswordLabel_", nil);
     [login setTitle:NSLocalizedString(@"_Login_", nil) forState:UIControlStateNormal];

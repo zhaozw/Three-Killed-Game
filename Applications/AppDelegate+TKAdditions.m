@@ -24,10 +24,10 @@
 {
     UIViewController *loginVC = [[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil] autorelease];
     _appNavController = [[UINavigationController alloc] initWithRootViewController:loginVC];
-    UIColor *tintColor = [UIColor yellowColor];
-    _appNavController.navigationBar.tintColor = tintColor;
+//    UIColor *tintColor = [UIColor yellowColor];
+//    _appNavController.navigationBar.tintColor = tintColor;
     _appNavController.delegate = self;
-    _appNavController.view.backgroundColor = [UIColor grayColor];
+//    _appNavController.view.backgroundColor = [UIColor grayColor];
     self.window.rootViewController = _appNavController;
     [self.window makeKeyAndVisible];
 }

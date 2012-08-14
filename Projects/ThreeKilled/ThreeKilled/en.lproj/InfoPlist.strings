@@ -1,2 +1,6 @@
 /* Localized versions of Info.plist keys */
 
+"_UserNameLabel_" = "UserName:";
+"_PasswordLabel_" = "Password:";
+"_Login_" = "Login";
+"_Cancel_" = "Cancel";

@@ -201,6 +201,7 @@
 		4E69C90F15DA4DE0003EEE79 /* UIKit+KGOAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIKit+KGOAdditions.m"; sourceTree = "<group>"; };
 		4E69C91315DA4E06003EEE79 /* APILibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APILibrary.h; sourceTree = "<group>"; };
 		4E69C91415DA4E06003EEE79 /* APILibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APILibrary.m; sourceTree = "<group>"; };
+		4E69C92415DA53D1003EEE79 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		4E9A5FAF15D9DBD900BD8EC6 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		4EB2F66D15D8EDC500FD9F05 /* AppDelegate+TKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+TKAdditions.h"; sourceTree = "<group>"; };
 		4EB2F66E15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+TKAdditions.m"; sourceTree = "<group>"; };
@@ -618,6 +619,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 4EFC979115D8D941003587DD;
 			productRefGroup = 4EFC979D15D8D941003587DD /* Products */;
@@ -721,6 +723,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4EFC97AA15D8D941003587DD /* en */,
+				4E69C92415DA53D1003EEE79 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
