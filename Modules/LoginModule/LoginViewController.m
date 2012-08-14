@@ -20,23 +20,12 @@
 {
     [super viewDidLoad];
     self.tabBarController.tabBarItem.title = @"hello";
-    
-    
     usrLabel.text = NSLocalizedString(@"_UserNameLabel_", nil);
     pwdLabel.text = NSLocalizedString(@"_PasswordLabel_", nil);
     [login setTitle:NSLocalizedString(@"_Login_", nil) forState:UIControlStateNormal];
     [login setTitle:NSLocalizedString(@"_Login_", nil) forState:UIControlStateHighlighted];
     [cancel setTitle:NSLocalizedString(@"_Cancel_", nil) forState:UIControlStateNormal];
     [cancel setTitle:NSLocalizedString(@"_Cancel_", nil) forState:UIControlStateHighlighted];
-    
-    BOOL status = NO;
-    NSString *error = nil;
-    [APILibrary apiLibrary:&status metError:&error helloWithParam:nil];
-    if (!status) {
-        [APILibrary alertWithException:error];
-        usrName.enabled = NO;
-        password.enabled = NO;
-    } 
 }
 
 - (void)viewDidUnload

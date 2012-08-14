@@ -9,5 +9,6 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate (TKAdditions)
-
+- (BOOL)helloRequest;
+- (void)loadNavigationContainer;
 @end
