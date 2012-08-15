@@ -27,4 +27,5 @@
 - (IBAction)finish:(id)sender;
 - (IBAction)oneOnone:(id)sender;
 - (IBAction)myRole:(id)sender;
+- (IBAction)close:(id)sender;
 @end

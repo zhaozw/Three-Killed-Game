@@ -18,6 +18,11 @@
 - (void)apiLibraryDidReceivedJoinGameResult:(id)result;
 - (void)apiLibraryDidReceivedObserveResult:(id)result;
 - (void)apiLibraryDidReceivedKilledByResult:(id)result;
+- (void)apiLibraryDidReceivedFinishResult:(id)result;
+- (void)apiLibraryDidReceivedReopenResult:(id)result;
+- (void)apiLibraryDidReceivedCloseResult:(id)result;
+- (void)apiLibraryDidReceivedOneononeResult:(id)result;
+- (void)apiLibraryDidReceivedRankingResult:(id)result;
 @end
 
 @interface APILibrary : NSObject {
@@ -67,4 +72,23 @@ observeGameWithGameID:(NSString *)gameID
              whoID:(NSString *)whoID
         killedByID:(NSString *)byID
       withDelegate:(id<APILibraryDelegate>)delegate;
++ (BOOL)apiLibrary:(BOOL *)status
+          metError:(NSString **)error
+  reopenWithGameID:(NSString *)gameID
+      withDelegate:(id<APILibraryDelegate>)delegate;
++ (BOOL)apiLibrary:(BOOL *)status
+          metError:(NSString **)error
+  finishWithGameID:(NSString *)gameID
+      withDelegate:(id<APILibraryDelegate>)delegate;
++ (BOOL)apiLibrary:(BOOL *)status
+          metError:(NSString **)error
+   closeWithGameID:(NSString *)gameID
+      withDelegate:(id<APILibraryDelegate>)delegate;
++ (BOOL)apiLibrary:(BOOL *)status
+          metError:(NSString **)error
+ onOnoneWithGameID:(NSString *)gameID
+      withDelegate:(id<APILibraryDelegate>)delegate;
++ (BOOL)apiLibrary:(BOOL *)status
+          metError:(NSString **)error
+rankingWithDelegate:(id<APILibraryDelegate>)delegate;
 @end

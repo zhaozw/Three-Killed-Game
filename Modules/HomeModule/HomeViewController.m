@@ -34,7 +34,7 @@
     newgameVC.title = @"New Game";
     RangkingsViewController *rangkingsVC = [[[RangkingsViewController alloc] initWithNibName:@"RangkingsViewController" bundle:nil] autorelease];
     rangkingsVC.title = @"Rankings";
-    self.viewControllers = [NSArray arrayWithObjects:newgameVC,rangkingsVC,gamesVC, nil];
+    self.viewControllers = [NSArray arrayWithObjects:gamesVC,newgameVC,rangkingsVC, nil];
 }
 
 - (void)viewDidUnload

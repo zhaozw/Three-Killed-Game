@@ -66,19 +66,38 @@
 }
 
 - (IBAction)open:(id)sender {
-    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    BOOL status = NO;
+    NSString *error = nil;
+    [APILibrary apiLibrary:&status metError:&error reopenWithGameID:self.currentGame.gameID withDelegate:self];
 }
 
 - (IBAction)finish:(id)sender {
-    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    BOOL status = NO;
+    NSString *error = nil;
+    [APILibrary apiLibrary:&status metError:&error finishWithGameID:self.currentGame.gameID withDelegate:self];
 }
 
 - (IBAction)oneOnone:(id)sender {
-    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    BOOL status = NO;
+    NSString *error = nil;
+    [APILibrary apiLibrary:&status metError:&error onOnoneWithGameID:self.currentGame.gameID withDelegate:self];
+}
+
+- (IBAction)close:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    BOOL status = NO;
+    NSString *error = nil;
+    [APILibrary apiLibrary:&status metError:&error closeWithGameID:self.currentGame.gameID withDelegate:self];
 }
 
 - (IBAction)myRole:(id)sender {
-    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    BOOL status = NO;
+    NSString *error = nil;
+    [APILibrary apiLibrary:&status metError:&error getMyRoleWithGameID:self.currentGame.gameID withDelegate:self];
 }
 
 - (void)apiLibraryDidReceivedObserveResult:(id)result {
@@ -108,9 +127,29 @@
     }];
 }
 
+- (void)apiLibraryDidReceivedFinishResult:(id)result {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+- (void)apiLibraryDidReceivedReopenResult:(id)result {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+- (void)apiLibraryDidReceivedCloseResult:(id)result {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+- (void)apiLibraryDidReceivedOneononeResult:(id)result {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
 - (void)apiLibraryDidReceivedKilledByResult:(id)result {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    
+}
+
+- (void)apiLibraryDidReceivedError:(NSString *)error {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [APILibrary alertWithException:error];
 }
 
 #pragma mark - UITableView

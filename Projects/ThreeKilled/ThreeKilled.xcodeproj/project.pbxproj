@@ -72,6 +72,7 @@
 		4E9BDE4B15DB8D9B00D2F076 /* ObserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDE4915DB8D9B00D2F076 /* ObserveViewController.m */; };
 		4E9BDE4C15DB8D9B00D2F076 /* ObserveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E9BDE4A15DB8D9B00D2F076 /* ObserveViewController.xib */; };
 		4E9BDE4F15DB96EC00D2F076 /* GameUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDE4E15DB96EC00D2F076 /* GameUserData.m */; };
+		4E9BDE5215DBABB700D2F076 /* RankingData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDE5115DBABB600D2F076 /* RankingData.m */; };
 		4EB2F66F15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2F66E15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m */; };
 		4EB2F67215D8EE7200FD9F05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB2F67115D8EE7200FD9F05 /* MainWindow.xib */; };
 		4EB2F96415D8FEEC00FD9F05 /* module.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4EB2F96315D8FEEC00FD9F05 /* module.txt */; };
@@ -214,6 +215,8 @@
 		4E9BDE4A15DB8D9B00D2F076 /* ObserveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObserveViewController.xib; sourceTree = "<group>"; };
 		4E9BDE4D15DB96EC00D2F076 /* GameUserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameUserData.h; sourceTree = "<group>"; };
 		4E9BDE4E15DB96EC00D2F076 /* GameUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameUserData.m; sourceTree = "<group>"; };
+		4E9BDE5015DBABB600D2F076 /* RankingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingData.h; sourceTree = "<group>"; };
+		4E9BDE5115DBABB600D2F076 /* RankingData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankingData.m; sourceTree = "<group>"; };
 		4EB2F66D15D8EDC500FD9F05 /* AppDelegate+TKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+TKAdditions.h"; sourceTree = "<group>"; };
 		4EB2F66E15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+TKAdditions.m"; sourceTree = "<group>"; };
 		4EB2F67115D8EE7200FD9F05 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -429,6 +432,8 @@
 				4E9BDE4515DB863D00D2F076 /* GameRoleInstance.m */,
 				4E9BDE4D15DB96EC00D2F076 /* GameUserData.h */,
 				4E9BDE4E15DB96EC00D2F076 /* GameUserData.m */,
+				4E9BDE5015DBABB600D2F076 /* RankingData.h */,
+				4E9BDE5115DBABB600D2F076 /* RankingData.m */,
 			);
 			path = DataModule;
 			sourceTree = "<group>";
@@ -735,6 +740,7 @@
 				4E9BDE4615DB863D00D2F076 /* GameRoleInstance.m in Sources */,
 				4E9BDE4B15DB8D9B00D2F076 /* ObserveViewController.m in Sources */,
 				4E9BDE4F15DB96EC00D2F076 /* GameUserData.m in Sources */,
+				4E9BDE5215DBABB700D2F076 /* RankingData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

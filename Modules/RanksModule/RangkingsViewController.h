@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface RangkingsViewController : UIViewController
+#import "APILibrary.h"
+@interface RangkingsViewController : UIViewController <APILibraryDelegate>{
+    IBOutlet UITableView *listView;
+    NSArray *rankings;
+}
+@property (nonatomic, retain)  IBOutlet UITableView *listView;
+@property (nonatomic, retain)  NSArray *rankings;
 
 @end

@@ -8,12 +8,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Modules/APIModule/APILibrary.m"
-         timestampString = "366714595.393494"
+         timestampString = "366716973.905492"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "375"
-         endingLineNumber = "375"
-         landmarkName = "+apiLibrary:metError:gameID:whoID:killedByID:withDelegate:"
+         startingLineNumber = "453"
+         endingLineNumber = "453"
+         landmarkName = "+apiLibrary:metError:finishWithGameID:withDelegate:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../Modules/APIModule/APILibrary.m"
+         timestampString = "366716976.953586"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "414"
+         endingLineNumber = "414"
+         landmarkName = "+apiLibrary:metError:reopenWithGameID:withDelegate:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
