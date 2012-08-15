@@ -14,6 +14,7 @@
     GameInstance *currentGame;
     GameRoleInstance *currentRole;
     IBOutlet UITableView *listView;
+    BOOL enableShow;
 }
 @property (nonatomic, retain)  GameInstance *currentGame;
 @property (nonatomic, retain)  GameRoleInstance *currentRole;

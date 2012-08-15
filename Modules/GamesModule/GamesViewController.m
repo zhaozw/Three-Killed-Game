@@ -77,7 +77,7 @@
 }
 
 - (void)apiLibraryDidReceivedJoinGameResult:(id)result {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     GameInstance *aGame = [[[GameInstance alloc] init] autorelease];
     aGame.gameID = result;
     GameDetailViewController *gameDetailVC = [[GameDetailViewController alloc] initWithNibName:@"GameDetailViewController" bundle:nil];

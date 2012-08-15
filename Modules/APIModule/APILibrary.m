@@ -219,11 +219,16 @@ withDelegate:(id<APILibraryDelegate>)delegate {
             if (![[obj objectForKey:@"error"] isKindOfClass:[NSNull class]]) {
                 *error = [[obj objectForKey:@"error"] forcedStringForKey:@"message"];
             } else {
-                *status = YES;
                 NSDictionary *role = [obj objectForKey:@"response"];
-                if ([delegate respondsToSelector:@selector(apiLibraryDidReceivedGameDetail:)]) {
-                    [delegate apiLibraryDidReceivedGameDetail:role];
+                if (![role isKindOfClass:[NSDictionary class]]) {
+                    *error = @"Uanble to join this Game !";
+                } else {
+                    *status = YES;
+                    if ([delegate respondsToSelector:@selector(apiLibraryDidReceivedGameDetail:)]) {
+                        [delegate apiLibraryDidReceivedGameDetail:role];
+                    }
                 }
+
             }
         } else {
             *error = @"join game request error";
