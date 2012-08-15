@@ -33,4 +33,5 @@
 @property (nonatomic, retain)  NSString *userID;
 @property (nonatomic, retain)  NSString *userName;
 
+- (void)updateWithDictionary:(NSDictionary *)dictionary;
 @end

@@ -10,6 +10,7 @@
 #import "MBProgressHUD.h"
 #import "Foundation+KGOAdditions.h"
 #import "GameRoleInstance.h"
+#import "ObserveViewController.h"
 @interface GameDetailViewController ()
 
 @end
@@ -63,18 +64,10 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     NSDictionary *role = (NSDictionary *)detail;
     GameRoleInstance *aRole = [[GameRoleInstance alloc] init];
-    aRole.credits = [role forcedNumberForKey:@"credits"];
-    aRole.gameID = [role forcedStringForKey:@"game_id"];
-    aRole.gameName = [role forcedStringForKey:@"game_name"];
-    aRole.gameTypeID = [role forcedStringForKey:@"game_type_id"];
-    aRole.killedBy = [role forcedStringForKey:@"killed_by"];
-    aRole.roleName = [role forcedStringForKey:@"name"];
-    aRole.roleID = [role forcedStringForKey:@"role_id"];
-    aRole.seatNum = [role forcedNumberForKey:@"seat"];
-    aRole.status = [NSNumber numberWithBool:[role boolForKey:@"status"]];
-    aRole.userID = [role forcedStringForKey:@"user_id"];
-    aRole.userName = [role forcedStringForKey:@"username"];
+    [aRole updateWithDictionary:role];
     self.currentRole = aRole;
+    self.currentGame.name = [role forcedStringForKey:@"game_name"];
+    self.currentGame.gameTypeID = [role forcedStringForKey:@"game_type_id"];
     [self.listView reloadData];
 }
 
@@ -104,6 +97,7 @@
         cell.textLabel.text = [NSString stringWithFormat:@"座位:%@",self.currentRole.seatNum];
     } else {
         cell.textLabel.text = [NSString stringWithFormat:@"详细信息"];
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     }
                   
     return cell;
@@ -111,10 +105,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    GameInstance *aGame = [self.games objectAtIndex:indexPath.row];
-//    GameDetailViewController *gameDetailVC = [[GameDetailViewController alloc] initWithNibName:@"GameDetailViewController" bundle:nil];
-//    gameDetailVC.currentGame = aGame;
-//    [self.navigationController pushViewController:gameDetailVC animated:YES];
+    if (indexPath.row == 3) {
+        ObserveViewController *observeVC = [[[ObserveViewController alloc] initWithNibName:@"ObserveViewController" bundle:nil] autorelease];
+        observeVC.currentGame = self.currentGame;
+        [self.navigationController pushViewController:observeVC animated:YES];
+    }
 }
 
 

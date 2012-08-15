@@ -16,6 +16,8 @@
 - (void)apiLibraryDidReceivedGameDetail:(id)detail;
 - (void)apiLibraryDidReceivedCreateGameResult:(id)result;
 - (void)apiLibraryDidReceivedJoinGameResult:(id)result;
+- (void)apiLibraryDidReceivedObserveResult:(id)result;
+- (void)apiLibraryDidReceivedKilledByResult:(id)result;
 @end
 
 @interface APILibrary : NSObject {
@@ -54,5 +56,15 @@ getTypesWithDelegate:(id<APILibraryDelegate>)delegate;
 + (BOOL)apiLibrary:(BOOL *)status
           metError:(NSString **)error
 createWithGameTypeID:(NSString *)gameTypeID
+      withDelegate:(id<APILibraryDelegate>)delegate;
++ (BOOL)apiLibrary:(BOOL *)status
+          metError:(NSString **)error
+observeGameWithGameID:(NSString *)gameID
+      withDelegate:(id<APILibraryDelegate>)delegate;
++ (BOOL)apiLibrary:(BOOL *)status
+          metError:(NSString **)error
+            gameID:(NSString *)gameID
+             whoID:(NSString *)whoID
+        killedByID:(NSString *)byID
       withDelegate:(id<APILibraryDelegate>)delegate;
 @end

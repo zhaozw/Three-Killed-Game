@@ -7,7 +7,7 @@
 //
 
 #import "GameRoleInstance.h"
-
+#import "Foundation+KGOAdditions.h"
 @implementation GameRoleInstance
 @synthesize credits;
 @synthesize gameID;
@@ -35,5 +35,19 @@
     self.userName = nil;
 
     [super dealloc];
+}
+
+- (void)updateWithDictionary:(NSDictionary *)dictionary {
+    self.credits = [dictionary forcedNumberForKey:@"credits"];
+    self.gameID = [dictionary forcedStringForKey:@"game_id"];
+    self.gameName = [dictionary forcedStringForKey:@"game_name"];
+    self.gameTypeID = [dictionary forcedStringForKey:@"game_type_id"];
+    self.killedBy = [dictionary forcedStringForKey:@"killed_by"];
+    self.roleName = [dictionary forcedStringForKey:@"name"];
+    self.roleID = [dictionary forcedStringForKey:@"role_id"];
+    self.seatNum = [dictionary forcedNumberForKey:@"seat"];
+    self.status = [NSNumber numberWithBool:[dictionary boolForKey:@"status"]];
+    self.userID = [dictionary forcedStringForKey:@"user_id"];
+    self.userName = [dictionary forcedStringForKey:@"username"];
 }
 @end
