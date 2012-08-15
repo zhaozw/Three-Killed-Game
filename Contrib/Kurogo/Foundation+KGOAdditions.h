@@ -116,6 +116,8 @@ KGOSign KGOGetIntegerSign(NSInteger x);
 - (NSString *)nonemptyForcedStringForKey:(NSString *)key;
 
 - (NSNumber *)numberForKey:(NSString *)key;
+- (NSNumber *)forcedNumberForKey:(NSString *)key;
+
 - (NSArray *)arrayForKey:(NSString *)key;
 - (NSDate *)dateForKey:(NSString *)key;
 - (NSDate *)dateForKey:(NSString *)key format:(NSString *)format;

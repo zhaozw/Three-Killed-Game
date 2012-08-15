@@ -437,6 +437,17 @@ KGOSign KGOGetIntegerSign(NSInteger x) {
     return string;
 }
 
+- (NSNumber *)forcedNumberForKey:(NSString *)key {
+    NSNumber *number = [self numberForKey:key];
+    if (!number) {
+        NSString *string = [self stringForKey:key];
+        if (string) {
+            number = [NSNumber numberWithInteger:[string integerValue]];
+        }
+    }
+    return number;
+}
+
 - (NSString *)nonemptyForcedStringForKey:(NSString *)key {
     NSString *string = [self nonemptyStringForKey:key];
     if (!string) {

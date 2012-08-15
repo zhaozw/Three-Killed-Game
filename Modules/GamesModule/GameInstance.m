@@ -11,9 +11,12 @@
 @implementation GameInstance
 @synthesize gameID;
 @synthesize name;
+@synthesize gameTypeID;
+
 - (void)dealloc {
     self.gameID = nil;
     self.name = nil;
+    self.gameTypeID = nil;
 
     [super dealloc];
 }

@@ -11,8 +11,10 @@
 @interface GameInstance : NSObject {
     NSString *gameID;
     NSString *name;
+    NSString *gameTypeID;
 }
 @property (nonatomic, retain)  NSString *gameID;
 @property (nonatomic, retain)  NSString *name;
+@property (nonatomic, retain)  NSString *gameTypeID;
 
 @end

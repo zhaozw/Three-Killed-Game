@@ -10,10 +10,12 @@
 #import "UserModel.h"
 
 @protocol APILibraryDelegate <NSObject>
-
+@optional
 - (void)apiLibraryDidReceivedResult:(id)result;
 - (void)apiLibraryDidReceivedError:(NSString *)error;
-
+- (void)apiLibraryDidReceivedGameDetail:(id)detail;
+- (void)apiLibraryDidReceivedCreateGameResult:(id)result;
+- (void)apiLibraryDidReceivedJoinGameResult:(id)result;
 @end
 
 @interface APILibrary : NSObject {
@@ -45,5 +47,12 @@ getAvalibelGamesWithParam:(id)param
 + (BOOL)apiLibrary:(BOOL *)status
           metError:(NSString **)error
 getMyRoleWithGameID:(NSString *)gameID
+      withDelegate:(id<APILibraryDelegate>)delegate;
++ (BOOL)apiLibrary:(BOOL *)status
+          metError:(NSString **)error
+getTypesWithDelegate:(id<APILibraryDelegate>)delegate;
++ (BOOL)apiLibrary:(BOOL *)status
+          metError:(NSString **)error
+createWithGameTypeID:(NSString *)gameTypeID
       withDelegate:(id<APILibraryDelegate>)delegate;
 @end

@@ -8,12 +8,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Modules/GamesModule/GamesViewController.m"
-         timestampString = "366630572.964373"
+         timestampString = "366709576.189629"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "98"
-         endingLineNumber = "98"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
+         startingLineNumber = "80"
+         endingLineNumber = "80"
+         landmarkName = "-apiLibraryDidReceivedJoinGameResult:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -76,6 +76,23 @@
     [APILibrary alertWithException:error];
 }
 
+- (void)apiLibraryDidReceivedJoinGameResult:(id)result {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    GameInstance *aGame = [[[GameInstance alloc] init] autorelease];
+    aGame.gameID = result;
+    GameDetailViewController *gameDetailVC = [[GameDetailViewController alloc] initWithNibName:@"GameDetailViewController" bundle:nil];
+    gameDetailVC.currentGame = aGame;
+    [self.navigationController pushViewController:gameDetailVC animated:YES];
+}
+
+- (void)handleJoinGameWithGameInstance:(GameInstance *)aGame {
+    BOOL status = NO;
+    NSString *error = nil;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [APILibrary apiLibrary:&status metError:&error joinGameWithGameID:aGame.gameID withDelegate:self];
+}
+
+
 #pragma mark - UITableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.games.count;
@@ -98,9 +115,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     GameInstance *aGame = [self.games objectAtIndex:indexPath.row];
-    GameDetailViewController *gameDetailVC = [[GameDetailViewController alloc] initWithNibName:@"GameDetailViewController" bundle:nil];
-    gameDetailVC.currentGame = aGame;
-    [self.navigationController pushViewController:gameDetailVC animated:YES];
+    [self handleJoinGameWithGameInstance:aGame];
 }
 
 @end

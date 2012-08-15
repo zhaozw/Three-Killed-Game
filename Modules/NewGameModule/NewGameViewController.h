@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface NewGameViewController : UIViewController
+#import "APILibrary.h"
+@interface NewGameViewController : UIViewController <APILibraryDelegate>{
+    NSArray *allKindsGames;
+    IBOutlet UITableView *listView;
+}
+@property (nonatomic, retain)  NSArray *allKindsGames;
+@property (nonatomic, retain)  IBOutlet UITableView *listView;
 
 @end
