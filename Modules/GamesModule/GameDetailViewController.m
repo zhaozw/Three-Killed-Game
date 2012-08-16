@@ -11,6 +11,7 @@
 #import "Foundation+KGOAdditions.h"
 #import "GameRoleInstance.h"
 #import "ObserveViewController.h"
+#import "UnKilledViewController.h"
 @interface GameDetailViewController ()
 
 @end
@@ -43,7 +44,33 @@
     BOOL status = NO;
     NSString *error = nil;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [APILibrary apiLibrary:&status metError:&error getMyRoleWithGameID:self.currentGame.gameID withDelegate:self];
+    [APILibrary apiLibrary:&status 
+                  metError:&error 
+     observeGameWithGameID:self.currentGame.gameID 
+              withDelegate:self];
+    if (!self.currentRole) {
+        BOOL status = NO;
+        NSString *error = nil;
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [APILibrary apiLibrary:&status metError:&error getMyRoleWithGameID:self.currentGame.gameID withDelegate:self];
+    }
+}
+
+- (void)apiLibraryDidReceivedObserveResult:(id)result {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    GameInstance *game = [[[GameInstance alloc] init] autorelease];
+    game.gameID = [result forcedStringForKey:@"id"];
+    NSDictionary *aResult = (NSDictionary *)result;
+    NSArray *players = [aResult arrayForKey:@"players"];
+    NSMutableArray *playerContainer = [NSMutableArray array];
+    for (NSDictionary *role in players) {
+        GameRoleInstance *aRole = [[GameRoleInstance alloc] init];
+        [aRole updateWithDictionary:role];
+        [playerContainer addObject:aRole];
+        [aRole release];
+    }
+    game.allRoles = playerContainer;
+    self.currentGame = game;
 }
 
 - (void)viewDidUnload
@@ -63,7 +90,7 @@
 - (void)apiLibraryDidReceivedGameDetail:(id)detail {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     NSDictionary *role = (NSDictionary *)detail;
-    GameRoleInstance *aRole = [[GameRoleInstance alloc] init];
+    GameRoleInstance *aRole = [[[GameRoleInstance alloc] init] autorelease];
     [aRole updateWithDictionary:role];
     self.currentRole = aRole;
     self.currentGame.name = [role forcedStringForKey:@"game_name"];
@@ -76,9 +103,24 @@
     [APILibrary alertWithException:error];
 }
 
+- (NSString  *)roleInstanceUserNameAtUserID:(NSString *)roleID {
+    if ([roleID isEqualToString:@"0"]) {
+        return @"God";
+    } else {
+        if (self.currentGame.allRoles) {
+            for (GameRoleInstance *aRole in self.currentGame.allRoles) {
+                if ([aRole.userID isEqualToString:roleID]) {
+                    return aRole.userName;
+                }
+            }
+        }
+    }
+    return nil;
+}
+
 #pragma mark - UITableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 6;
 }
 
 
@@ -95,6 +137,15 @@
         cell.textLabel.text = [NSString stringWithFormat:@"身份:%@",self.currentRole.roleName];
     } else if (indexPath.row == 2) {
         cell.textLabel.text = [NSString stringWithFormat:@"座位:%@",self.currentRole.seatNum];
+    } else if (indexPath.row == 3){
+        if (self.currentRole.killedBy.length > 0) {
+            cell.textLabel.text = [NSString stringWithFormat:@"Killed By:%@",[self roleInstanceUserNameAtUserID:self.currentRole.killedBy]];
+            cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        } else {
+            cell.textLabel.text = @"Alive";
+        }
+    } else if (indexPath.row == 4) {
+        cell.textLabel.text = [NSString stringWithFormat:@"UserName:%@",self.currentRole.userName];
     } else {
         cell.textLabel.text = [NSString stringWithFormat:@"详细信息"];
         cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
@@ -105,10 +156,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 3) {
+    if (indexPath.row == 5) {
         ObserveViewController *observeVC = [[[ObserveViewController alloc] initWithNibName:@"ObserveViewController" bundle:nil] autorelease];
         observeVC.currentGame = self.currentGame;
         [self.navigationController pushViewController:observeVC animated:YES];
+    } else if (indexPath.row == 3) {
+        if (self.currentRole.killedBy.length > 0) {
+            UnKilledViewController *unkilledVC = [[[UnKilledViewController alloc] initWithNibName:@"UnKilledViewController" bundle:nil] autorelease];
+            unkilledVC.currentGame = self.currentGame;
+            unkilledVC.currentRole = self.currentRole;
+            [self.navigationController pushViewController:unkilledVC animated:YES];
+        }
     }
 }
 

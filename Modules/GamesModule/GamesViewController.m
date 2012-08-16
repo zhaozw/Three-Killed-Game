@@ -11,6 +11,7 @@
 #import "GameInstance.h"
 #import "Foundation+KGOAdditions.h"
 #import "GameDetailViewController.h"
+#import "GameUserData.h"
 @interface GamesViewController ()
 
 @end
@@ -78,10 +79,10 @@
 
 - (void)apiLibraryDidReceivedJoinGameResult:(id)result {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    GameInstance *aGame = [[[GameInstance alloc] init] autorelease];
-    aGame.gameID = result;
+    GameInstance *currentGame = [[[GameInstance alloc] init] autorelease];
+    currentGame.gameID = result;
     GameDetailViewController *gameDetailVC = [[GameDetailViewController alloc] initWithNibName:@"GameDetailViewController" bundle:nil];
-    gameDetailVC.currentGame = aGame;
+    gameDetailVC.currentGame = currentGame;
     [self.navigationController pushViewController:gameDetailVC animated:YES];
 }
 

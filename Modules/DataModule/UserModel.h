@@ -8,3 +8,5 @@
 
 #import "AccountData.h"
 #import "Achievement.h"
+#import "GameInstance.h"
+#import "GameRoleInstance.h"

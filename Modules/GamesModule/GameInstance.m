@@ -12,11 +12,15 @@
 @synthesize gameID;
 @synthesize name;
 @synthesize gameTypeID;
+@synthesize allRoles;
+@synthesize allUsers;
 
 - (void)dealloc {
     self.gameID = nil;
     self.name = nil;
     self.gameTypeID = nil;
+    self.allRoles = nil;
+    self.allUsers = nil;
 
     [super dealloc];
 }

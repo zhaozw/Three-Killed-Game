@@ -17,7 +17,8 @@
 - (void)apiLibraryDidReceivedCreateGameResult:(id)result;
 - (void)apiLibraryDidReceivedJoinGameResult:(id)result;
 - (void)apiLibraryDidReceivedObserveResult:(id)result;
-- (void)apiLibraryDidReceivedKilledByResult:(id)result;
+- (void)apiLibraryWithGameInstance:(GameInstance *)agameInstance roleInstance:(GameRoleInstance *)roleInstance didReceivedKilledByResult:(NSString *)gameID;
+- (void)apiLibraryDidReceivedUnKilledByResult:(id)result;
 - (void)apiLibraryDidReceivedFinishResult:(id)result;
 - (void)apiLibraryDidReceivedReopenResult:(id)result;
 - (void)apiLibraryDidReceivedCloseResult:(id)result;
@@ -68,10 +69,15 @@ observeGameWithGameID:(NSString *)gameID
       withDelegate:(id<APILibraryDelegate>)delegate;
 + (BOOL)apiLibrary:(BOOL *)status
           metError:(NSString **)error
+              game:(GameInstance *)gameInstance
+               who:(GameRoleInstance *)RoleInstance
+          killedBy:(GameRoleInstance *)byRoleInstance
+      withDelegate:(id<APILibraryDelegate>)delegate;
++ (BOOL)apiLibrary:(BOOL *)status
+          metError:(NSString **)error
             gameID:(NSString *)gameID
              whoID:(NSString *)whoID
-        killedByID:(NSString *)byID
-      withDelegate:(id<APILibraryDelegate>)delegate;
+unkilledWithDelegate:(id<APILibraryDelegate>)delegate;
 + (BOOL)apiLibrary:(BOOL *)status
           metError:(NSString **)error
   reopenWithGameID:(NSString *)gameID

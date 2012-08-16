@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Modules/APIModule/APILibrary.m"
-         timestampString = "366720316.940801"
+         timestampString = "366789868.982848"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "458"
-         endingLineNumber = "458"
+         startingLineNumber = "498"
+         endingLineNumber = "498"
          landmarkName = "+apiLibrary:metError:finishWithGameID:withDelegate:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,12 +21,38 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Modules/APIModule/APILibrary.m"
-         timestampString = "366720316.940801"
+         timestampString = "366789868.982848"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "419"
-         endingLineNumber = "419"
+         startingLineNumber = "459"
+         endingLineNumber = "459"
          landmarkName = "+apiLibrary:metError:reopenWithGameID:withDelegate:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../Modules/GamesModule/ObserveViewController.m"
+         timestampString = "366795437.774179"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "120"
+         endingLineNumber = "120"
+         landmarkName = "-apiLibraryDidReceivedObserveResult:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../Modules/APIModule/APILibrary.m"
+         timestampString = "366795789.398902"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "429"
+         endingLineNumber = "429"
+         landmarkName = "+apiLibrary:metError:gameID:whoID:unkilledWithDelegate:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

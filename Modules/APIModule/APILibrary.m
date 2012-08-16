@@ -233,7 +233,6 @@ withDelegate:(id<APILibraryDelegate>)delegate {
                         [delegate apiLibraryDidReceivedGameDetail:role];
                     }
                 }
-
             }
         } else {
             *error = @"join game request error";
@@ -370,12 +369,12 @@ observeGameWithGameID:(NSString *)gameID
 
 + (BOOL)apiLibrary:(BOOL *)status
           metError:(NSString **)error
-            gameID:(NSString *)gameID
-               whoID:(NSString *)whoID
-        killedByID:(NSString *)byID
+            game:(GameInstance *)agameInstance
+               who:(GameRoleInstance *)roleInstance
+        killedBy:(GameRoleInstance *)byRoleInstance
       withDelegate:(id<APILibraryDelegate>)delegate {
     NSString *host = [[APILibrary sharedInstance] host];
-    NSString *urlString = [NSString stringWithFormat:@"%@/games/killed/api?token=%@&id=%@&game_id=%@&by=%@",host,[APILibrary sharedInstance].uniqueIdentifier,whoID,gameID,byID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/games/killed/api?token=%@&id=%@&game_id=%@&by=%@",host,[APILibrary sharedInstance].uniqueIdentifier,roleInstance.userID,agameInstance.gameID,byRoleInstance.userID];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
     request.timeOutSeconds = 60;
@@ -392,8 +391,49 @@ observeGameWithGameID:(NSString *)gameID
             } else {
                 *status = YES;
                 NSString *gameID = [obj forcedStringForKey:@"response"];
-                if ([delegate respondsToSelector:@selector(apiLibraryDidReceivedKilledByResult:)]) {
-                    [delegate apiLibraryDidReceivedKilledByResult:gameID];
+                if ([delegate respondsToSelector:@selector(apiLibraryWithGameInstance:roleInstance:didReceivedKilledByResult:)]) {
+                    [delegate apiLibraryWithGameInstance:agameInstance roleInstance:roleInstance didReceivedKilledByResult:gameID];
+                }
+            }
+        } else {
+            *error = @"join game request error";
+        }
+    } else {
+        *error = [errorRequest description];
+    }
+    if (!*status) {
+        if ([delegate respondsToSelector:@selector(apiLibraryDidReceivedError:)]) {
+            [delegate apiLibraryDidReceivedError:*error];
+        }
+    }
+    return *status;
+}
+
++ (BOOL)apiLibrary:(BOOL *)status
+          metError:(NSString **)error
+            gameID:(NSString *)gameID
+             whoID:(NSString *)whoID
+      unkilledWithDelegate:(id<APILibraryDelegate>)delegate {
+    NSString *host = [[APILibrary sharedInstance] host];
+    NSString *urlString = [NSString stringWithFormat:@"%@/games/killed/api?token=%@&id=%@&game_id=%@",host,[APILibrary sharedInstance].uniqueIdentifier,whoID,gameID];
+    NSURL *url = [NSURL URLWithString:urlString];
+    ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 60;
+    [request startSynchronous];
+    
+    NSError *errorRequest = [request error];
+    if (!errorRequest) {
+        NSString *response = [request responseString];
+        SBJsonParser *parser = [[[SBJsonParser alloc] init] autorelease];
+        NSDictionary *obj = [parser objectWithString:response];
+        if (obj) {
+            if (![[obj objectForKey:@"error"] isKindOfClass:[NSNull class]]) {
+                *error = [[obj objectForKey:@"error"] forcedStringForKey:@"message"];
+            } else {
+                *status = YES;
+                NSString *gameID = [obj forcedStringForKey:@"response"];
+                if ([delegate respondsToSelector:@selector(apiLibraryDidReceivedUnKilledByResult:)]) {
+                    [delegate apiLibraryDidReceivedUnKilledByResult:gameID];
                 }
             }
         } else {

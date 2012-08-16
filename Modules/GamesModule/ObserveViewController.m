@@ -11,6 +11,8 @@
 #import "MBProgressHUD.h"
 #import "GameRoleInstance.h"
 #import "GameUserData.h"
+#import "GameDetailViewController.h"
+#import "UnKilledViewController.h"
 @interface ObserveViewController ()
 
 @end
@@ -21,6 +23,11 @@
 @synthesize currentGame;
 @synthesize listView;
 @synthesize tableFooterView;
+@synthesize openButton;
+@synthesize myRoleButton;
+@synthesize finishButton;
+@synthesize closeButton;
+@synthesize oneOnOneButton;
 
 - (void)dealloc {
     self.allRoles = nil;
@@ -28,6 +35,12 @@
     self.currentGame = nil;
     self.listView = nil;
     self.tableFooterView = nil;
+    self.openButton = nil;
+    self.myRoleButton = nil;
+    self.finishButton = nil;
+    self.closeButton = nil;
+    self.oneOnOneButton = nil;
+
 
     [super dealloc];
 }
@@ -44,6 +57,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     BOOL status = NO;
     NSString *error = nil;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -112,6 +128,14 @@
         [aRole release];
     }
     self.allRoles = playerContainer;
+    self.currentGame.allRoles = playerContainer;
+    if (self.allRoles.count != [result forcedNumberForKey:@"playerCount"].integerValue) {
+        self.finishButton.enabled = NO;
+        self.oneOnOneButton.enabled = NO;
+    } else {
+        self.finishButton.enabled = YES;
+        self.oneOnOneButton.enabled = YES;
+    }
     NSDictionary *users = [aResult dictionaryForKey:@"users"];
     [users enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSMutableArray *usersContainer = [NSMutableArray array];
@@ -122,6 +146,7 @@
         [usersContainer addObject:anUser];
         [anUser release];
         self.allUsers = usersContainer;
+        self.currentGame.allUsers = usersContainer;
         [self.listView reloadData];
         self.listView.tableFooterView = self.tableFooterView;
     }];
@@ -143,8 +168,13 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
-- (void)apiLibraryDidReceivedKilledByResult:(id)result {
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+- (void)apiLibraryWithGameInstance:(GameInstance *)agameInstance roleInstance:(GameRoleInstance *)roleInstance didReceivedKilledByResult:(NSString *)gameID {
+    BOOL status = NO;
+    NSString *error = nil;
+    [APILibrary apiLibrary:&status 
+                  metError:&error 
+     observeGameWithGameID:self.currentGame.gameID 
+              withDelegate:self];
 }
 
 - (void)apiLibraryDidReceivedError:(NSString *)error {
@@ -163,7 +193,26 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    GameRoleInstance *aRole = [self.allRoles objectAtIndex:section];
+    if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
+        return 1;
+    }
     return self.allRoles.count;
+}
+
+- (NSString  *)roleInstanceUserNameAtUserID:(NSString *)roleID {
+    if ([roleID isEqualToString:@"0"]) {
+        return @"God";
+    } else {
+        if (self.allRoles) {
+            for (GameRoleInstance *aRole in self.allRoles) {
+                if ([aRole.userID isEqualToString:roleID]) {
+                    return aRole.userName;
+                }
+            }
+        }
+    }
+    return nil;
 }
 
 
@@ -174,39 +223,51 @@
     if (!cell) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
-    if (indexPath.section == indexPath.row) {
-        cell.textLabel.text = [NSString stringWithFormat:@"Killed by god"];
+    GameRoleInstance *aRole = [self.allRoles objectAtIndex:indexPath.section];
+    if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
+        cell.textLabel.text = [NSString stringWithFormat:@"Killed by :%@ --->%@",[self roleInstanceUserNameAtUserID:aRole.killedBy],aRole.roleName];
     } else {
-        GameRoleInstance *otherRole = [self.allRoles objectAtIndex:indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat:@"Killed by %@",otherRole.userName];
+        if (indexPath.section == indexPath.row) {
+            cell.textLabel.text = [NSString stringWithFormat:@"Killed by god"];
+        } else {
+            GameRoleInstance *otherRole = [self.allRoles objectAtIndex:indexPath.row];
+            cell.textLabel.text = [NSString stringWithFormat:@"Killed by %@",otherRole.userName];
+        }
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     }
-    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     GameRoleInstance *aRole = [self.allRoles objectAtIndex:indexPath.section];
-    if (indexPath.section == indexPath.row) {
-        BOOL status = NO;
-        NSString *error = nil;
-        [APILibrary apiLibrary:&status 
-                      metError:&error 
-                        gameID:self.currentGame.gameID 
-                         whoID:aRole.userID 
-                    killedByID:aRole.userID 
-                  withDelegate:self];
+    if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
+        UnKilledViewController *unkilledVC = [[UnKilledViewController alloc] initWithNibName:@"UnKilledViewController" bundle:nil];
+        unkilledVC.currentRole = aRole;
+        unkilledVC.currentGame = self.currentGame;
+        [self.navigationController pushViewController:unkilledVC animated:YES];
     } else {
-        GameRoleInstance *otherRole = [self.allRoles objectAtIndex:indexPath.row];
-        BOOL status = NO;
-        NSString *error = nil;
-        [APILibrary apiLibrary:&status 
-                      metError:&error 
-                        gameID:self.currentGame.gameID 
-                         whoID:aRole.userID 
-                    killedByID:otherRole.userID 
-                  withDelegate:self];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        if (indexPath.section == indexPath.row) {
+            BOOL status = NO;
+            NSString *error = nil;
+            [APILibrary apiLibrary:&status 
+                          metError:&error 
+                              game:self.currentGame 
+                               who:aRole 
+                          killedBy:aRole 
+                      withDelegate:self];
+        } else {
+            GameRoleInstance *otherRole = [self.allRoles objectAtIndex:indexPath.row];
+            BOOL status = NO;
+            NSString *error = nil;
+            [APILibrary apiLibrary:&status 
+                          metError:&error 
+                              game:self.currentGame 
+                               who:aRole 
+                          killedBy:otherRole 
+                      withDelegate:self];
+        }
     }
 }
 

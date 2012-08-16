@@ -12,9 +12,13 @@
     NSString *gameID;
     NSString *name;
     NSString *gameTypeID;
+    NSArray *allRoles;
+    NSArray *allUsers;
 }
 @property (nonatomic, retain)  NSString *gameID;
 @property (nonatomic, retain)  NSString *name;
 @property (nonatomic, retain)  NSString *gameTypeID;
+@property (nonatomic, retain)  NSArray *allRoles;
+@property (nonatomic, retain)  NSArray *allUsers;
 
 @end
