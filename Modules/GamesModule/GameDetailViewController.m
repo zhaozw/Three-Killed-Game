@@ -132,20 +132,21 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
     if (indexPath.row == 0) {
-        cell.textLabel.text = [NSString stringWithFormat:@"游戏:%@",self.currentRole.gameName];
+        cell.textLabel.text = [NSString stringWithFormat:@"玩家:%@",self.currentRole.userName];
     } else if (indexPath.row == 1) {
-        cell.textLabel.text = [NSString stringWithFormat:@"身份:%@",self.currentRole.roleName];
+        cell.textLabel.text = [NSString stringWithFormat:@"游戏:%@",self.currentRole.gameName];
     } else if (indexPath.row == 2) {
+        cell.textLabel.text = [NSString stringWithFormat:@"身份:%@",self.currentRole.roleName];
+        cell.textLabel.textColor = [UIColor whiteColor];
+    } else if (indexPath.row == 3) {
         cell.textLabel.text = [NSString stringWithFormat:@"座位:%@",self.currentRole.seatNum];
-    } else if (indexPath.row == 3){
-        if (self.currentRole.killedBy.length > 0) {
+    } else if (indexPath.row == 4){
+        if (self.currentRole.killedBy.length > 0 && ![self.currentRole.killedBy isEqualToString:@"0"]) {
             cell.textLabel.text = [NSString stringWithFormat:@"Killed By:%@",[self roleInstanceUserNameAtUserID:self.currentRole.killedBy]];
             cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
         } else {
             cell.textLabel.text = @"Alive";
         }
-    } else if (indexPath.row == 4) {
-        cell.textLabel.text = [NSString stringWithFormat:@"UserName:%@",self.currentRole.userName];
     } else {
         cell.textLabel.text = [NSString stringWithFormat:@"详细信息"];
         cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
@@ -160,7 +161,7 @@
         ObserveViewController *observeVC = [[[ObserveViewController alloc] initWithNibName:@"ObserveViewController" bundle:nil] autorelease];
         observeVC.currentGame = self.currentGame;
         [self.navigationController pushViewController:observeVC animated:YES];
-    } else if (indexPath.row == 3) {
+    } else if (indexPath.row == 4) {
         if (self.currentRole.killedBy.length > 0) {
             UnKilledViewController *unkilledVC = [[[UnKilledViewController alloc] initWithNibName:@"UnKilledViewController" bundle:nil] autorelease];
             unkilledVC.currentGame = self.currentGame;
