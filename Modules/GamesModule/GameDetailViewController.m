@@ -41,6 +41,9 @@
 {
     [super viewDidLoad];
     self.title = [NSString stringWithFormat:@"%@ #%@",NSLocalizedString(@"_Game_", @"game"),self.currentGame.gameID];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     BOOL status = NO;
     NSString *error = nil;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -145,10 +148,10 @@
             cell.textLabel.text = [NSString stringWithFormat:@"Killed By:%@",[self roleInstanceUserNameAtUserID:self.currentRole.killedBy]];
             cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
         } else {
-            cell.textLabel.text = @"Alive";
+            cell.textLabel.text = @"恭喜您还活在场上!";
         }
     } else {
-        cell.textLabel.text = [NSString stringWithFormat:@"详细信息"];
+        cell.textLabel.text = [NSString stringWithFormat:@"详细信息->"];
         cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     }
                   

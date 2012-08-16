@@ -38,6 +38,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     BOOL status = NO;
     NSString *error = nil;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
