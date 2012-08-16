@@ -63,6 +63,7 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/requestToken/api?app_id=ios",host];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 60;
     [request startSynchronous];
     
     NSError *errorRequest = [request error];
@@ -96,6 +97,7 @@ loginWithUserData:(AccountData *)account {
     NSString *urlString = [NSString stringWithFormat:@"%@/auth/api?username=%@&password=%@&token=%@",host,account.usrName,account.password,[APILibrary sharedInstance].uniqueIdentifier];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 60;
     [request startSynchronous];
     
     NSError *errorRequest = [request error];
@@ -130,6 +132,7 @@ getAvalibelGamesWithParam:(id)param
     NSString *urlString = [NSString stringWithFormat:@"%@/games/getAvailableGames/api?token=%@&game_type_id=1",host,[APILibrary sharedInstance].uniqueIdentifier];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 60;
     [request startSynchronous];
     
     NSError *errorRequest = [request error];
@@ -169,6 +172,7 @@ joinGameWithGameID:(NSString *)gameID
     NSString *urlString = [NSString stringWithFormat:@"%@/games/join/api?token=%@&id=%@",host,[APILibrary sharedInstance].uniqueIdentifier,gameID];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 60;
     [request startSynchronous];
     
     NSError *errorRequest = [request error];
@@ -208,6 +212,7 @@ withDelegate:(id<APILibraryDelegate>)delegate {
     NSString *urlString = [NSString stringWithFormat:@"%@/games/myrole/api?token=%@&id=%@",host,[APILibrary sharedInstance].uniqueIdentifier,gameID];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 60;
     [request startSynchronous];
     
     NSError *errorRequest = [request error];
@@ -251,6 +256,7 @@ getTypesWithDelegate:(id<APILibraryDelegate>)delegate {
     NSString *urlString = [NSString stringWithFormat:@"%@/games/getTypes/api?token=%@&game_type_id=1",host,[APILibrary sharedInstance].uniqueIdentifier];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 60;
     [request startSynchronous];
     
     NSError *errorRequest = [request error];
@@ -290,6 +296,7 @@ createWithGameTypeID:(NSString *)gameTypeID
     NSString *urlString = [NSString stringWithFormat:@"%@/games/create/api?token=%@&id=%@",host,[APILibrary sharedInstance].uniqueIdentifier,gameTypeID];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 60;
     [request startSynchronous];
     
     NSError *errorRequest = [request error];
@@ -329,6 +336,7 @@ observeGameWithGameID:(NSString *)gameID
     NSString *urlString = [NSString stringWithFormat:@"%@/games/observe/api?token=%@&id=%@",host,[APILibrary sharedInstance].uniqueIdentifier,gameID];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 60;
     [request startSynchronous];
     
     NSError *errorRequest = [request error];
@@ -370,6 +378,7 @@ observeGameWithGameID:(NSString *)gameID
     NSString *urlString = [NSString stringWithFormat:@"%@/games/killed/api?token=%@&id=%@&game_id=%@&by=%@",host,[APILibrary sharedInstance].uniqueIdentifier,whoID,gameID,byID];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 60;
     [request startSynchronous];
     
     NSError *errorRequest = [request error];
@@ -409,6 +418,7 @@ observeGameWithGameID:(NSString *)gameID
     NSString *urlString = [NSString stringWithFormat:@"%@/games/open/api?token=%@&id=%@",host,[APILibrary sharedInstance].uniqueIdentifier,gameID];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 60;
     [request startSynchronous];
     
     NSError *errorRequest = [request error];
@@ -448,6 +458,7 @@ finishWithGameID:(NSString *)gameID
     NSString *urlString = [NSString stringWithFormat:@"%@/games/finish/api?token=%@&id=%@",host,[APILibrary sharedInstance].uniqueIdentifier,gameID];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 60;
     [request startSynchronous];
     
     NSError *errorRequest = [request error];
@@ -487,6 +498,7 @@ finishWithGameID:(NSString *)gameID
     NSString *urlString = [NSString stringWithFormat:@"%@/games/close/api?token=%@&id=%@",host,[APILibrary sharedInstance].uniqueIdentifier,gameID];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 60;
     [request startSynchronous];
     
     NSError *errorRequest = [request error];
@@ -526,6 +538,7 @@ finishWithGameID:(NSString *)gameID
     NSString *urlString = [NSString stringWithFormat:@"%@/games/oneonone/api?token=%@&id=%@",host,[APILibrary sharedInstance].uniqueIdentifier,gameID];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 60;
     [request startSynchronous];
     
     NSError *errorRequest = [request error];
@@ -564,6 +577,7 @@ finishWithGameID:(NSString *)gameID
     NSString *urlString = [NSString stringWithFormat:@"%@/games/ranking/api?token=%@",host,[APILibrary sharedInstance].uniqueIdentifier];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+    request.timeOutSeconds = 60;
     [request startSynchronous];
     
     NSError *errorRequest = [request error];

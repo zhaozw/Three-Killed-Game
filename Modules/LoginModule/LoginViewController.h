@@ -11,11 +11,13 @@
 @interface LoginViewController : UIViewController {
     IBOutlet UITextField *usrName;
     IBOutlet UITextField *password;
-    IBOutlet UILabel *usrLabel;
-    IBOutlet UILabel *pwdLabel;
     IBOutlet UIButton *login;
     IBOutlet UIButton *cancel;
 }
+@property (nonatomic, retain)  IBOutlet UIImageView *inputBackgroundView;
+@property (nonatomic, retain)  IBOutlet UIImageView *userNameBGView;
+@property (nonatomic, retain)  IBOutlet UIImageView *passwordBGView;
+
 - (IBAction)login:(id)sender;
 - (IBAction)cancel:(id)sender;
 @end

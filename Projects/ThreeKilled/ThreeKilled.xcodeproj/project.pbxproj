@@ -67,6 +67,19 @@
 		4E69C91015DA4DE0003EEE79 /* Foundation+KGOAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C90D15DA4DE0003EEE79 /* Foundation+KGOAdditions.m */; };
 		4E69C91115DA4DE0003EEE79 /* UIKit+KGOAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C90F15DA4DE0003EEE79 /* UIKit+KGOAdditions.m */; };
 		4E69C91515DA4E06003EEE79 /* APILibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C91415DA4E06003EEE79 /* APILibrary.m */; };
+		4E9A51C615DC82C500A0D4A1 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51C015DC82C400A0D4A1 /* 12.png */; };
+		4E9A51C715DC82C500A0D4A1 /* 16.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51C115DC82C500A0D4A1 /* 16.png */; };
+		4E9A51C815DC82C500A0D4A1 /* 21.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51C215DC82C500A0D4A1 /* 21.png */; };
+		4E9A51C915DC82C500A0D4A1 /* back_l.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51C315DC82C500A0D4A1 /* back_l.png */; };
+		4E9A51CA15DC82C500A0D4A1 /* back_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51C415DC82C500A0D4A1 /* back_s.png */; };
+		4E9A51CB15DC82C500A0D4A1 /* table2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51C515DC82C500A0D4A1 /* table2.png */; };
+		4E9A51D115DC843600A0D4A1 /* cancel_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51CD15DC843600A0D4A1 /* cancel_d.png */; };
+		4E9A51D215DC843600A0D4A1 /* cancel_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51CE15DC843600A0D4A1 /* cancel_n.png */; };
+		4E9A51D315DC843600A0D4A1 /* comfirm_i.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51CF15DC843600A0D4A1 /* comfirm_i.png */; };
+		4E9A51D415DC843600A0D4A1 /* comfirm_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51D015DC843600A0D4A1 /* comfirm_n.png */; };
+		4E9A51F815DC875B00A0D4A1 /* input.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51F515DC875A00A0D4A1 /* input.png */; };
+		4E9A51F915DC875B00A0D4A1 /* title_back 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51F615DC875A00A0D4A1 /* title_back 2.png */; };
+		4E9A51FA15DC875B00A0D4A1 /* title_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51F715DC875B00A0D4A1 /* title_back.png */; };
 		4E9A5FB015D9DBD900BD8EC6 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A5FAF15D9DBD900BD8EC6 /* Config.plist */; };
 		4E9BDE4615DB863D00D2F076 /* GameRoleInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDE4515DB863D00D2F076 /* GameRoleInstance.m */; };
 		4E9BDE4B15DB8D9B00D2F076 /* ObserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDE4915DB8D9B00D2F076 /* ObserveViewController.m */; };
@@ -207,6 +220,19 @@
 		4E69C91315DA4E06003EEE79 /* APILibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APILibrary.h; sourceTree = "<group>"; };
 		4E69C91415DA4E06003EEE79 /* APILibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APILibrary.m; sourceTree = "<group>"; };
 		4E69C92415DA53D1003EEE79 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		4E9A51C015DC82C400A0D4A1 /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
+		4E9A51C115DC82C500A0D4A1 /* 16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 16.png; sourceTree = "<group>"; };
+		4E9A51C215DC82C500A0D4A1 /* 21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 21.png; sourceTree = "<group>"; };
+		4E9A51C315DC82C500A0D4A1 /* back_l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_l.png; sourceTree = "<group>"; };
+		4E9A51C415DC82C500A0D4A1 /* back_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_s.png; sourceTree = "<group>"; };
+		4E9A51C515DC82C500A0D4A1 /* table2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table2.png; sourceTree = "<group>"; };
+		4E9A51CD15DC843600A0D4A1 /* cancel_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel_d.png; sourceTree = "<group>"; };
+		4E9A51CE15DC843600A0D4A1 /* cancel_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel_n.png; sourceTree = "<group>"; };
+		4E9A51CF15DC843600A0D4A1 /* comfirm_i.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comfirm_i.png; sourceTree = "<group>"; };
+		4E9A51D015DC843600A0D4A1 /* comfirm_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comfirm_n.png; sourceTree = "<group>"; };
+		4E9A51F515DC875A00A0D4A1 /* input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input.png; sourceTree = "<group>"; };
+		4E9A51F615DC875A00A0D4A1 /* title_back 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title_back 2.png"; sourceTree = "<group>"; };
+		4E9A51F715DC875B00A0D4A1 /* title_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_back.png; sourceTree = "<group>"; };
 		4E9A5FAF15D9DBD900BD8EC6 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		4E9BDE4415DB863D00D2F076 /* GameRoleInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRoleInstance.h; sourceTree = "<group>"; };
 		4E9BDE4515DB863D00D2F076 /* GameRoleInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameRoleInstance.m; sourceTree = "<group>"; };
@@ -536,6 +562,19 @@
 		4ED3765C15D9E2ED003EE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4E9A51F515DC875A00A0D4A1 /* input.png */,
+				4E9A51F615DC875A00A0D4A1 /* title_back 2.png */,
+				4E9A51F715DC875B00A0D4A1 /* title_back.png */,
+				4E9A51CD15DC843600A0D4A1 /* cancel_d.png */,
+				4E9A51CE15DC843600A0D4A1 /* cancel_n.png */,
+				4E9A51CF15DC843600A0D4A1 /* comfirm_i.png */,
+				4E9A51D015DC843600A0D4A1 /* comfirm_n.png */,
+				4E9A51C015DC82C400A0D4A1 /* 12.png */,
+				4E9A51C115DC82C500A0D4A1 /* 16.png */,
+				4E9A51C215DC82C500A0D4A1 /* 21.png */,
+				4E9A51C315DC82C500A0D4A1 /* back_l.png */,
+				4E9A51C415DC82C500A0D4A1 /* back_s.png */,
+				4E9A51C515DC82C500A0D4A1 /* table2.png */,
 				4ED3765D15D9E2ED003EE814 /* Default-Portrait.png */,
 				4ED3765E15D9E2ED003EE814 /* Default.png */,
 				4ED3765F15D9E2ED003EE814 /* Default@2x.png */,
@@ -676,6 +715,19 @@
 				4E69C85015DA4CB2003EEE79 /* LoginViewController.xib in Resources */,
 				4E69C85515DA4CBC003EEE79 /* HomeViewController.xib in Resources */,
 				4E9BDE4C15DB8D9B00D2F076 /* ObserveViewController.xib in Resources */,
+				4E9A51C615DC82C500A0D4A1 /* 12.png in Resources */,
+				4E9A51C715DC82C500A0D4A1 /* 16.png in Resources */,
+				4E9A51C815DC82C500A0D4A1 /* 21.png in Resources */,
+				4E9A51C915DC82C500A0D4A1 /* back_l.png in Resources */,
+				4E9A51CA15DC82C500A0D4A1 /* back_s.png in Resources */,
+				4E9A51CB15DC82C500A0D4A1 /* table2.png in Resources */,
+				4E9A51D115DC843600A0D4A1 /* cancel_d.png in Resources */,
+				4E9A51D215DC843600A0D4A1 /* cancel_n.png in Resources */,
+				4E9A51D315DC843600A0D4A1 /* comfirm_i.png in Resources */,
+				4E9A51D415DC843600A0D4A1 /* comfirm_n.png in Resources */,
+				4E9A51F815DC875B00A0D4A1 /* input.png in Resources */,
+				4E9A51F915DC875B00A0D4A1 /* title_back 2.png in Resources */,
+				4E9A51FA15DC875B00A0D4A1 /* title_back.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,7 +816,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Liu Mingxing (ZQYHFFCMYB)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -780,7 +832,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PROVISIONING_PROFILE = "20F653B5-6501-4E96-BED3-65DA945D74B4";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -790,7 +843,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Liu Mingxing (ZQYHFFCMYB)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -800,7 +853,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "20F653B5-6501-4E96-BED3-65DA945D74B4";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -809,8 +863,8 @@
 		4EFC97B515D8D941003587DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = newstar;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = newstar;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThreeKilled/ThreeKilled-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -818,6 +872,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "ThreeKilled/ThreeKilled-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -830,8 +885,8 @@
 		4EFC97B615D8D941003587DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = newstar;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = newstar;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThreeKilled/ThreeKilled-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -839,6 +894,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "ThreeKilled/ThreeKilled-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

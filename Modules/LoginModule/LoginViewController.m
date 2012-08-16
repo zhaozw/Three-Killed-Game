@@ -15,16 +15,37 @@
 @end
 
 @implementation LoginViewController
+@synthesize inputBackgroundView;
+@synthesize userNameBGView;
+@synthesize passwordBGView;
+
+- (void)dealloc {
+    self.inputBackgroundView = nil;
+    self.userNameBGView = nil;
+    self.passwordBGView = nil;
+
+    [super dealloc];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    usrLabel.text = NSLocalizedString(@"_UserNameLabel_", nil);
-    pwdLabel.text = NSLocalizedString(@"_PasswordLabel_", nil);
-    [login setTitle:NSLocalizedString(@"_Login_", nil) forState:UIControlStateNormal];
-    [login setTitle:NSLocalizedString(@"_Login_", nil) forState:UIControlStateHighlighted];
-    [cancel setTitle:NSLocalizedString(@"_Cancel_", nil) forState:UIControlStateNormal];
-    [cancel setTitle:NSLocalizedString(@"_Cancel_", nil) forState:UIControlStateHighlighted];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_l.png"]];
+    self.inputBackgroundView.image = [UIImage imageNamed:@"input.png"];
+    userNameBGView.image = [UIImage imageNamed:@"title_back.png"];
+    passwordBGView.image = [UIImage imageNamed:@"title_back.png"];
+    
+    UIImage *loginImageNormal = [[UIImage imageNamed:@"comfirm_n.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:0];
+    UIImage *loginImageHighlight = [[UIImage imageNamed:@"comfirm_i.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:0];
+    [login setImage:loginImageNormal forState:UIControlStateNormal];
+    [login setImage:loginImageHighlight forState:UIControlStateHighlighted];
+    
+    UIImage *cancelImageNormal = [[UIImage imageNamed:@"cancel_n.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:0];
+    UIImage *cancelImageHighlight = [[UIImage imageNamed:@"cancel_d.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:0];
+    [cancel setImage:cancelImageNormal forState:UIControlStateNormal];
+    [cancel setImage:cancelImageHighlight forState:UIControlStateHighlighted];
+    
+    
 }
 
 - (void)viewDidUnload
