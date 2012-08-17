@@ -21,7 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     BOOL success = [self helloRequest];
-    if (success)[self loadNavigationContainer];
+    if (success)[self loadLoginViewController];
     return YES;
 }
 

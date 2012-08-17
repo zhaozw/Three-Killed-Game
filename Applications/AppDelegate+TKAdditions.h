@@ -7,8 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
+#define SHARED_APP_DELEGATE() (AppDelegate *)[[UIApplication sharedApplication] delegate]
 @interface AppDelegate (TKAdditions)
 - (BOOL)helloRequest;
+- (void)loadLoginViewController;
 - (void)loadNavigationContainer;
 @end

@@ -55,7 +55,6 @@
     [alert show];
 }
 
-//http://sgol.sinaapp.com/requestToken/api?app_id=ios
 + (BOOL)apiLibrary:(BOOL *)status
           metError:(NSString **)error
  helloWithParam:(id)param {

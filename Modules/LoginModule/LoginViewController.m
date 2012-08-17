@@ -10,6 +10,7 @@
 #import "APILibrary.h"
 #import "MBProgressHUD.h"
 #import "HomeViewController.h"
+#import "AppDelegate+TKAdditions.h"
 @interface LoginViewController ()
 
 @end
@@ -77,9 +78,7 @@
         [APILibrary apiLibrary:&status metError:&error loginWithUserData:[APILibrary sharedInstance].userData];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (status) {
-            HomeViewController *homeVC = [[HomeViewController alloc] initWithNibName:@"HomeViewController" 
-                                                                              bundle:nil];
-            [self.navigationController pushViewController:homeVC animated:YES];
+            [SHARED_APP_DELEGATE() loadNavigationContainer];
         } else {
             [APILibrary alertWithException:error];
         }

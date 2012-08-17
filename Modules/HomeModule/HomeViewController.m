@@ -10,6 +10,7 @@
 #import "NewGameViewController.h"
 #import "RangkingsViewController.h"
 #import "GamesViewController.h"
+#import "APILibrary.h"
 @interface HomeViewController ()
 
 @end
@@ -28,6 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = [NSString stringWithFormat:@"欢迎您:%@ %@",[APILibrary sharedInstance].userData.firstName,[APILibrary sharedInstance].userData.lastName];
     GamesViewController *gamesVC = [[[GamesViewController alloc] initWithNibName:@"GamesViewController" bundle:nil] autorelease];
     gamesVC.title = @"Games";
     NewGameViewController *newgameVC = [[[NewGameViewController alloc] initWithNibName:@"NewGameViewController" bundle:nil] autorelease];
@@ -44,9 +46,16 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    CGAffineTransform t = self.view.transform;
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation) && t.b && t.c) {
+        [self.view setTransform:CGAffineTransformMakeRotation(0)];
+    }
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 @end

@@ -40,7 +40,7 @@
 						<reference key="NSNextResponder" ref="436738103"/>
 						<int key="NSvFlags">1316</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{25, 186}, {100, 37}}</string>
+						<string key="NSFrame">{{25, 250}, {100, 37}}</string>
 						<reference key="NSSuperview" ref="436738103"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="392502277"/>
@@ -74,7 +74,7 @@
 						<reference key="NSNextResponder" ref="436738103"/>
 						<int key="NSvFlags">1316</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{200, 186}, {100, 37}}</string>
+						<string key="NSFrame">{{200, 250}, {100, 37}}</string>
 						<reference key="NSSuperview" ref="436738103"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -180,7 +180,7 @@
 							</object>
 						</array>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{0, 50}, {320, 124}}</string>
+						<string key="NSFrame">{{0, 120}, {320, 124}}</string>
 						<reference key="NSSuperview" ref="436738103"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="145872697"/>
@@ -189,7 +189,7 @@
 					</object>
 				</array>
 				<object class="NSPSMatrix" key="NSFrameMatrix"/>
-				<string key="NSFrameSize">{320, 367}</string>
+				<string key="NSFrameSize">{320, 460}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="86542522"/>

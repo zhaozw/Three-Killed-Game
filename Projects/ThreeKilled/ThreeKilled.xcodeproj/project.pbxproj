@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E34ABFF15DE403500374040 /* home_title_bar_reverse.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E34ABFD15DE403500374040 /* home_title_bar_reverse.png */; };
+		4E34AC0015DE403500374040 /* home_title_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E34ABFE15DE403500374040 /* home_title_bar.png */; };
 		4E69C82B15DA4BF4003EEE79 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C82A15DA4BF4003EEE79 /* MBProgressHUD.m */; };
 		4E69C83E15DA4C6E003EEE79 /* GameDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C82F15DA4C6E003EEE79 /* GameDetailViewController.m */; };
 		4E69C83F15DA4C6E003EEE79 /* GameDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E69C83015DA4C6E003EEE79 /* GameDetailViewController.xib */; };
@@ -106,6 +108,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E34ABFD15DE403500374040 /* home_title_bar_reverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_title_bar_reverse.png; sourceTree = "<group>"; };
+		4E34ABFE15DE403500374040 /* home_title_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_title_bar.png; sourceTree = "<group>"; };
 		4E69C82915DA4BF4003EEE79 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		4E69C82A15DA4BF4003EEE79 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		4E69C82E15DA4C6E003EEE79 /* GameDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDetailViewController.h; sourceTree = "<group>"; };
@@ -570,6 +574,8 @@
 		4ED3765C15D9E2ED003EE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4E34ABFD15DE403500374040 /* home_title_bar_reverse.png */,
+				4E34ABFE15DE403500374040 /* home_title_bar.png */,
 				4E9A51F515DC875A00A0D4A1 /* input.png */,
 				4E9A51F615DC875A00A0D4A1 /* title_back 2.png */,
 				4E9A51F715DC875B00A0D4A1 /* title_back.png */,
@@ -737,6 +743,8 @@
 				4E9A51F915DC875B00A0D4A1 /* title_back 2.png in Resources */,
 				4E9A51FA15DC875B00A0D4A1 /* title_back.png in Resources */,
 				4E9A522915DCC14400A0D4A1 /* UnKilledViewController.xib in Resources */,
+				4E34ABFF15DE403500374040 /* home_title_bar_reverse.png in Resources */,
+				4E34AC0015DE403500374040 /* home_title_bar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -826,8 +834,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -841,6 +849,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -853,14 +862,15 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
@@ -873,12 +883,12 @@
 		4EFC97B515D8D941003587DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThreeKilled/ThreeKilled-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)",
+					"$(SRCROOT)/**",
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "ThreeKilled/ThreeKilled-Info.plist";
@@ -895,12 +905,12 @@
 		4EFC97B615D8D941003587DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThreeKilled/ThreeKilled-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)",
+					"$(SRCROOT)/**",
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "ThreeKilled/ThreeKilled-Info.plist";

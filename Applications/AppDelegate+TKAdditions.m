@@ -8,6 +8,7 @@
 
 #import "AppDelegate+TKAdditions.h"
 #import "LoginViewController.h"
+#import "HomeViewController.h"
 #import "APILibrary.h"
 @implementation AppDelegate (TKAdditions)
 - (BOOL)helloRequest {
@@ -20,14 +21,17 @@
     return success;
 }
 
-- (void)loadNavigationContainer 
+- (void)loadLoginViewController
 {
     UIViewController *loginVC = [[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil] autorelease];
-    _appNavController = [[UINavigationController alloc] initWithRootViewController:loginVC];
-//    UIColor *tintColor = [UIColor yellowColor];
-//    _appNavController.navigationBar.tintColor = tintColor;
+    self.window.rootViewController = loginVC;
+    [self.window makeKeyAndVisible];
+}
+
+- (void)loadNavigationContainer {
+    UIViewController *homeVC = [[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil] autorelease];
+    _appNavController = [[UINavigationController alloc] initWithRootViewController:homeVC];
     _appNavController.delegate = self;
-//    _appNavController.view.backgroundColor = [UIColor grayColor];
     self.window.rootViewController = _appNavController;
     [self.window makeKeyAndVisible];
 }
