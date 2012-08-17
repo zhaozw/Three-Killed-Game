@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UITabBarController {
+@interface HomeViewController : UIViewController {
+    IBOutlet UIImageView *navTitleImageView;
+    IBOutlet UITableView *listView;
+    IBOutlet UIView *bottomContainer;
+    IBOutlet UIImageView *infoContainer;
     
+    IBOutlet UIButton *leftButton;
+    IBOutlet UIButton *rightButton;
+    
+    IBOutlet UIImageView *portriatView;
+    IBOutlet UIImageView *menuContainer;
 }
 
 @end
