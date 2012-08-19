@@ -19,6 +19,9 @@
     
     IBOutlet UIImageView *portriatView;
     IBOutlet UIImageView *menuContainer;
+    
+    IBOutlet UIImageView *leftholder;
+    IBOutlet UIImageView *rightholder;
 }
 
 @end

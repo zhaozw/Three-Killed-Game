@@ -38,6 +38,12 @@
     infoContainer.image = [UIImage imageWithName:@"inforbkg" tableName:@"hall 2"];
     infoContainer.backgroundColor = [UIColor clearColor];
     
+    leftholder.image = [UIImage imageWithCGImage:[UIImage imageWithName:@"sword" tableName:@"btable 2"].CGImage scale:1.0 orientation:UIImageOrientationRight];
+    leftholder.backgroundColor = [UIColor clearColor];
+    
+    rightholder.image = [UIImage imageWithCGImage:[UIImage imageWithName:@"sword" tableName:@"btable 2"].CGImage scale:1.0 orientation:UIImageOrientationRight];
+    rightholder.backgroundColor = [UIColor clearColor];
+    
     [leftButton setImage:[[UIImage imageNamed:@"home_prexious_page_disable.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5] forState:UIControlStateNormal];
     [leftButton setImage:[[UIImage imageNamed:@"home_prexious_page.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5] forState:UIControlStateHighlighted];
     [rightButton setImage:[[UIImage imageNamed:@"home_next_page_disable.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5] forState:UIControlStateNormal];

@@ -18,6 +18,7 @@
 + (UIImage *)blankImageOfSize:(CGSize)size;
 - (UIImage *)imageAtRect:(CGRect)rect;
 + (UIImage *)imageWithName:(NSString *)imageName tableName:(NSString *)tableName;
++ (UIImage *)rotateImage:(UIImage *)src orientation:(UIImageOrientation)orientation;
 @end
 
 @interface UIColor (KGOAdditions)
