@@ -55,7 +55,7 @@
     [createButton setImage:[UIImage imageWithName:@"create" tableName:@"hall 2"] forState:UIControlStateNormal];
     [createButton setImage:[UIImage imageWithName:@"create_on" tableName:@"hall 2"] forState:UIControlStateHighlighted];
           
-    infoTopView.image = [UIImage imageWithName:@"portriat" tableName:@"utl 2"];
+    infoTopView.image = [UIImage imageWithName:@"portriat" tableName:@"hall 2"];
     infoTopView.backgroundColor = [UIColor clearColor];
     
     portriatView.image = [UIImage imageWithName:@"female_face" tableName:@"utl 2"];
@@ -68,10 +68,14 @@
     
     listView.backgroundColor = [UIColor clearColor];
     
-    nameLabel.text = @"君临天下";
-    [nameLabel setNumberOfLines:0];
-    [nameLabel sizeToFit];
+    nameLabel.text = @"Newstar";
     nameLabel.backgroundColor = [UIColor clearColor];
+    nameLabel.textAlignment = UITextAlignmentCenter;
+    
+    acLabel.text = @"君临天下";
+    [acLabel setNumberOfLines:0];
+    [acLabel sizeToFit];
+    acLabel.backgroundColor = [UIColor clearColor];
     
     //    UIImage *masthead = [[UIImage imageNamed:@"home_title_bar.png"] resizableImageWithCapInsets:(UIEdgeInsets)];
     //    self.navigationItem.titleView = [[[UIImageView alloc] initWithImage:masthead] autorelease];
