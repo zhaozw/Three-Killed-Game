@@ -1049,7 +1049,7 @@
 				GCC_PREFIX_HEADER = "ThreeKilled/ThreeKilled-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/**",
-					/usr/include/libxml2,
+					"/usr/include/libxml2/**",
 				);
 				INFOPLIST_FILE = "ThreeKilled/ThreeKilled-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -1071,7 +1071,7 @@
 				GCC_PREFIX_HEADER = "ThreeKilled/ThreeKilled-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/**",
-					/usr/include/libxml2,
+					"/usr/include/libxml2/**",
 				);
 				INFOPLIST_FILE = "ThreeKilled/ThreeKilled-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;

@@ -44,19 +44,34 @@
     rightholder.image = [UIImage imageWithCGImage:[UIImage imageWithName:@"sword" tableName:@"btable 2"].CGImage scale:1.0 orientation:UIImageOrientationRight];
     rightholder.backgroundColor = [UIColor clearColor];
     
-    [leftButton setImage:[[UIImage imageNamed:@"home_prexious_page_disable.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5] forState:UIControlStateNormal];
-    [leftButton setImage:[[UIImage imageNamed:@"home_prexious_page.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5] forState:UIControlStateHighlighted];
-    [rightButton setImage:[[UIImage imageNamed:@"home_next_page_disable.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5] forState:UIControlStateNormal];
-    [rightButton setImage:[[UIImage imageNamed:@"home_next_page.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5] forState:UIControlStateHighlighted];
+    [leftButton setImage:[UIImage imageWithName:@"previous" tableName:@"hall 2"] forState:UIControlStateNormal];
+    [leftButton setImage:[UIImage imageWithName:@"previous_on" tableName:@"hall 2"] forState:UIControlStateHighlighted];
+    [rightButton setImage:[UIImage imageWithName:@"next" tableName:@"hall 2"] forState:UIControlStateNormal];
+    [rightButton setImage:[UIImage imageWithName:@"next_on" tableName:@"hall 2"] forState:UIControlStateHighlighted];
+    
+    [menuButton setImage:[UIImage imageWithName:@"menu" tableName:@"hall 2"] forState:UIControlStateNormal];
+    [menuButton setImage:[UIImage imageWithName:@"menu_on" tableName:@"hall 2"] forState:UIControlStateHighlighted];
+    
+    [createButton setImage:[UIImage imageWithName:@"create" tableName:@"hall 2"] forState:UIControlStateNormal];
+    [createButton setImage:[UIImage imageWithName:@"create_on" tableName:@"hall 2"] forState:UIControlStateHighlighted];
+          
+    infoTopView.image = [UIImage imageWithName:@"portriat" tableName:@"utl 2"];
+    infoTopView.backgroundColor = [UIColor clearColor];
+    
+    portriatView.image = [UIImage imageWithName:@"female_face" tableName:@"utl 2"];
+    portriatView.backgroundColor = [UIColor clearColor];
     
     bottomContainer.layer.cornerRadius = 5;
     bottomContainer.layer.masksToBounds = YES;
     bottomContainer.backgroundColor = [UIColor blackColor];
     bottomContainer.alpha = 0.5;
     
-    portriatView.image = [UIImage imageNamed:@"defaultface.png"];
-    
     listView.backgroundColor = [UIColor clearColor];
+    
+    nameLabel.text = @"君临天下";
+    [nameLabel setNumberOfLines:0];
+    [nameLabel sizeToFit];
+    nameLabel.backgroundColor = [UIColor clearColor];
     
     //    UIImage *masthead = [[UIImage imageNamed:@"home_title_bar.png"] resizableImageWithCapInsets:(UIEdgeInsets)];
     //    self.navigationItem.titleView = [[[UIImageView alloc] initWithImage:masthead] autorelease];

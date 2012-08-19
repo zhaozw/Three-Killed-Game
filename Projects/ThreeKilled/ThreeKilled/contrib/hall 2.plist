@@ -22,5 +22,15 @@
 	<string>122,40,318,30</string>
 	<key>cellselectedbkg</key>
 	<string>122,70,318,30</string>
+	<key>next</key>
+	<string>184,390,56,16</string>
+	<key>next_on</key>
+	<string>106,390,56,16</string>
+	<key>previous</key>
+	<string>339,379,56,16</string>
+	<key>previous_on</key>
+	<string>263,380,56,16</string>
+	<key>portriat</key>
+	<string>2,353,91,78</string>
 </dict>
 </plist>

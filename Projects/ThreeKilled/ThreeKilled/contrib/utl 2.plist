@@ -18,5 +18,9 @@
 	<string>479,108,33,33</string>
 	<key>x_on</key>
 	<string>479,140,33,33</string>
+	<key>male_face</key>
+	<string>0,238,67,42</string>
+	<key>female_face</key>
+	<string>67,238,67,42</string>
 </dict>
 </plist>
