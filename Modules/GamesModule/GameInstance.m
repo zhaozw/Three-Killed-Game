@@ -7,6 +7,8 @@
 //
 
 #import "GameInstance.h"
+#import "Foundation+KGOAdditions.h"
+#import "UIKit+KGOAdditions.h"
 
 @implementation GameInstance
 @synthesize gameID;
@@ -14,6 +16,7 @@
 @synthesize gameTypeID;
 @synthesize allRoles;
 @synthesize allUsers;
+@synthesize status;
 
 - (void)dealloc {
     self.gameID = nil;
@@ -21,8 +24,14 @@
     self.gameTypeID = nil;
     self.allRoles = nil;
     self.allUsers = nil;
+    self.status = nil;
+
 
     [super dealloc];
+}
+
+- (UIImage *)statusImage {
+    return [UIImage imageWithName:@"green_status" tableName:@"btable 2"];
 }
 
 @end

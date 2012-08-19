@@ -10,14 +10,17 @@
 #import "NewGameViewController.h"
 #import "RangkingsViewController.h"
 #import "GamesViewController.h"
+#import "MBProgressHUD.h"
+#import "Foundation+KGOAdditions.h"
 #import "UIKit+KGOAdditions.h"
-#import "APILibrary.h"
 #import <QuartzCore/QuartzCore.h>
+#import "GameDetailViewController.h"
 @interface HomeViewController ()
 
 @end
 
 @implementation HomeViewController
+@synthesize games;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +29,15 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)requestGames {
+    BOOL status = NO;
+    NSString *error = nil;
+    [APILibrary apiLibrary:&status
+                  metError:&error
+ getAvalibelGamesWithParam:nil
+              withDelegate:self];
 }
 
 - (void)viewDidLoad
@@ -68,7 +80,7 @@
     
     listView.backgroundColor = [UIColor clearColor];
     
-    nameLabel.text = @"Newstar";
+    nameLabel.text = [APILibrary sharedInstance].userData.usrName;
     nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.textAlignment = UITextAlignmentCenter;
     
@@ -77,6 +89,9 @@
     [acLabel sizeToFit];
     acLabel.backgroundColor = [UIColor clearColor];
     
+
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self performSelector:@selector(requestGames) withObject:nil afterDelay:0.5];
     //    UIImage *masthead = [[UIImage imageNamed:@"home_title_bar.png"] resizableImageWithCapInsets:(UIEdgeInsets)];
     //    self.navigationItem.titleView = [[[UIImageView alloc] initWithImage:masthead] autorelease];
     //    self.title = [NSString stringWithFormat:@"欢迎您:%@ %@",[APILibrary sharedInstance].userData.firstName,[APILibrary sharedInstance].userData.lastName];
@@ -108,9 +123,26 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
+- (void)apiLibraryDidReceivedJoinGameResult:(id)result {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    GameInstance *currentGame = [[[GameInstance alloc] init] autorelease];
+    currentGame.gameID = result;
+    GameDetailViewController *gameDetailVC = [[GameDetailViewController alloc] initWithNibName:@"GameDetailViewController" bundle:nil];
+    gameDetailVC.currentGame = currentGame;
+    [self.navigationController pushViewController:gameDetailVC animated:YES];
+}
+
+- (void)handleJoinGameWithGameInstance:(GameInstance *)aGame {
+    BOOL status = NO;
+    NSString *error = nil;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [APILibrary apiLibrary:&status metError:&error joinGameWithGameID:aGame.gameID withDelegate:self];
+}
+
+
 #pragma mark - UITableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.games.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -123,12 +155,39 @@
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
     cell.selectedBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"cellselectedbkg" tableName:@"hall 2"]];
     cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"cellbkg" tableName:@"hall 2"]];
-    cell.textLabel.text = @"123";
+    GameInstance *aGame = [self.games objectAtIndex:indexPath.row];
+    cell.imageView.image = [aGame statusImage];
+    cell.textLabel.text = [NSString stringWithFormat:@"#%@ %@",aGame.gameID,aGame.name];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    GameInstance *aGame = [self.games objectAtIndex:indexPath.row];
+    [self handleJoinGameWithGameInstance:aGame];
+}
+
+#pragma mark -APILibraryDelegate
+- (void)apiLibraryDidReceivedResult:(id)result {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    NSArray *results = (NSArray *)result;
+    NSMutableArray *container = [NSMutableArray array];
+    if (results) {
+        for (NSDictionary *gameDictionary in results) {
+            GameInstance *aGame = [[GameInstance alloc] init];
+            aGame.gameID = [gameDictionary forcedStringForKey:@"id"];
+            aGame.name = [gameDictionary forcedStringForKey:@"name"];
+            [container addObject:aGame];
+            [aGame release];
+        }
+    }
+    self.games = container;
+    [listView reloadData];
+}
+
+- (void)apiLibraryDidReceivedError:(NSString *)error {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [APILibrary alertWithException:error];
 }
 
 @end

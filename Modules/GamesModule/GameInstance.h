@@ -12,6 +12,7 @@
     NSString *gameID;
     NSString *name;
     NSString *gameTypeID;
+    NSString *status;
     NSArray *allRoles;
     NSArray *allUsers;
 }
@@ -20,5 +21,7 @@
 @property (nonatomic, retain)  NSString *gameTypeID;
 @property (nonatomic, retain)  NSArray *allRoles;
 @property (nonatomic, retain)  NSArray *allUsers;
+@property (nonatomic, retain)  NSString *status;
 
+- (UIImage *)statusImage;
 @end

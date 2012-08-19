@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "APILibrary.h"
 
-@interface HomeViewController : UIViewController {
+@interface HomeViewController : UIViewController <APILibraryDelegate>{
     IBOutlet UIImageView *navTitleImageView;
     IBOutlet UITableView *listView;
     IBOutlet UIView *bottomContainer;
@@ -28,6 +29,9 @@
     
     IBOutlet UILabel *nameLabel;
     IBOutlet UILabel *acLabel;
+    
+    NSArray *games;
 }
+@property (nonatomic, retain)  NSArray *games;
 
 @end
