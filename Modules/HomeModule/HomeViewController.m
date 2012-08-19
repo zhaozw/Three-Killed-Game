@@ -40,11 +40,14 @@
               withDelegate:self];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"game_bg.png"]];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
     
     navTitleImageView.image = [UIImage imageWithName:@"titlebar" tableName:@"hall 2"];
     infoContainer.image = [UIImage imageWithName:@"inforbkg" tableName:@"hall 2"];
@@ -135,7 +138,6 @@
 - (void)handleJoinGameWithGameInstance:(GameInstance *)aGame {
     BOOL status = NO;
     NSString *error = nil;
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [APILibrary apiLibrary:&status metError:&error joinGameWithGameID:aGame.gameID withDelegate:self];
 }
 
@@ -163,8 +165,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    GameInstance *aGame = [self.games objectAtIndex:indexPath.row];
-    [self handleJoinGameWithGameInstance:aGame];
+    if (indexPath.row < self.games.count) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        GameInstance *aGame = [self.games objectAtIndex:indexPath.row];
+        [self performSelector:@selector(handleJoinGameWithGameInstance:) withObject:aGame afterDelay:0.5];
+    }
 }
 
 #pragma mark -APILibraryDelegate

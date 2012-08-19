@@ -12,6 +12,9 @@
 #import "GameRoleInstance.h"
 #import "ObserveViewController.h"
 #import "UnKilledViewController.h"
+#import "Foundation+KGOAdditions.h"
+#import "UIKit+KGOAdditions.h"
+
 @interface GameDetailViewController ()
 
 @end
@@ -40,7 +43,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
     self.title = [NSString stringWithFormat:@"%@ #%@",NSLocalizedString(@"_Game_", @"game"),self.currentGame.gameID];
+    navTitleView.image = [UIImage imageWithName:@"titlebar" tableName:@"btable1 2"];
+    [backButton setImage:[UIImage imageWithName:@"return" tableName:@"btable1 2"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageWithName:@"return_on" tableName:@"btable1 2"] forState:UIControlStateHighlighted];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
