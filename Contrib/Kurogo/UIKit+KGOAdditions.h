@@ -17,6 +17,7 @@
 + (UIImage *)imageWithPathName:(NSString *)pathName;
 + (UIImage *)blankImageOfSize:(CGSize)size;
 - (UIImage *)imageAtRect:(CGRect)rect;
++ (UIImage *)imageWithName:(NSString *)imageName tableName:(NSString *)tableName;
 @end
 
 @interface UIColor (KGOAdditions)

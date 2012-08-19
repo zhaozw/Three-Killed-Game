@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>confirm</key>
+	<string>0,104,95,35</string>
+	<key>confirm_on</key>
+	<string>397,72,95,35</string>
+	<key>qiyong</key>
+	<string>1,140,95,35</string>
+	<key>qiyong_on</key>
+	<string>194,119,95,35</string>
+	<key>quxiao</key>
+	<string>396,1,95,35</string>
+	<key>quxiao_on</key>
+	<string>397,37,95,35</string>
+	<key>x</key>
+	<string>479,108,33,33</string>
+	<key>x_on</key>
+	<string>479,140,33,33</string>
+</dict>
+</plist>

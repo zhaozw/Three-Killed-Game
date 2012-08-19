@@ -10,6 +10,7 @@
 #import "NewGameViewController.h"
 #import "RangkingsViewController.h"
 #import "GamesViewController.h"
+#import "UIKit+KGOAdditions.h"
 #import "APILibrary.h"
 #import <QuartzCore/QuartzCore.h>
 @interface HomeViewController ()
@@ -33,8 +34,9 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"game_bg.png"]];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     
-    navTitleImageView.image = [UIImage imageNamed:@"home_title_bar_reverse.png"];
-    infoContainer.image = [UIImage imageNamed:@"home_right_infobar.png"];
+    navTitleImageView.image = [UIImage imageWithName:@"titlebar" tableName:@"hall 2"];
+    infoContainer.image = [UIImage imageWithName:@"inforbkg" tableName:@"hall 2"];
+    infoContainer.backgroundColor = [UIColor clearColor];
     
     [leftButton setImage:[[UIImage imageNamed:@"home_prexious_page_disable.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5] forState:UIControlStateNormal];
     [leftButton setImage:[[UIImage imageNamed:@"home_prexious_page.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5] forState:UIControlStateHighlighted];
@@ -93,6 +95,9 @@
     if (!cell) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
+    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
+    cell.selectedBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"cellselectedbkg" tableName:@"hall 2"]];
+    cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"cellbkg" tableName:@"hall 2"]];
     cell.textLabel.text = @"123";
     return cell;
 }

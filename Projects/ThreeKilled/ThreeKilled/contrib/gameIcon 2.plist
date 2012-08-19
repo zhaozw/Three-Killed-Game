@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>zhongchen_dead</key>
+	<string>2,3,82,51</string>
+	<key>zhugong_dead</key>
+	<string>87,3,82,51</string>
+	<key>neijian_dead</key>
+	<string>174,3,82,51</string>
+	<key>fanzei_dead</key>
+	<string>259,3,82,51</string>
+	<key>menu_on</key>
+	<string>468,3,56,18</string>
+	<key>menu</key>
+	<string>528,1,56,18</string>
+</dict>
+</plist>

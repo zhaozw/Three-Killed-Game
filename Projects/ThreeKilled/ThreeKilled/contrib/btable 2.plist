@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>cellbkg</key>
+	<string>3,277,279,35</string>
+	<key>yellow_status</key>
+	<string>476,24,15,15</string>
+	<key>green_status</key>
+	<string>492,24,15,15</string>
+	<key>red_status</key>
+	<string>476,40,15,15</string>
+	<key>gray_status</key>
+	<string>492,40,15,15</string>
+	<key>sanguosha</key>
+	<string>7,129,251,114</string>
+</dict>
+</plist>

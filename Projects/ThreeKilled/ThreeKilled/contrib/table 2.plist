@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>close</key>
+	<string>123,332,56,26</string>
+	<key>close_on</key>
+	<string>181,334,56,26</string>
+	<key>open</key>
+	<string>239,339,56,26</string>
+	<key>open_on</key>
+	<string>297,347,56,26</string>
+</dict>
+</plist>

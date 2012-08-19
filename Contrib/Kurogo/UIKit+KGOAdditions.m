@@ -8,7 +8,7 @@
  */
 
 #import "UIKit+KGOAdditions.h"
-
+#import "Foundation+KGOAdditions.h"
 @implementation UIImage (KGOAdditions)
 
 // fetch first matching image by override priority:
@@ -47,6 +47,23 @@
     UIImage *subImage = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);
     return subImage;
+}
+
++ (UIImage *)imageWithName:(NSString *)imageName tableName:(NSString *)tableName {
+    UIImage *tableImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",tableName]];
+    if (tableImage) {
+        NSString *mainFile = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@",tableName] ofType:@"plist"];
+        NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:mainFile];
+        if (dictionary) {
+            NSString *rectString = [dictionary stringForKey:imageName];
+            if (rectString.length >0) {
+                NSArray *values = [rectString componentsSeparatedByString:@","];
+                CGRect rect = CGRectMake([[values objectAtIndex:0] floatValue], [[values objectAtIndex:1] floatValue], [[values objectAtIndex:2] floatValue], [[values objectAtIndex:3] floatValue]);
+                return [tableImage imageAtRect:rect];
+            }
+        }
+    }
+    return nil;
 }
 
 @end
