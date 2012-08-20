@@ -16,6 +16,7 @@
     IBOutlet UIImageView *menuContainer;
     IBOutlet UIButton *begainButton;
     IBOutlet UIButton *dianjiangButton;
+    IBOutlet UIButton *backButton;
 }
 @property (nonatomic, retain)  NSArray *allKindsGames;
 

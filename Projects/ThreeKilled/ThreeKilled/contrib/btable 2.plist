@@ -16,5 +16,9 @@
 	<string>7,129,251,114</string>
 	<key>sword</key>
 	<string>266,123,223,27</string>
+	<key>back</key>
+	<string>265,198,120,30</string>
+	<key>back_on</key>
+	<string>390,198,120,30</string>
 </dict>
 </plist>
