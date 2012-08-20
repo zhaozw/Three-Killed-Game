@@ -69,7 +69,7 @@ typedef enum {
 @property CGFloat rightPadding;
 @property CGFloat bottomPadding;
 @property CGFloat leftPadding;
-
+- (void)animationWithRect:(CGRect)originFrame;
 @end
 
 @protocol IconGridDelegate <NSObject>

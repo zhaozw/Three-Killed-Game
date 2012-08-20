@@ -161,9 +161,27 @@ maxColumns = _maxColumns, alignment = _alignment, icons = _icons;
     
     CGRect currentFrame;
     for (UIView *rowView in rowIcons) {
+        rowView.hidden = YES;
         currentFrame = rowView.frame;
+        rowView.frame = CGRectMake(_currentX, _currentY, currentFrame.size.width, currentFrame.size.height);
         [self addSubview:rowView];
+        
         _currentX += currentFrame.size.width + self.spacing.width;
+    }
+}
+
+- (void)animationWithRect:(CGRect)originFrame {
+    for (UIView *rowView in self.icons) {
+        rowView.hidden = NO;
+        CGRect oldFrame = rowView.frame;
+        rowView.frame = originFrame;
+        [UIView animateWithDuration:1.5 
+                              delay:0 
+                            options:UIViewAnimationOptionLayoutSubviews
+                         animations:^{
+                             rowView.frame = oldFrame;
+                         } 
+                         completion:nil];
     }
 }
 

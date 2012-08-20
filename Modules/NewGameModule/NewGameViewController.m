@@ -81,6 +81,10 @@
     };
 }
 
+- (void)handleAnimation {
+    [iconView animationWithRect:CGRectMake(0, 0, 80, 40)];
+}
+
 - (void)iconGridFrameDidChange:(IconGrid *)iconGrid {
     
 }
@@ -114,6 +118,7 @@
         [views addObject:control];
     }
     [iconView addIcons:views];
+    [self performSelector:@selector(handleAnimation) withObject:nil afterDelay:0.1];
 }
 
 
