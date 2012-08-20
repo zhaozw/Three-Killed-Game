@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "APILibrary.h"
-@interface NewGameViewController : UIViewController <APILibraryDelegate>{
+#import "IconGrid.h"
+@interface NewGameViewController : UIViewController <APILibraryDelegate,IconGridDelegate>{
     NSArray *allKindsGames;
-    IBOutlet UITableView *listView;
+    IBOutlet IconGrid *iconView;
+    IBOutlet UIImageView *navTitleBar;
+    IBOutlet UIImageView *menuContainer;
 }
 @property (nonatomic, retain)  NSArray *allKindsGames;
-@property (nonatomic, retain)  IBOutlet UITableView *listView;
 
 @end

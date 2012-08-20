@@ -11,17 +11,17 @@
 #import "GameInstance.h"
 #import "GameDetailViewController.h"
 #import "Foundation+KGOAdditions.h"
+#import "UIKit+KGOAdditions.h"
+#import <QuartzCore/QuartzCore.h>
 @interface NewGameViewController ()
 
 @end
 
 @implementation NewGameViewController
 @synthesize allKindsGames;
-@synthesize listView;
 
 - (void)dealloc {
     self.allKindsGames = nil;
-    self.listView = nil;
 
     [super dealloc];
 }
@@ -34,13 +34,29 @@
     return self;
 }
 
+- (void)requestGameTypes {
+    BOOL status = NO;
+    NSString *error = nil;
+    [APILibrary apiLibrary:&status metError:&error getTypesWithDelegate:self];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    BOOL status = NO;
-    NSString *error = nil;
+    iconView.backgroundColor = [UIColor clearColor];
+    iconView.delegate = self;
+    iconView.padding = GridPaddingMake(17, 17, 17, 17);
+    iconView.spacing = GridSpacingMake(16, 16);
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"game_bg.png"]];
+    navTitleBar.image = [UIImage imageWithName:@"titlebar" tableName:@"btable1 2"];
+    navTitleBar.backgroundColor = [UIColor clearColor];
+
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [APILibrary apiLibrary:&status metError:&error getTypesWithDelegate:self];
+    [self performSelector:@selector(requestGameTypes) withObject:nil afterDelay:0.5];
 }
 
 - (void)viewDidUnload
@@ -54,6 +70,52 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+- (void)thumbnailTapped:(id)sender
+{
+    UIControl *control = (UIControl *)sender;
+    if (control.tag < self.allKindsGames.count) {
+        GameInstance *aGame = [self.allKindsGames objectAtIndex:control.tag];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [self performSelector:@selector(handleCreateGameWithGameTypeID:) withObject:aGame.gameID afterDelay:0.5];
+    };
+}
+
+- (void)iconGridFrameDidChange:(IconGrid *)iconGrid {
+    
+}
+
+- (void)layoutGames:(NSArray *)games
+{
+    NSMutableArray *views = [NSMutableArray array];
+    for (NSInteger i = 0; i < games.count; i++) {
+        GameInstance *aGame = [games objectAtIndex:i];
+        CGRect frame = CGRectMake(0, 0, 80, 40);
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+        imageView.image = [UIImage imageWithName:@"menu" tableName:@"hall 2"];
+        imageView.layer.cornerRadius = 5;
+        imageView.layer.masksToBounds = YES;
+        imageView.backgroundColor = [UIColor blackColor];
+        imageView.alpha = 0.5;
+        
+        UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 60, 20)] autorelease];
+        label.text = aGame.name;
+        label.textColor = [UIColor yellowColor];
+        label.font = [UIFont boldSystemFontOfSize:14];
+        label.numberOfLines = 2;
+        [label sizeToFit];
+        label.backgroundColor = [UIColor clearColor];
+        [imageView addSubview:label];
+        
+        UIControl *control = [[[UIControl alloc] initWithFrame:frame] autorelease];
+        control.tag = i;
+        [control addSubview:imageView];
+        [control addTarget:self action:@selector(thumbnailTapped:) forControlEvents:UIControlEventTouchUpInside];
+        [views addObject:control];
+    }
+    [iconView addIcons:views];
+}
+
 
 #pragma mark - APILibaryDelegate
 - (void)apiLibraryDidReceivedResult:(id)result {
@@ -69,7 +131,7 @@
         }
         self.allKindsGames = container;
     }
-    [self.listView reloadData];
+    [self layoutGames:self.allKindsGames];
 }
 
 - (void)apiLibraryDidReceivedError:(NSString *)error {
@@ -93,29 +155,29 @@
     [APILibrary apiLibrary:&status metError:&error createWithGameTypeID:gameID withDelegate:self];
 }
 
-#pragma mark - UITableView
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.allKindsGames.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"asdfgh";
-    UITableViewCell *cell = nil;
-    cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
-    }
-    GameInstance *aGame = [self.allKindsGames objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@",aGame.name];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    GameInstance *aGame = [self.allKindsGames objectAtIndex:indexPath.row];
-    [self handleCreateGameWithGameTypeID:aGame.gameTypeID];
-}
+//#pragma mark - UITableView
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    return self.allKindsGames.count;
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    static NSString *identifier = @"asdfgh";
+//    UITableViewCell *cell = nil;
+//    cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+//    if (!cell) {
+//        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
+//    }
+//    GameInstance *aGame = [self.allKindsGames objectAtIndex:indexPath.row];
+//    cell.textLabel.text = [NSString stringWithFormat:@"%@",aGame.name];
+//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    return cell;
+//}
+//
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    GameInstance *aGame = [self.allKindsGames objectAtIndex:indexPath.row];
+//    [self handleCreateGameWithGameTypeID:aGame.gameTypeID];
+//}
 
 
 

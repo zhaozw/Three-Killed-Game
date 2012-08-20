@@ -24,14 +24,21 @@
     IBOutlet UIImageView *leftholder;
     IBOutlet UIImageView *rightholder;
     
-    IBOutlet UIButton *menuButton;
+    IBOutlet UIButton *returnButton;
     IBOutlet UIButton *createButton;
     
     IBOutlet UILabel *nameLabel;
     IBOutlet UILabel *acLabel;
     
     NSArray *games;
+    NSArray *rankings;
+    BOOL pageGames;
 }
 @property (nonatomic, retain)  NSArray *games;
+@property (nonatomic, retain)  NSArray *rankings;
 
+- (IBAction)previous:(id)sender;
+- (IBAction)next:(id)sender;
+- (IBAction)returnClicked:(id)sender;
+- (IBAction)create:(id)sender;
 @end

@@ -54,9 +54,16 @@
     [super viewDidUnload];
 }
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    CGAffineTransform t = self.view.transform;
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation) && t.b && t.c) {
+        [self.view setTransform:CGAffineTransformMakeRotation(0)];
+    }
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
 #pragma mark - common

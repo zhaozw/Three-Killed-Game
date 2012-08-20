@@ -143,6 +143,7 @@
 		4EFC97AB15D8D941003587DD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC97A915D8D941003587DD /* Localizable.strings */; };
 		4EFC97AD15D8D941003587DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC97AC15D8D941003587DD /* main.m */; };
 		4EFC97B115D8D941003587DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC97B015D8D941003587DD /* AppDelegate.m */; };
+		4EFCAA9A15E20A77003A0A1A /* IconGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCAA9915E20A77003A0A1A /* IconGrid.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -348,6 +349,10 @@
 		4EFC97AE15D8D941003587DD /* ThreeKilled-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ThreeKilled-Prefix.pch"; sourceTree = "<group>"; };
 		4EFC97AF15D8D941003587DD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4EFC97B015D8D941003587DD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4EFCAA9515E20381003A0A1A /* IconGridScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IconGridScrollView.h; sourceTree = "<group>"; };
+		4EFCAA9615E20381003A0A1A /* IconGridScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IconGridScrollView.m; sourceTree = "<group>"; };
+		4EFCAA9815E20A77003A0A1A /* IconGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconGrid.h; sourceTree = "<group>"; };
+		4EFCAA9915E20A77003A0A1A /* IconGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconGrid.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -592,6 +597,10 @@
 		4E69C90B15DA4DE0003EEE79 /* Kurogo */ = {
 			isa = PBXGroup;
 			children = (
+				4EFCAA9815E20A77003A0A1A /* IconGrid.h */,
+				4EFCAA9915E20A77003A0A1A /* IconGrid.m */,
+				4EFCAA9515E20381003A0A1A /* IconGridScrollView.h */,
+				4EFCAA9615E20381003A0A1A /* IconGridScrollView.m */,
 				4E69C90C15DA4DE0003EEE79 /* Foundation+KGOAdditions.h */,
 				4E69C90D15DA4DE0003EEE79 /* Foundation+KGOAdditions.m */,
 				4E69C90E15DA4DE0003EEE79 /* UIKit+KGOAdditions.h */,
@@ -971,6 +980,7 @@
 				4E9BDE4F15DB96EC00D2F076 /* GameUserData.m in Sources */,
 				4E9BDE5215DBABB700D2F076 /* RankingData.m in Sources */,
 				4E9A522815DCC14400A0D4A1 /* UnKilledViewController.m in Sources */,
+				4EFCAA9A15E20A77003A0A1A /* IconGrid.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

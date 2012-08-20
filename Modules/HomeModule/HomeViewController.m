@@ -15,12 +15,15 @@
 #import "UIKit+KGOAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 #import "GameDetailViewController.h"
+#import "RankingData.h"
+#import "AppDelegate+TKAdditions.h"
 @interface HomeViewController ()
 
 @end
 
 @implementation HomeViewController
 @synthesize games;
+@synthesize rankings;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,12 +35,22 @@
 }
 
 - (void)requestGames {
+    [leftButton setHidden:YES];
+    [rightButton setHidden:NO];
     BOOL status = NO;
     NSString *error = nil;
     [APILibrary apiLibrary:&status
                   metError:&error
  getAvalibelGamesWithParam:nil
               withDelegate:self];
+}
+
+- (void)requestRanks {
+    [leftButton setHidden:NO];
+    [rightButton setHidden:YES];
+    BOOL status = NO;
+    NSString *error = nil;
+    [APILibrary apiLibrary:&status metError:&error rankingWithDelegate:self];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -59,13 +72,13 @@
     rightholder.image = [UIImage imageWithCGImage:[UIImage imageWithName:@"sword" tableName:@"btable 2"].CGImage scale:1.0 orientation:UIImageOrientationRight];
     rightholder.backgroundColor = [UIColor clearColor];
     
-    [leftButton setImage:[UIImage imageWithName:@"previous" tableName:@"hall 2"] forState:UIControlStateNormal];
-    [leftButton setImage:[UIImage imageWithName:@"previous_on" tableName:@"hall 2"] forState:UIControlStateHighlighted];
-    [rightButton setImage:[UIImage imageWithName:@"next" tableName:@"hall 2"] forState:UIControlStateNormal];
-    [rightButton setImage:[UIImage imageWithName:@"next_on" tableName:@"hall 2"] forState:UIControlStateHighlighted];
+    [leftButton setImage:[UIImage imageWithName:@"next" tableName:@"hall 2"] forState:UIControlStateNormal];
+    [leftButton setImage:[UIImage imageWithName:@"next_on" tableName:@"hall 2"] forState:UIControlStateHighlighted];
+    [rightButton setImage:[UIImage imageWithName:@"previous" tableName:@"hall 2"] forState:UIControlStateNormal];
+    [rightButton setImage:[UIImage imageWithName:@"previous_on" tableName:@"hall 2"] forState:UIControlStateHighlighted];
     
-    [menuButton setImage:[UIImage imageWithName:@"menu" tableName:@"hall 2"] forState:UIControlStateNormal];
-    [menuButton setImage:[UIImage imageWithName:@"menu_on" tableName:@"hall 2"] forState:UIControlStateHighlighted];
+    [returnButton setImage:[UIImage imageWithName:@"return" tableName:@"btable1 2"] forState:UIControlStateNormal];
+    [returnButton setImage:[UIImage imageWithName:@"return_on" tableName:@"btable1 2"] forState:UIControlStateHighlighted];
     
     [createButton setImage:[UIImage imageWithName:@"create" tableName:@"hall 2"] forState:UIControlStateNormal];
     [createButton setImage:[UIImage imageWithName:@"create_on" tableName:@"hall 2"] forState:UIControlStateHighlighted];
@@ -126,6 +139,30 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
+#pragma mark - IBActions
+- (IBAction)previous:(id)sender {
+    if (!pageGames) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [self performSelector:@selector(requestGames) withObject:nil afterDelay:0.5];
+    }
+}
+
+- (IBAction)next:(id)sender {
+    if (pageGames) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [self performSelector:@selector(requestRanks) withObject:nil afterDelay:0.5];
+    }
+}
+
+- (IBAction)returnClicked:(id)sender {
+    [SHARED_APP_DELEGATE() loadLoginViewController];
+}
+
+- (IBAction)create:(id)sender {
+    NewGameViewController *newGameVC = [[[NewGameViewController alloc] initWithNibName:@"NewGameViewController" bundle:nil] autorelease];
+    [self.navigationController pushViewController:newGameVC animated:NO];
+}
+
 - (void)apiLibraryDidReceivedJoinGameResult:(id)result {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     GameInstance *currentGame = [[[GameInstance alloc] init] autorelease];
@@ -133,6 +170,21 @@
     GameDetailViewController *gameDetailVC = [[GameDetailViewController alloc] initWithNibName:@"GameDetailViewController" bundle:nil];
     gameDetailVC.currentGame = currentGame;
     [self.navigationController pushViewController:gameDetailVC animated:YES];
+}
+
+- (void)apiLibraryDidReceivedRankingResult:(id)result {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    pageGames = NO;
+    NSArray *results = (NSArray *)result;
+    NSMutableArray *container = [NSMutableArray array];
+    for (NSDictionary *aRank in results) {
+        RankingData *aRankData = [[RankingData alloc] init];
+        [aRankData updateWithDictionary:aRank];
+        [container addObject:aRankData];
+        [aRankData release];
+    }
+    self.rankings = container;
+    [listView reloadData];
 }
 
 - (void)handleJoinGameWithGameInstance:(GameInstance *)aGame {
@@ -144,7 +196,12 @@
 
 #pragma mark - UITableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.games.count;
+    if (pageGames) {
+        return self.games.count;
+    } else {
+        return self.rankings.count;
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -157,24 +214,35 @@
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
     cell.selectedBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"cellselectedbkg" tableName:@"hall 2"]];
     cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"cellbkg" tableName:@"hall 2"]];
-    GameInstance *aGame = [self.games objectAtIndex:indexPath.row];
-    cell.imageView.image = [aGame statusImage];
-    cell.textLabel.text = [NSString stringWithFormat:@"#%@ %@",aGame.gameID,aGame.name];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    if (pageGames) {
+        GameInstance *aGame = [self.games objectAtIndex:indexPath.row];
+        cell.imageView.image = [aGame statusImage];
+        cell.textLabel.text = [NSString stringWithFormat:@"#%@ %@",aGame.gameID,aGame.name];
+    } else {
+        RankingData *aRanking = [self.rankings objectAtIndex:indexPath.row];
+        cell.imageView.image = nil;
+        cell.textLabel.text = [NSString stringWithFormat:@"%d. %@ %@          %d",indexPath.row + 1, aRanking.firstName,aRanking.lastName,aRanking.credits.integerValue];
+    }
+
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row < self.games.count) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        GameInstance *aGame = [self.games objectAtIndex:indexPath.row];
-        [self performSelector:@selector(handleJoinGameWithGameInstance:) withObject:aGame afterDelay:0.5];
+    if (pageGames) {
+        if (indexPath.row < self.games.count) {
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            GameInstance *aGame = [self.games objectAtIndex:indexPath.row];
+            [self performSelector:@selector(handleJoinGameWithGameInstance:) withObject:aGame afterDelay:0.5];
+        }
     }
 }
 
 #pragma mark -APILibraryDelegate
 - (void)apiLibraryDidReceivedResult:(id)result {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+    pageGames = YES;
     NSArray *results = (NSArray *)result;
     NSMutableArray *container = [NSMutableArray array];
     if (results) {
