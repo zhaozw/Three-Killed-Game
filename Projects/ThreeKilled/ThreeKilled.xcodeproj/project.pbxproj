@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0603996B15E2F46500C61F46 /* gameIcon.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0603996A15E2F46500C61F46 /* gameIcon.plist */; };
 		0651FAA515E05A69008613B4 /* result.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0651FAA415E05A68008613B4 /* result.plist */; };
 		0651FAA715E05A74008613B4 /* selcharacter.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0651FAA615E05A74008613B4 /* selcharacter.plist */; };
 		0651FAA915E05ACA008613B4 /* result.png in Resources */ = {isa = PBXBuildFile; fileRef = 0651FAA815E05ACA008613B4 /* result.png */; };
@@ -147,6 +148,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0603996A15E2F46500C61F46 /* gameIcon.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = gameIcon.plist; sourceTree = "<group>"; };
 		0651FAA415E05A68008613B4 /* result.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = result.plist; sourceTree = "<group>"; };
 		0651FAA615E05A74008613B4 /* selcharacter.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = selcharacter.plist; sourceTree = "<group>"; };
 		0651FAA815E05ACA008613B4 /* result.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = result.png; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				066D5EAA15DFDF870068FB3D /* table1.png */,
 				066D5EAB15DFDF870068FB3D /* utl 2.png */,
 				066D5EAC15DFDF870068FB3D /* utl.png */,
+				0603996A15E2F46500C61F46 /* gameIcon.plist */,
 				0651FAAA15E066B8008613B4 /* hall 2.plist */,
 				0651FAA415E05A68008613B4 /* result.plist */,
 				0651FAA615E05A74008613B4 /* selcharacter.plist */,
@@ -914,6 +917,7 @@
 				0651FAA715E05A74008613B4 /* selcharacter.plist in Resources */,
 				0651FAA915E05ACA008613B4 /* result.png in Resources */,
 				0651FAAB15E066B8008613B4 /* hall 2.plist in Resources */,
+				0603996B15E2F46500C61F46 /* gameIcon.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

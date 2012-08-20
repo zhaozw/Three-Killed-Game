@@ -14,6 +14,8 @@
     IBOutlet IconGrid *iconView;
     IBOutlet UIImageView *navTitleBar;
     IBOutlet UIImageView *menuContainer;
+    IBOutlet UIButton *begainButton;
+    IBOutlet UIButton *dianjiangButton;
 }
 @property (nonatomic, retain)  NSArray *allKindsGames;
 

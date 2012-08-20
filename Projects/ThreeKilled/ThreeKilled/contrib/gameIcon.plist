@@ -2,11 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>modify</key>
-	<string>51,404,84,33</string>
-	<key>modify_on</key>
-	<string>289,425,84,33</string>
-	<key>frame</key>
-	<string>0,0,206,321</string>
+	<key>sanguosha</key>
+	<string>9,172,283,139</string>
+	<key>yinzhang</key>
+	<string>683,443,214,90</string>
 </dict>
 </plist>

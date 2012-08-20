@@ -10,5 +10,13 @@
 	<string>239,339,56,26</string>
 	<key>open_on</key>
 	<string>297,347,56,26</string>
+	<key>kaishi</key>
+	<string>405,239,82,82</string>
+	<key>kaishi_on</key>
+	<string>324,180,82,82</string>
+	<key>dianjiang</key>
+	<string>0,262,57,57</string>
+	<key>dianjiang_on</key>
+	<string>55,263,57,57</string>
 </dict>
 </plist>

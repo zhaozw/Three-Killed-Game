@@ -54,7 +54,14 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"game_bg.png"]];
     navTitleBar.image = [UIImage imageWithName:@"titlebar" tableName:@"btable1 2"];
     navTitleBar.backgroundColor = [UIColor clearColor];
-
+    
+    menuContainer.image = [UIImage imageWithName:@"frame" tableName:@"table1 2"];
+    menuContainer.backgroundColor = [UIColor clearColor];
+    [begainButton setImage:[UIImage imageWithName:@"kaishi" tableName:@"table 2"] forState:UIControlStateNormal];
+    [begainButton setImage:[UIImage imageWithName:@"kaishi_on" tableName:@"table 2"] forState:UIControlStateHighlighted];
+    [dianjiangButton setImage:[UIImage imageWithName:@"dianjiang" tableName:@"table 2"] forState:UIControlStateNormal];
+    [dianjiangButton setImage:[UIImage imageWithName:@"dianjiang_on" tableName:@"table 2"] forState:UIControlStateHighlighted];
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self performSelector:@selector(requestGameTypes) withObject:nil afterDelay:0.5];
 }
@@ -96,16 +103,16 @@
         GameInstance *aGame = [games objectAtIndex:i];
         CGRect frame = CGRectMake(0, 0, 80, 40);
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
-        imageView.image = [UIImage imageWithName:@"menu" tableName:@"hall 2"];
+        imageView.image = [UIImage imageWithName:@"yinzhang" tableName:@"gameIcon"];
         imageView.layer.cornerRadius = 5;
         imageView.layer.masksToBounds = YES;
         imageView.backgroundColor = [UIColor blackColor];
         imageView.alpha = 0.5;
         
-        UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 60, 20)] autorelease];
+        UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(30, 12, 20, 16)] autorelease];
         label.text = aGame.name;
         label.textColor = [UIColor yellowColor];
-        label.font = [UIFont boldSystemFontOfSize:14];
+        label.font = [UIFont boldSystemFontOfSize:12];
         label.numberOfLines = 2;
         [label sizeToFit];
         label.backgroundColor = [UIColor clearColor];
