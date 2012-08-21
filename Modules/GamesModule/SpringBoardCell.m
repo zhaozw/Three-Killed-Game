@@ -16,6 +16,7 @@
     self.iconView = nil;
     self.nameLabel = nil;
 
+
     [super dealloc];
 }   
 
@@ -23,25 +24,26 @@
 {
     self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier];
     if (self) {
-        iconView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 70, 60)];
-        iconView.backgroundColor = [UIColor clearColor];
-        iconView.opaque = NO;
-        iconView.layer.shadowRadius = 20.0;
-        iconView.layer.shadowOpacity = 0.4;
-        iconView.layer.shadowOffset = CGSizeMake( 20.0, 20.0 );
+        self.iconView = [[[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 70, 72)] autorelease];
+        self.iconView.backgroundColor = [UIColor clearColor];
+        self.iconView.layer.cornerRadius = 2;
+        self.iconView.layer.masksToBounds = YES;
+        self.iconView.alpha = 0.5;
+        [self.contentView addSubview:self.iconView];
         
-        nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(2, 60, 69, 18)];
-        nameLabel.backgroundColor = [UIColor clearColor];
-        nameLabel.textColor = [UIColor whiteColor];
-        [self.contentView addSubview: nameLabel];
-        [self.contentView addSubview: iconView];
+        self.nameLabel = [[[UILabel alloc] initWithFrame:CGRectMake(70, 2, 16, 70)] autorelease];
+        self.nameLabel.layer.cornerRadius = 2;
+        self.nameLabel.layer.masksToBounds = YES;
+        self.iconView.alpha = 0.5;
+        self.nameLabel.backgroundColor = [UIColor clearColor];
+        self.nameLabel.textColor = [UIColor whiteColor];
+        [self.contentView addSubview:self.nameLabel];
         
         self.contentView.backgroundColor = [UIColor clearColor];
         
         self.contentView.opaque = NO;
         self.opaque = NO;
-        
-        self.selectionStyle = AQGridViewCellSelectionStyleNone;
+        self.selectionStyle = AQGridViewCellSelectionStyleBlueGray;
     }
     return self;
 }

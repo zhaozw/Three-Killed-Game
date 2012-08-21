@@ -115,8 +115,12 @@
 - (BOOL) gestureRecognizerShouldBegin: (UIGestureRecognizer *) gestureRecognizer
 {
     CGPoint location = [gestureRecognizer locationInView: iconView];
-    if ( [iconView indexForItemAtPoint: location] < self.currentGame.allRoles.count )
-        return YES;
+    if ( [iconView indexForItemAtPoint: location] < self.currentGame.allRoles.count ){
+        GameRoleInstance *role = [self.currentGame.allRoles objectAtIndex:[iconView indexForItemAtPoint: location]];
+        if ([role.userID isEqualToString:self.currentRole.userID]) {
+            return YES;
+        }
+    }
     return NO;
 }
 
@@ -163,43 +167,46 @@
         {
             CGPoint p = [recognizer locationInView: iconView];
             NSUInteger index = [iconView indexForItemAtPoint: p];
-			if ( index == NSNotFound )
-			{
-				// index is the last available location
-				index = [self.currentGame.allRoles count] - 1;
-			}
-            
             // update the data store
 //            id obj = [self.currentGame.allRoles objectAtIndex: _dragOriginIndex];
 //            [(NSMutableArray *)self.currentGame.allRoles removeObjectAtIndex: _dragOriginIndex];
 //            [(NSMutableArray *)self.currentGame.allRoles insertObject: obj atIndex: index];
             
-            if ( index != _emptyCellIndex )
+            if ( index != _emptyCellIndex && index != NSNotFound)
             {
-                [iconView beginUpdates];
-                [iconView moveItemAtIndex: _emptyCellIndex toIndex: index withAnimation: AQGridViewItemAnimationFade];
-                _emptyCellIndex = index;
-                [iconView endUpdates];
+//                [iconView beginUpdates];
+//                [iconView moveItemAtIndex: _emptyCellIndex toIndex: index withAnimation: AQGridViewItemAnimationFade];
+//                _emptyCellIndex = index;
+//                [iconView endUpdates];
+                GameRoleInstance *role = [self.currentGame.allRoles objectAtIndex:index];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"注意"
+                                           message:[NSString stringWithFormat:@"%@将会被%@杀死",self.currentRole.userName,role.userName]
+                                          delegate:self
+                                 cancelButtonTitle:@"取消"
+                                 otherButtonTitles:@"确定",nil];
+                [alertView show];
+                [alertView release];
+                
             }
             
             // move the real cell into place
-            [UIView beginAnimations: @"SnapToPlace" context: NULL];
-            [UIView setAnimationCurve: UIViewAnimationCurveEaseOut];
-            [UIView setAnimationDuration: 0.5];
-            [UIView setAnimationDelegate: self];
-            [UIView setAnimationDidStopSelector: @selector(finishedSnap:finished:context:)];
-            
-            CGRect r = [iconView rectForItemAtIndex: _emptyCellIndex];
-            CGRect f = _draggingCell.frame;
-            f.origin.x = r.origin.x + floorf((r.size.width - f.size.width) * 0.5);
-            f.origin.y = r.origin.y + floorf((r.size.height - f.size.height) * 0.5) - iconView.contentOffset.y;
-            NSLog( @"Gesture ended-- moving to %@", NSStringFromCGRect(f) );
-            _draggingCell.frame = f;
-            
-            _draggingCell.transform = CGAffineTransformIdentity;
-            _draggingCell.alpha = 1.0;
-            
-            [UIView commitAnimations];
+//            [UIView beginAnimations: @"SnapToPlace" context: NULL];
+//            [UIView setAnimationCurve: UIViewAnimationCurveEaseOut];
+//            [UIView setAnimationDuration: 0.5];
+//            [UIView setAnimationDelegate: self];
+//            [UIView setAnimationDidStopSelector: @selector(finishedSnap:finished:context:)];
+//            
+//            CGRect r = [iconView rectForItemAtIndex: _emptyCellIndex];
+//            CGRect f = _draggingCell.frame;
+//            f.origin.x = r.origin.x + floorf((r.size.width - f.size.width) * 0.5);
+//            f.origin.y = r.origin.y + floorf((r.size.height - f.size.height) * 0.5) - iconView.contentOffset.y;
+//            NSLog( @"Gesture ended-- moving to %@", NSStringFromCGRect(f) );
+//            _draggingCell.frame = f;
+//            
+//            _draggingCell.transform = CGAffineTransformIdentity;
+//            _draggingCell.alpha = 1.0;
+//            
+//            [UIView commitAnimations];
             break;
         }
             
@@ -215,7 +222,11 @@
             GameRoleInstance *role = [self.currentGame.allRoles objectAtIndex:index];
             _draggingCell.iconView.image = [UIImage imageWithName:@"female_face" tableName:@"utl 2"];
             _draggingCell.nameLabel.text = role.userName;
-            _draggingCell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"portriat" tableName:@"hall 2"]];
+            if (![role.userID isEqualToString:self.currentRole.userID]) {
+                [_draggingCell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageWithName:@"portriat_black" tableName:@"hall 2"]]];
+            } else {
+                [_draggingCell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageWithName:@"portriat" tableName:@"hall 2"]]];
+            }
             [self.view addSubview: _draggingCell];
             
             // grab some info about the origin of this cell
@@ -245,7 +256,7 @@
         case UIGestureRecognizerStateChanged:
         {
             // update draging cell location
-            _draggingCell.center = [recognizer locationInView: self.view];
+            _draggingCell.center = [recognizer locationInView:self.view];
             
             // don't do anything with content if grid view is in the middle of an animation block
             if ( iconView.isAnimatingUpdates )
@@ -261,36 +272,36 @@
 				index = [self.currentGame.allRoles count] - 1;
 			}
 			
-            if ( index != _emptyCellIndex )
-            {
-                NSLog( @"Moving empty cell from %u to %u", _emptyCellIndex, index );
-                
-                // batch the movements
-                [iconView beginUpdates];
-                
-                // move everything else out of the way
-                if ( index < _emptyCellIndex )
-                {
-                    for ( NSUInteger i = index; i < _emptyCellIndex; i++ )
-                    {
-                        NSLog( @"Moving %u to %u", i, i+1 );
-                        [iconView moveItemAtIndex: i toIndex: i+1 withAnimation: AQGridViewItemAnimationFade];
-                    }
-                }
-                else
-                {
-                    for ( NSUInteger i = index; i > _emptyCellIndex; i-- )
-                    {
-                        NSLog( @"Moving %u to %u", i, i-1 );
-                        [iconView moveItemAtIndex: i toIndex: i-1 withAnimation: AQGridViewItemAnimationFade];
-                    }
-                }
-                
-                [iconView moveItemAtIndex: _emptyCellIndex toIndex: index withAnimation: AQGridViewItemAnimationFade];
-                _emptyCellIndex = index;
-                
-                [iconView endUpdates];
-            }
+//            if ( index != _emptyCellIndex )
+//            {
+//                NSLog( @"Moving empty cell from %u to %u", _emptyCellIndex, index );
+//
+//                // batch the movements
+//                [iconView beginUpdates];
+//                
+//                // move everything else out of the way
+//                if ( index < _emptyCellIndex )
+//                {
+//                    for ( NSUInteger i = index; i < _emptyCellIndex; i++ )
+//                    {
+//                        NSLog( @"Moving %u to %u", i, i+1 );
+//                        [iconView moveItemAtIndex: i toIndex: i+1 withAnimation: AQGridViewItemAnimationFade];
+//                    }
+//                }
+//                else
+//                {
+//                    for ( NSUInteger i = index; i > _emptyCellIndex; i-- )
+//                    {
+//                        NSLog( @"Moving %u to %u", i, i-1 );
+//                        [iconView moveItemAtIndex: i toIndex: i-1 withAnimation: AQGridViewItemAnimationFade];
+//                    }
+//                }
+//                
+//                [iconView moveItemAtIndex: _emptyCellIndex toIndex: index withAnimation: AQGridViewItemAnimationFade];
+//                _emptyCellIndex = index;
+//                
+//                [iconView endUpdates];
+//            }
             
             break;
         }
@@ -321,12 +332,17 @@
     static NSString *identifier = @"aqgrid";
     cell = [gridView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[[SpringBoardCell alloc] initWithFrame:CGRectMake(0, 0, 90, 80) reuseIdentifier:identifier] autorelease];
+        cell = [[[SpringBoardCell alloc] initWithFrame:CGRectMake(0, 0, 90, 75) reuseIdentifier:identifier] autorelease];
     }
     GameRoleInstance *role = [self.currentGame.allRoles objectAtIndex:index];
     [(SpringBoardCell *)cell iconView].image = [UIImage imageWithName:@"female_face" tableName:@"utl 2"];
+    if (![role.userID isEqualToString:self.currentRole.userID]) {
+        [(SpringBoardCell *)cell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageWithName:@"portriat_black" tableName:@"hall 2"]]];
+    } else {
+        [(SpringBoardCell *)cell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageWithName:@"portriat" tableName:@"hall 2"]]];
+    }
+    
     [(SpringBoardCell *)cell nameLabel].text = role.userName;
-    [(SpringBoardCell *)cell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageWithName:@"portriat" tableName:@"hall 2"]]];
     return cell;
 }
 
@@ -529,6 +545,36 @@
                           killedBy:otherRole 
                       withDelegate:self];
         }
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        [iconView beginUpdates];
+        
+        if ( _emptyCellIndex != _dragOriginIndex )
+        {
+            [iconView moveItemAtIndex: _emptyCellIndex toIndex: _dragOriginIndex withAnimation: AQGridViewItemAnimationFade];
+        }
+        
+        _emptyCellIndex = _dragOriginIndex;
+        
+        // move the cell back to its origin
+        [UIView beginAnimations: @"SnapBack" context: NULL];
+        [UIView setAnimationCurve: UIViewAnimationCurveEaseOut];
+        [UIView setAnimationDuration: 0.5];
+        [UIView setAnimationDelegate: self];
+        [UIView setAnimationDidStopSelector: @selector(finishedSnap:finished:context:)];
+        
+        CGRect f = _draggingCell.frame;
+        f.origin = _dragOriginCellOrigin;
+        _draggingCell.frame = f;
+        
+        [UIView commitAnimations];
+        
+        [iconView endUpdates];
+    } else {
+        
     }
 }
 

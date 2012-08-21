@@ -31,6 +31,8 @@
 	<key>previous_on</key>
 	<string>263,380,56,16</string>
 	<key>portriat</key>
-	<string>2,353,91,78</string>
+	<string>2,353,90,75</string>
+	<key>portriat_black</key>
+	<string>123,100,90,75</string>
 </dict>
 </plist>

@@ -12,7 +12,7 @@
 #import "GameRoleInstance.h"
 #import "AQGridView.h"
 #import "SpringBoardCell.h"
-@interface ObserveViewController : UIViewController <APILibraryDelegate,AQGridViewDataSource,AQGridViewDelegate,UIGestureRecognizerDelegate>{
+@interface ObserveViewController : UIViewController <APILibraryDelegate,AQGridViewDataSource,AQGridViewDelegate,UIGestureRecognizerDelegate,UIAlertViewDelegate>{
     IBOutlet AQGridView *iconView;
     IBOutlet UIImageView *navTitleBar;
     IBOutlet UIImageView *menuContainer;

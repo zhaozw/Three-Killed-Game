@@ -14,6 +14,4 @@
 }
 @property (nonatomic, retain)  UIImageView *iconView;
 @property (nonatomic, retain)  UILabel *nameLabel;
-
-
 @end
