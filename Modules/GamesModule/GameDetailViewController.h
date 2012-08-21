@@ -29,5 +29,6 @@
 @property (nonatomic, retain)  GameRoleInstance *currentRole;
 @property (nonatomic, retain)  NSMutableArray *feakAllRoles;
 
-
+- (IBAction)navBackButtonClicked:(id)sender;
+- (IBAction)refreshButtonClicked:(id)sender;
 @end

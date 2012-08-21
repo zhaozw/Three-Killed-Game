@@ -46,13 +46,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../Modules/NewGameModule/NewGameViewController.m"
-         timestampString = "367221795.155375"
+         filePath = "../Modules/GamesModule/GameDetailViewController.m"
+         timestampString = "367228255.385918"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "96"
-         endingLineNumber = "96"
-         landmarkName = "-thumbnailTapped:"
+         startingLineNumber = "194"
+         endingLineNumber = "194"
+         landmarkName = "-updateFeakRolesWithPlayerCount:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

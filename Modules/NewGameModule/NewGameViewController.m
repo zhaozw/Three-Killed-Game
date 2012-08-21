@@ -76,9 +76,16 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    CGAffineTransform t = self.view.transform;
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation) && t.b && t.c) {
+        [self.view setTransform:CGAffineTransformMakeRotation(0)];
+    }
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 #pragma mark - Navigation
@@ -94,7 +101,7 @@
     if (control.tag < self.allKindsGames.count) {
         GameInstance *aGame = [self.allKindsGames objectAtIndex:control.tag];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [self performSelector:@selector(handleCreateGameWithGameTypeID:) withObject:aGame.gameID afterDelay:0.5];
+        [self performSelector:@selector(handleCreateGameWithGameTypeID:) withObject:aGame.gameTypeID afterDelay:0.5];
     };
 }
 

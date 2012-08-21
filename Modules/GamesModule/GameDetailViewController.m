@@ -64,6 +64,16 @@
     [self performSelector:@selector(observeGameRequest) withObject:nil afterDelay:0.5];
 }
 
+#pragma mark - Navigation
+- (IBAction)navBackButtonClicked:(id)sender {
+    [self.navigationController  popViewControllerAnimated:YES];
+}
+
+- (IBAction)refreshButtonClicked:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self performSelector:@selector(observeGameRequest) withObject:nil afterDelay:0.5];
+}
+
 #pragma mark - Instance Method
 
 - (void)observeGameRequest {
@@ -130,11 +140,30 @@
         [control addTarget:self action:@selector(thumbnailTapped:) forControlEvents:UIControlEventTouchUpInside];
         [views addObject:control];
     }
+    iconView.icons = nil;
     [iconView addIcons:views];
     [self performSelector:@selector(handleAnimation) withObject:nil afterDelay:0.1];
 }
 
 #pragma mark - IconGridDelegate
+- (void)thumbnailTapped:(id)sender
+{
+    UIControl *control = (UIControl *)sender;
+    if (control.tag < self.feakAllRoles.count) {
+        GameRoleInstance *aRole = [self.feakAllRoles objectAtIndex:control.tag];
+        if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
+            UnKilledViewController *unkilledVC = [[[UnKilledViewController alloc] initWithNibName:@"UnKilledViewController" bundle:nil] autorelease];
+            unkilledVC.currentGame = self.currentGame;
+            unkilledVC.currentRole = self.currentRole;
+            [self.navigationController pushViewController:unkilledVC animated:YES];
+        } else {
+            ObserveViewController *observeVC = [[[ObserveViewController alloc] initWithNibName:@"ObserveViewController" bundle:nil] autorelease];
+            observeVC.currentGame = self.currentGame;
+            [self.navigationController pushViewController:observeVC animated:YES];
+        }
+    }
+}
+
 - (void)iconGridFrameDidChange:(IconGrid *)iconGrid
 {
     CGFloat expectedHeight = CGRectGetMaxY(iconGrid.frame) ;
@@ -164,11 +193,12 @@
 //}
 
 - (void)updateFeakRolesWithPlayerCount:(NSInteger)count {
-    if (!self.feakAllRoles) self.feakAllRoles = [NSMutableArray array];
+    self.feakAllRoles = [NSMutableArray array];
     if (count > 0 ) {
         for (int i = 0; i < count; i++) {
             GameRoleInstance *aRole = [[GameRoleInstance alloc] init];
             aRole.userName = @"未入座";
+            aRole.seatNum = [NSNumber numberWithInt:i+1];
             [self.feakAllRoles addObject:aRole];
         }
     }
@@ -202,11 +232,17 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    CGAffineTransform t = self.view.transform;
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation) && t.b && t.c) {
+        [self.view setTransform:CGAffineTransformMakeRotation(0)];
+    }
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+}
 #pragma mark - 
 
 - (void)apiLibraryDidReceivedGameDetail:(id)detail {
