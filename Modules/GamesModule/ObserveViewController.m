@@ -167,17 +167,8 @@
         {
             CGPoint p = [recognizer locationInView: iconView];
             NSUInteger index = [iconView indexForItemAtPoint: p];
-            // update the data store
-//            id obj = [self.currentGame.allRoles objectAtIndex: _dragOriginIndex];
-//            [(NSMutableArray *)self.currentGame.allRoles removeObjectAtIndex: _dragOriginIndex];
-//            [(NSMutableArray *)self.currentGame.allRoles insertObject: obj atIndex: index];
-            
-            if ( index != _emptyCellIndex && index != NSNotFound)
+            if (index != NSNotFound)
             {
-//                [iconView beginUpdates];
-//                [iconView moveItemAtIndex: _emptyCellIndex toIndex: index withAnimation: AQGridViewItemAnimationFade];
-//                _emptyCellIndex = index;
-//                [iconView endUpdates];
                 GameRoleInstance *role = [self.currentGame.allRoles objectAtIndex:index];
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"注意"
                                            message:[NSString stringWithFormat:@"%@将会被%@杀死",self.currentRole.userName,role.userName]
@@ -545,35 +536,15 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [_draggingCell removeFromSuperview];
+    _draggingCell = nil;
     if (buttonIndex == 0) {
-//        NSUInteger index = alertView.tag;
-//        if ( index != _emptyCellIndex && index != NSNotFound)
-//        {
-//                [iconView beginUpdates];
-//                [iconView moveItemAtIndex: _emptyCellIndex toIndex: index withAnimation: AQGridViewItemAnimationFade];
-//                _emptyCellIndex = index;
-//                [iconView endUpdates];
-//        }
-        
-//        // move the real cell into place
-//        [UIView beginAnimations: @"SnapToPlace" context: NULL];
-//        [UIView setAnimationCurve: UIViewAnimationCurveEaseOut];
-//        [UIView setAnimationDuration: 0.5];
-//        [UIView setAnimationDelegate: self];
-//        [UIView setAnimationDidStopSelector: @selector(finishedSnap:finished:context:)];
-//        
-//        CGRect r = [iconView rectForItemAtIndex: _emptyCellIndex];
-//        CGRect f = _draggingCell.frame;
-//        f.origin.x = r.origin.x + floorf((r.size.width - f.size.width) * 0.5);
-//        f.origin.y = r.origin.y + floorf((r.size.height - f.size.height) * 0.5) - iconView.contentOffset.y;
-//        NSLog( @"Gesture ended-- moving to %@", NSStringFromCGRect(f) );
-//        _draggingCell.frame = f;
-//        
-//        _draggingCell.transform = CGAffineTransformIdentity;
-//        _draggingCell.alpha = 1.0;
-//        
-//        [UIView commitAnimations];
+        NSIndexSet * indices = [[NSIndexSet alloc] initWithIndex: _emptyCellIndex];
+        _emptyCellIndex = NSNotFound;
+        [iconView reloadItemsAtIndices: indices withAnimation: AQGridViewItemAnimationNone];
     } else {
+        [(NSMutableArray *)self.currentGame.allRoles removeObjectAtIndex:_emptyCellIndex];
+        [iconView reloadData];
         NSInteger index = alertView.tag;
         if (index < self.currentGame.allRoles.count) {
             GameRoleInstance *role = [self.currentGame.allRoles objectAtIndex:index];
