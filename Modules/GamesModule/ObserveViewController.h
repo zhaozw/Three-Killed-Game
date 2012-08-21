@@ -9,25 +9,48 @@
 #import <UIKit/UIKit.h>
 #import "APILibrary.h"
 #import "GameInstance.h"
-@interface ObserveViewController : UIViewController <APILibraryDelegate>{
+#import "GameRoleInstance.h"
+#import "AQGridView.h"
+#import "SpringBoardCell.h"
+@interface ObserveViewController : UIViewController <APILibraryDelegate,AQGridViewDataSource,AQGridViewDelegate,UIGestureRecognizerDelegate>{
+    IBOutlet AQGridView *iconView;
+    IBOutlet UIImageView *navTitleBar;
+    IBOutlet UIImageView *menuContainer;
+    IBOutlet UIButton *begainButton;
+    IBOutlet UIButton *dianjiangButton;
+    IBOutlet UIButton *backButton;
+
+    NSUInteger _emptyCellIndex;
+    
+    NSUInteger _dragOriginIndex;
+    CGPoint _dragOriginCellOrigin;
+    
+    SpringBoardCell * _draggingCell;
+    
     NSArray *allRoles;
     NSArray *allUsers;
     GameInstance *currentGame;
+    GameRoleInstance *currentRole;
 }
 @property (nonatomic, retain)  NSArray *allRoles;
 @property (nonatomic, retain)  NSArray *allUsers;
 @property (nonatomic, retain)  GameInstance *currentGame;
-@property (nonatomic, retain)  IBOutlet UITableView *listView;
-@property (nonatomic, retain)  IBOutlet UIView *tableFooterView;
-@property (nonatomic, retain)  IBOutlet UIButton *openButton;
-@property (nonatomic, retain)  IBOutlet UIButton *myRoleButton;
-@property (nonatomic, retain)  IBOutlet UIButton *finishButton;
-@property (nonatomic, retain)  IBOutlet UIButton *closeButton;
-@property (nonatomic, retain)  IBOutlet UIButton *oneOnOneButton;
+@property (nonatomic, retain)  GameRoleInstance *currentRole;
+
+//@property (nonatomic, retain)  IBOutlet UITableView *listView;
+//@property (nonatomic, retain)  IBOutlet UIView *tableFooterView;
+//@property (nonatomic, retain)  IBOutlet UIButton *openButton;
+//@property (nonatomic, retain)  IBOutlet UIButton *myRoleButton;
+//@property (nonatomic, retain)  IBOutlet UIButton *finishButton;
+//@property (nonatomic, retain)  IBOutlet UIButton *closeButton;
+//@property (nonatomic, retain)  IBOutlet UIButton *oneOnOneButton;
 
 - (IBAction)open:(id)sender;
 - (IBAction)finish:(id)sender;
 - (IBAction)oneOnone:(id)sender;
 - (IBAction)myRole:(id)sender;
 - (IBAction)close:(id)sender;
+
+- (IBAction)navBackButtonClicked:(id)sender;
+- (IBAction)refreshButtonClicked:(id)sender;
 @end

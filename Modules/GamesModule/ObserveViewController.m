@@ -13,6 +13,11 @@
 #import "GameUserData.h"
 #import "GameDetailViewController.h"
 #import "UnKilledViewController.h"
+#import "Foundation+KGOAdditions.h"
+#import "UIKit+KGOAdditions.h"
+#import "AppDelegate+TKAdditions.h"
+#import <QuartzCore/QuartzCore.h>
+
 @interface ObserveViewController ()
 
 @end
@@ -21,25 +26,29 @@
 @synthesize allRoles;
 @synthesize allUsers;
 @synthesize currentGame;
-@synthesize listView;
-@synthesize tableFooterView;
-@synthesize openButton;
-@synthesize myRoleButton;
-@synthesize finishButton;
-@synthesize closeButton;
-@synthesize oneOnOneButton;
+@synthesize currentRole;
+
+//@synthesize listView;
+//@synthesize tableFooterView;
+//@synthesize openButton;
+//@synthesize myRoleButton;
+//@synthesize finishButton;
+//@synthesize closeButton;
+//@synthesize oneOnOneButton;
 
 - (void)dealloc {
     self.allRoles = nil;
     self.allUsers = nil;
     self.currentGame = nil;
-    self.listView = nil;
-    self.tableFooterView = nil;
-    self.openButton = nil;
-    self.myRoleButton = nil;
-    self.finishButton = nil;
-    self.closeButton = nil;
-    self.oneOnOneButton = nil;
+    self.currentRole = nil;
+
+//    self.listView = nil;
+//    self.tableFooterView = nil;
+//    self.openButton = nil;
+//    self.myRoleButton = nil;
+//    self.finishButton = nil;
+//    self.closeButton = nil;
+//    self.oneOnOneButton = nil;
 
 
     [super dealloc];
@@ -57,17 +66,281 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    iconView.backgroundColor = [UIColor clearColor];    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"game_bg.png"]];
+    navTitleBar.image = [UIImage imageWithName:@"titlebar" tableName:@"btable1 2"];
+    navTitleBar.backgroundColor = [UIColor clearColor];
+    
+    UILongPressGestureRecognizer * gr = [[UILongPressGestureRecognizer alloc] initWithTarget: self action: @selector(moveActionGestureRecognizerStateChanged:)];
+    gr.minimumPressDuration = 0.5;
+    gr.delegate = self;
+    [iconView addGestureRecognizer: gr];
+    
+    menuContainer.image = [UIImage imageWithName:@"frame" tableName:@"table1 2"];
+    menuContainer.backgroundColor = [UIColor clearColor];
+    [begainButton setImage:[UIImage imageWithName:@"kaishi" tableName:@"table 2"] forState:UIControlStateNormal];
+    [begainButton setImage:[UIImage imageWithName:@"kaishi_on" tableName:@"table 2"] forState:UIControlStateHighlighted];
+    [dianjiangButton setImage:[UIImage imageWithName:@"dianjiang" tableName:@"table 2"] forState:UIControlStateNormal];
+    [dianjiangButton setImage:[UIImage imageWithName:@"dianjiang_on" tableName:@"table 2"] forState:UIControlStateHighlighted];
+    [backButton setImage:[UIImage imageWithName:@"back_on" tableName:@"btable 2"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageWithName:@"back" tableName:@"btable 2"] forState:UIControlStateHighlighted];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self performSelector:@selector(observeGameRequest) withObject:nil afterDelay:0.5];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+#pragma mark - Navigation
+- (IBAction)navBackButtonClicked:(id)sender {
+    [self.navigationController  popViewControllerAnimated:YES];
+}
+
+- (IBAction)refreshButtonClicked:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self performSelector:@selector(observeGameRequest) withObject:nil afterDelay:0.5];
+}
+
+#pragma mark - Instance methods
+- (void)observeGameRequest {
     BOOL status = NO;
     NSString *error = nil;
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [APILibrary apiLibrary:&status 
                   metError:&error 
      observeGameWithGameID:self.currentGame.gameID 
               withDelegate:self];
 }
+
+#pragma mark -
+#pragma mark UIGestureRecognizer Delegate/Actions
+
+- (BOOL) gestureRecognizerShouldBegin: (UIGestureRecognizer *) gestureRecognizer
+{
+    CGPoint location = [gestureRecognizer locationInView: iconView];
+    if ( [iconView indexForItemAtPoint: location] < [self.currentGame.allRoles count] )
+        return ( YES );
+    
+    // touch is outside the bounds of any icon cells, so don't start the gesture
+    return ( NO );
+}
+
+- (void) moveActionGestureRecognizerStateChanged: (UIGestureRecognizer *) recognizer
+{
+    switch ( recognizer.state )
+    {
+        default:
+        case UIGestureRecognizerStateFailed:
+            // do nothing
+            break;
+            
+        case UIGestureRecognizerStatePossible:
+        case UIGestureRecognizerStateCancelled:
+        {
+            [iconView beginUpdates];
+            
+            if ( _emptyCellIndex != _dragOriginIndex )
+            {
+                [iconView moveItemAtIndex: _emptyCellIndex toIndex: _dragOriginIndex withAnimation: AQGridViewItemAnimationFade];
+            }
+            
+            _emptyCellIndex = _dragOriginIndex;
+            
+            // move the cell back to its origin
+            [UIView beginAnimations: @"SnapBack" context: NULL];
+            [UIView setAnimationCurve: UIViewAnimationCurveEaseOut];
+            [UIView setAnimationDuration: 0.5];
+            [UIView setAnimationDelegate: self];
+            [UIView setAnimationDidStopSelector: @selector(finishedSnap:finished:context:)];
+            
+            CGRect f = _draggingCell.frame;
+            f.origin = _dragOriginCellOrigin;
+            _draggingCell.frame = f;
+            
+            [UIView commitAnimations];
+            
+            [iconView endUpdates];
+            
+            break;
+        }
+            
+        case UIGestureRecognizerStateEnded:
+        {
+            CGPoint p = [recognizer locationInView: iconView];
+            NSUInteger index = [iconView indexForItemAtPoint: p];
+			if ( index == NSNotFound )
+			{
+				// index is the last available location
+				index = [self.currentGame.allRoles count] - 1;
+			}
+            
+            // update the data store
+            id obj = [self.currentGame.allRoles objectAtIndex: _dragOriginIndex];
+            [self.currentGame.allRoles removeObjectAtIndex: _dragOriginIndex];
+            [self.currentGame.allRoles insertObject: obj atIndex: index];
+            
+            if ( index != _emptyCellIndex )
+            {
+                [iconView beginUpdates];
+                [iconView moveItemAtIndex: _emptyCellIndex toIndex: index withAnimation: AQGridViewItemAnimationFade];
+                _emptyCellIndex = index;
+                [iconView endUpdates];
+            }
+            
+            // move the real cell into place
+            [UIView beginAnimations: @"SnapToPlace" context: NULL];
+            [UIView setAnimationCurve: UIViewAnimationCurveEaseOut];
+            [UIView setAnimationDuration: 0.5];
+            [UIView setAnimationDelegate: self];
+            [UIView setAnimationDidStopSelector: @selector(finishedSnap:finished:context:)];
+            
+            CGRect r = [iconView rectForItemAtIndex: _emptyCellIndex];
+            CGRect f = _draggingCell.frame;
+            f.origin.x = r.origin.x + floorf((r.size.width - f.size.width) * 0.5);
+            f.origin.y = r.origin.y + floorf((r.size.height - f.size.height) * 0.5) - iconView.contentOffset.y;
+            NSLog( @"Gesture ended-- moving to %@", NSStringFromCGRect(f) );
+            _draggingCell.frame = f;
+            
+            _draggingCell.transform = CGAffineTransformIdentity;
+            _draggingCell.alpha = 1.0;
+            
+            [UIView commitAnimations];
+            break;
+        }
+            
+        case UIGestureRecognizerStateBegan:
+        {
+            NSUInteger index = [iconView indexForItemAtPoint: [recognizer locationInView: iconView]];
+            _emptyCellIndex = index;    // we'll put an empty cell here now
+            
+            // find the cell at the current point and copy it into our main view, applying some transforms
+            AQGridViewCell * sourceCell = [iconView cellForItemAtIndex: index];
+            CGRect frame = [self.view convertRect: sourceCell.frame fromView: iconView];
+            _draggingCell = [[SpringBoardCell alloc] initWithFrame: frame reuseIdentifier: @""];
+            GameRoleInstance *role = [self.currentGame.allRoles objectAtIndex:index];
+            _draggingCell.iconView.image = [UIImage imageWithName:@"female_face" tableName:@"utl 2"];
+            _draggingCell.nameLabel.text = role.userName;
+            _draggingCell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"portriat" tableName:@"hall 2"]];
+            [self.view addSubview: _draggingCell];
+            
+            // grab some info about the origin of this cell
+            _dragOriginCellOrigin = frame.origin;
+            _dragOriginIndex = index;
+            
+            [UIView beginAnimations: @"" context: NULL];
+            [UIView setAnimationDuration: 0.2];
+            [UIView setAnimationCurve: UIViewAnimationCurveEaseOut];
+            
+            // transformation-- larger, slightly transparent
+            _draggingCell.transform = CGAffineTransformMakeScale( 1.2, 1.2 );
+            _draggingCell.alpha = 0.7;
+            
+            // also make it center on the touch point
+            _draggingCell.center = [recognizer locationInView: self.view];
+            
+            [UIView commitAnimations];
+            
+            // reload the grid underneath to get the empty cell in place
+            [iconView reloadItemsAtIndices: [NSIndexSet indexSetWithIndex: index]
+                              withAnimation: AQGridViewItemAnimationNone];
+            
+            break;
+        }
+            
+        case UIGestureRecognizerStateChanged:
+        {
+            // update draging cell location
+            _draggingCell.center = [recognizer locationInView: self.view];
+            
+            // don't do anything with content if grid view is in the middle of an animation block
+            if ( iconView.isAnimatingUpdates )
+                break;
+            
+            // update empty cell to follow, if necessary
+            NSUInteger index = [iconView indexForItemAtPoint: [recognizer locationInView: iconView]];
+			
+			// don't do anything if it's over an unused grid cell
+			if ( index == NSNotFound )
+			{
+				// snap back to the last possible index
+				index = [self.currentGame.allRoles count] - 1;
+			}
+			
+            if ( index != _emptyCellIndex )
+            {
+                NSLog( @"Moving empty cell from %u to %u", _emptyCellIndex, index );
+                
+                // batch the movements
+                [iconView beginUpdates];
+                
+                // move everything else out of the way
+                if ( index < _emptyCellIndex )
+                {
+                    for ( NSUInteger i = index; i < _emptyCellIndex; i++ )
+                    {
+                        NSLog( @"Moving %u to %u", i, i+1 );
+                        [iconView moveItemAtIndex: i toIndex: i+1 withAnimation: AQGridViewItemAnimationFade];
+                    }
+                }
+                else
+                {
+                    for ( NSUInteger i = index; i > _emptyCellIndex; i-- )
+                    {
+                        NSLog( @"Moving %u to %u", i, i-1 );
+                        [iconView moveItemAtIndex: i toIndex: i-1 withAnimation: AQGridViewItemAnimationFade];
+                    }
+                }
+                
+                [iconView moveItemAtIndex: _emptyCellIndex toIndex: index withAnimation: AQGridViewItemAnimationFade];
+                _emptyCellIndex = index;
+                
+                [iconView endUpdates];
+            }
+            
+            break;
+        }
+    }
+}
+
+- (void) finishedSnap: (NSString *) animationID finished: (NSNumber *) finished context: (void *) context
+{
+    NSIndexSet * indices = [[NSIndexSet alloc] initWithIndex: _emptyCellIndex];
+    _emptyCellIndex = NSNotFound;
+    
+    // load the moved cell into the grid view
+    [iconView reloadItemsAtIndices: indices withAnimation: AQGridViewItemAnimationNone];
+    
+    // dismiss our copy of the cell
+    [_draggingCell removeFromSuperview];
+    _draggingCell = nil;
+    
+}
+
+#pragma mark -AQGridViewDataSource
+- (NSUInteger) numberOfItemsInGridView: (AQGridView *) gridView {
+    return self.currentGame.allRoles.count;
+}
+
+- (AQGridViewCell *) gridView: (AQGridView *) gridView cellForItemAtIndex: (NSUInteger) index {
+    AQGridViewCell *cell = nil;
+    static NSString *identifier = @"aqgrid";
+    cell = [gridView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[[SpringBoardCell alloc] initWithFrame:CGRectMake(0, 0, 90, 80) reuseIdentifier:identifier] autorelease];
+    }
+    GameRoleInstance *role = [self.currentGame.allRoles objectAtIndex:index];
+    [(SpringBoardCell *)cell iconView].image = [UIImage imageWithName:@"female_face" tableName:@"utl 2"];
+    [(SpringBoardCell *)cell nameLabel].text = role.userName;
+    [(SpringBoardCell *)cell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageWithName:@"portriat" tableName:@"hall 2"]]];
+    return cell;
+}
+
+//- (void)viewWillAppear:(BOOL)animated {
+//    BOOL status = NO;
+//    NSString *error = nil;
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    [APILibrary apiLibrary:&status 
+//                  metError:&error 
+//     observeGameWithGameID:self.currentGame.gameID 
+//              withDelegate:self];
+//}
 
 - (void)viewDidUnload
 {
@@ -116,8 +389,18 @@
     [APILibrary apiLibrary:&status metError:&error getMyRoleWithGameID:self.currentGame.gameID withDelegate:self];
 }
 
+- (void)updateCurrentRole {
+    for (GameRoleInstance *role in self.currentGame.allRoles) {
+        if ([self.currentRole.userID isEqualToString:role.userID]) {
+            self.currentRole = role;
+        }
+    }
+}
+
 - (void)apiLibraryDidReceivedObserveResult:(id)result {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+    self.currentGame.gameID = [result forcedStringForKey:@"id"];
+    self.currentGame.playerCount = [result forcedNumberForKey:@"playerCount"];
     NSDictionary *aResult = (NSDictionary *)result;
     NSArray *players = [aResult arrayForKey:@"players"];
     NSMutableArray *playerContainer = [NSMutableArray array];
@@ -127,29 +410,9 @@
         [playerContainer addObject:aRole];
         [aRole release];
     }
-    self.allRoles = playerContainer;
     self.currentGame.allRoles = playerContainer;
-    if (self.allRoles.count != [result forcedNumberForKey:@"playerCount"].integerValue) {
-        self.finishButton.enabled = NO;
-        self.oneOnOneButton.enabled = NO;
-    } else {
-        self.finishButton.enabled = YES;
-        self.oneOnOneButton.enabled = YES;
-    }
-    NSDictionary *users = [aResult dictionaryForKey:@"users"];
-    [users enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        NSMutableArray *usersContainer = [NSMutableArray array];
-        GameUserData *anUser = [[GameUserData alloc] init];
-        anUser.userDataKey = key;
-        anUser.userDataID = [obj forcedStringForKey:@"id"];
-        anUser.userDataName = [obj forcedStringForKey:@"username"];
-        [usersContainer addObject:anUser];
-        [anUser release];
-        self.allUsers = usersContainer;
-        self.currentGame.allUsers = usersContainer;
-        [self.listView reloadData];
-        self.listView.tableFooterView = self.tableFooterView;
-    }];
+    [self updateCurrentRole];
+    [iconView reloadData];
 }
 
 - (void)apiLibraryDidReceivedFinishResult:(id)result {

@@ -159,6 +159,7 @@
         } else {
             ObserveViewController *observeVC = [[[ObserveViewController alloc] initWithNibName:@"ObserveViewController" bundle:nil] autorelease];
             observeVC.currentGame = self.currentGame;
+            observeVC.currentRole = aRole;
             [self.navigationController pushViewController:observeVC animated:YES];
         }
     }
