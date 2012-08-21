@@ -16,9 +16,9 @@
 			<key>RoleTypeTable</key>
 			<dict>
 				<key>1</key>
-				<string>zhugong_dead</string>
-				<key>2</key>
 				<string>zhongchen_dead</string>
+				<key>2</key>
+				<string>zhugong_dead</string>
 				<key>3</key>
 				<string>neijian_dead</string>
 				<key>4</key>

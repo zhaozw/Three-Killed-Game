@@ -115,11 +115,9 @@
 - (BOOL) gestureRecognizerShouldBegin: (UIGestureRecognizer *) gestureRecognizer
 {
     CGPoint location = [gestureRecognizer locationInView: iconView];
-    if ( [iconView indexForItemAtPoint: location] < [self.currentGame.allRoles count] )
-        return ( YES );
-    
-    // touch is outside the bounds of any icon cells, so don't start the gesture
-    return ( NO );
+    if ( [iconView indexForItemAtPoint: location] < self.currentGame.allRoles.count )
+        return YES;
+    return NO;
 }
 
 - (void) moveActionGestureRecognizerStateChanged: (UIGestureRecognizer *) recognizer
@@ -172,9 +170,9 @@
 			}
             
             // update the data store
-            id obj = [self.currentGame.allRoles objectAtIndex: _dragOriginIndex];
-            [self.currentGame.allRoles removeObjectAtIndex: _dragOriginIndex];
-            [self.currentGame.allRoles insertObject: obj atIndex: index];
+//            id obj = [self.currentGame.allRoles objectAtIndex: _dragOriginIndex];
+//            [(NSMutableArray *)self.currentGame.allRoles removeObjectAtIndex: _dragOriginIndex];
+//            [(NSMutableArray *)self.currentGame.allRoles insertObject: obj atIndex: index];
             
             if ( index != _emptyCellIndex )
             {

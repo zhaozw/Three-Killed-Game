@@ -42,18 +42,5 @@
          landmarkName = "+apiLibrary:metError:gameID:whoID:unkilledWithDelegate:"
          landmarkType = "5">
       </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "../Modules/GamesModule/ObserveViewController.m"
-         timestampString = "367235980.865232"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "413"
-         endingLineNumber = "413"
-         landmarkName = "-apiLibraryDidReceivedObserveResult:"
-         landmarkType = "5">
-      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
