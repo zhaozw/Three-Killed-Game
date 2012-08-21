@@ -12,6 +12,7 @@
 #import "GameDetailViewController.h"
 #import "Foundation+KGOAdditions.h"
 #import "UIKit+KGOAdditions.h"
+#import "AppDelegate+TKAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 @interface NewGameViewController ()
 
@@ -79,6 +80,13 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+#pragma mark - Navigation
+- (IBAction)navBackButtonClicked:(id)sender {
+    [self.navigationController  popViewControllerAnimated:YES];
+}
+
+#pragma mark - Instance methods
 
 - (void)thumbnailTapped:(id)sender
 {

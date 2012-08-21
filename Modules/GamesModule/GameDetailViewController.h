@@ -10,17 +10,24 @@
 #import "APILibrary.h"
 #import "GameInstance.h"
 #import "GameRoleInstance.h"
-@interface GameDetailViewController : UIViewController <APILibraryDelegate>{
+#import "IconGrid.h"
+@interface GameDetailViewController : UIViewController <APILibraryDelegate,IconGridDelegate>{
     GameInstance *currentGame;
     GameRoleInstance *currentRole;
-    IBOutlet UITableView *listView;
-    BOOL enableShow;
-    
-    IBOutlet UIImageView *navTitleView;
+
+    IBOutlet IconGrid *iconView;
+    IBOutlet UIImageView *navTitleBar;
+    IBOutlet UIImageView *menuContainer;
+    IBOutlet UIButton *begainButton;
+    IBOutlet UIButton *dianjiangButton;
     IBOutlet UIButton *backButton;
+    IBOutlet UIScrollView *tableContentView;
+    
+    NSMutableArray *feakAllRoles;
 }
 @property (nonatomic, retain)  GameInstance *currentGame;
 @property (nonatomic, retain)  GameRoleInstance *currentRole;
-@property (nonatomic, retain)  IBOutlet UITableView *listView;
+@property (nonatomic, retain)  NSMutableArray *feakAllRoles;
+
 
 @end

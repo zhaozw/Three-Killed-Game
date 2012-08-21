@@ -45,6 +45,42 @@
     return [NSString stringWithFormat:@"http://%@",[serverDictionary stringForKey:@"host"]];
 }
 
+- (NSInteger)numberOfRolesWithGameTypeID:(NSString *)gameTypeID {
+    if (!_appConfig) {
+        NSString *mainFile = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];    
+        _appConfig = [[NSDictionary alloc] initWithContentsOfFile:mainFile];
+    }
+    NSDictionary *modulesDictionary = [_appConfig dictionaryForKey:@"Modules"];
+    if (modulesDictionary) {
+        NSDictionary *aModule = [modulesDictionary dictionaryForKey:@"NewGameModule"];
+        if (aModule) {
+            NSDictionary *table = [aModule dictionaryForKey:@"GameTypeTable"];
+            if (table) {
+                return [table forcedNumberForKey:gameTypeID].integerValue;
+            }
+        }
+    }
+    return 0;
+}
+
+- (NSString *)roleDeadKeyWithRoleID:(NSString *)roleID {
+    if (!_appConfig) {
+        NSString *mainFile = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];    
+        _appConfig = [[NSDictionary alloc] initWithContentsOfFile:mainFile];
+    }
+    NSDictionary *modulesDictionary = [_appConfig dictionaryForKey:@"Modules"];
+    if (modulesDictionary) {
+        NSDictionary *aModule = [modulesDictionary dictionaryForKey:@"NewGameModule"];
+        if (aModule) {
+            NSDictionary *table = [aModule dictionaryForKey:@"RoleTypeTable"];
+            if (table) {
+                return [table forcedStringForKey:roleID];
+            }
+        }
+    }
+    return nil;
+}
+
 + (void)alertWithException:(NSString *)exception {
     NSString *title = NSLocalizedString(@"Exception", nil);    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title 

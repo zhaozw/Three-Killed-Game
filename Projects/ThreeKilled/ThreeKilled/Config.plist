@@ -9,5 +9,41 @@
 		<key>host</key>
 		<string>sg.fgg.me</string>
 	</dict>
+	<key>Modules</key>
+	<dict>
+		<key>NewGameModule</key>
+		<dict>
+			<key>RoleTypeTable</key>
+			<dict>
+				<key>1</key>
+				<string>zhugong_dead</string>
+				<key>2</key>
+				<string>zhongchen_dead</string>
+				<key>3</key>
+				<string>neijian_dead</string>
+				<key>4</key>
+				<string>fanzei_dead</string>
+			</dict>
+			<key>GameTypeTable</key>
+			<dict>
+				<key>1</key>
+				<integer>5</integer>
+				<key>2</key>
+				<integer>6</integer>
+				<key>3</key>
+				<integer>6</integer>
+				<key>4</key>
+				<integer>7</integer>
+				<key>5</key>
+				<integer>8</integer>
+				<key>6</key>
+				<integer>8</integer>
+				<key>7</key>
+				<integer>9</integer>
+				<key>8</key>
+				<integer>10</integer>
+			</dict>
+		</dict>
+	</dict>
 </dict>
 </plist>

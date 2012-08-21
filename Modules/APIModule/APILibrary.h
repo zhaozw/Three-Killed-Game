@@ -37,6 +37,8 @@
 
 + (APILibrary *)sharedInstance;
 - (NSString *)host;
+- (NSInteger)numberOfRolesWithGameTypeID:(NSString *)gameTypeID;
+- (NSString *)roleDeadKeyWithRoleID:(NSString *)roleID;
 + (void)alertWithException:(NSString *)exception;
 + (BOOL)apiLibrary:(BOOL *)status
           metError:(NSString **)error

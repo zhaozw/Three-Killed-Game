@@ -17,6 +17,7 @@
 @synthesize allRoles;
 @synthesize allUsers;
 @synthesize status;
+@synthesize playerCount;
 
 - (void)dealloc {
     self.gameID = nil;
@@ -25,6 +26,7 @@
     self.allRoles = nil;
     self.allUsers = nil;
     self.status = nil;
+    self.playerCount = nil;
 
 
     [super dealloc];

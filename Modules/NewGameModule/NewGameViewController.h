@@ -19,5 +19,5 @@
     IBOutlet UIButton *backButton;
 }
 @property (nonatomic, retain)  NSArray *allKindsGames;
-
+- (IBAction)navBackButtonClicked:(id)sender;
 @end
