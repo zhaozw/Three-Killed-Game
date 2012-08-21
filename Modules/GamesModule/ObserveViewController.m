@@ -184,29 +184,30 @@
                                           delegate:self
                                  cancelButtonTitle:@"取消"
                                  otherButtonTitles:@"确定",nil];
+                alertView.tag = index;
                 [alertView show];
                 [alertView release];
                 
+            } else {
+                // move the real cell into place
+                [UIView beginAnimations: @"SnapToPlace" context: NULL];
+                [UIView setAnimationCurve: UIViewAnimationCurveEaseOut];
+                [UIView setAnimationDuration: 0.5];
+                [UIView setAnimationDelegate: self];
+                [UIView setAnimationDidStopSelector: @selector(finishedSnap:finished:context:)];
+                
+                CGRect r = [iconView rectForItemAtIndex: _emptyCellIndex];
+                CGRect f = _draggingCell.frame;
+                f.origin.x = r.origin.x + floorf((r.size.width - f.size.width) * 0.5);
+                f.origin.y = r.origin.y + floorf((r.size.height - f.size.height) * 0.5) - iconView.contentOffset.y;
+                NSLog( @"Gesture ended-- moving to %@", NSStringFromCGRect(f) );
+                _draggingCell.frame = f;
+                
+                _draggingCell.transform = CGAffineTransformIdentity;
+                _draggingCell.alpha = 1.0;
+                
+                [UIView commitAnimations];
             }
-            
-            // move the real cell into place
-//            [UIView beginAnimations: @"SnapToPlace" context: NULL];
-//            [UIView setAnimationCurve: UIViewAnimationCurveEaseOut];
-//            [UIView setAnimationDuration: 0.5];
-//            [UIView setAnimationDelegate: self];
-//            [UIView setAnimationDidStopSelector: @selector(finishedSnap:finished:context:)];
-//            
-//            CGRect r = [iconView rectForItemAtIndex: _emptyCellIndex];
-//            CGRect f = _draggingCell.frame;
-//            f.origin.x = r.origin.x + floorf((r.size.width - f.size.width) * 0.5);
-//            f.origin.y = r.origin.y + floorf((r.size.height - f.size.height) * 0.5) - iconView.contentOffset.y;
-//            NSLog( @"Gesture ended-- moving to %@", NSStringFromCGRect(f) );
-//            _draggingCell.frame = f;
-//            
-//            _draggingCell.transform = CGAffineTransformIdentity;
-//            _draggingCell.alpha = 1.0;
-//            
-//            [UIView commitAnimations];
             break;
         }
             
@@ -446,12 +447,7 @@
 }
 
 - (void)apiLibraryWithGameInstance:(GameInstance *)agameInstance roleInstance:(GameRoleInstance *)roleInstance didReceivedKilledByResult:(NSString *)gameID {
-    BOOL status = NO;
-    NSString *error = nil;
-    [APILibrary apiLibrary:&status 
-                  metError:&error 
-     observeGameWithGameID:self.currentGame.gameID 
-              withDelegate:self];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)apiLibraryDidReceivedError:(NSString *)error {
@@ -550,32 +546,52 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
-        [iconView beginUpdates];
+//        NSUInteger index = alertView.tag;
+//        if ( index != _emptyCellIndex && index != NSNotFound)
+//        {
+//                [iconView beginUpdates];
+//                [iconView moveItemAtIndex: _emptyCellIndex toIndex: index withAnimation: AQGridViewItemAnimationFade];
+//                _emptyCellIndex = index;
+//                [iconView endUpdates];
+//        }
         
-        if ( _emptyCellIndex != _dragOriginIndex )
-        {
-            [iconView moveItemAtIndex: _emptyCellIndex toIndex: _dragOriginIndex withAnimation: AQGridViewItemAnimationFade];
-        }
-        
-        _emptyCellIndex = _dragOriginIndex;
-        
-        // move the cell back to its origin
-        [UIView beginAnimations: @"SnapBack" context: NULL];
-        [UIView setAnimationCurve: UIViewAnimationCurveEaseOut];
-        [UIView setAnimationDuration: 0.5];
-        [UIView setAnimationDelegate: self];
-        [UIView setAnimationDidStopSelector: @selector(finishedSnap:finished:context:)];
-        
-        CGRect f = _draggingCell.frame;
-        f.origin = _dragOriginCellOrigin;
-        _draggingCell.frame = f;
-        
-        [UIView commitAnimations];
-        
-        [iconView endUpdates];
+//        // move the real cell into place
+//        [UIView beginAnimations: @"SnapToPlace" context: NULL];
+//        [UIView setAnimationCurve: UIViewAnimationCurveEaseOut];
+//        [UIView setAnimationDuration: 0.5];
+//        [UIView setAnimationDelegate: self];
+//        [UIView setAnimationDidStopSelector: @selector(finishedSnap:finished:context:)];
+//        
+//        CGRect r = [iconView rectForItemAtIndex: _emptyCellIndex];
+//        CGRect f = _draggingCell.frame;
+//        f.origin.x = r.origin.x + floorf((r.size.width - f.size.width) * 0.5);
+//        f.origin.y = r.origin.y + floorf((r.size.height - f.size.height) * 0.5) - iconView.contentOffset.y;
+//        NSLog( @"Gesture ended-- moving to %@", NSStringFromCGRect(f) );
+//        _draggingCell.frame = f;
+//        
+//        _draggingCell.transform = CGAffineTransformIdentity;
+//        _draggingCell.alpha = 1.0;
+//        
+//        [UIView commitAnimations];
     } else {
-        
+        NSInteger index = alertView.tag;
+        if (index < self.currentGame.allRoles.count) {
+            GameRoleInstance *role = [self.currentGame.allRoles objectAtIndex:index];
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [self performSelector:@selector(handleKilledByRequestWithRole:) withObject:role afterDelay:0.5];
+        }
     }
+}
+
+- (void)handleKilledByRequestWithRole:(GameRoleInstance *)role {
+    BOOL status = NO;
+    NSString *error = nil;
+    [APILibrary apiLibrary:&status
+                  metError:&error
+                      game:self.currentGame
+                       who:self.currentRole
+                  killedBy:role
+              withDelegate:self];
 }
 
 
