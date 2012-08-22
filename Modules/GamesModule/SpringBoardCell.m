@@ -24,6 +24,24 @@
 {
     self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier];
     if (self) {
+        UIBezierPath * path = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(0.0, 0.0, 80.0, 72.0)
+                                                         cornerRadius: 18.0];
+        
+        self.backgroundColor = [UIColor clearColor];
+        self.opaque = NO;
+        self.layer.shadowPath = path.CGPath;
+        self.layer.shadowRadius = 20.0;
+        self.layer.shadowOpacity = 0.4;
+        self.layer.shadowOffset = CGSizeMake( 20.0, 20.0 );
+        
+        self.contentView.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
+        
+        self.contentView.opaque = NO;
+        self.opaque = NO;
+        
+        self.selectionStyle = AQGridViewCellSelectionStyleNone;
+        
         self.iconView = [[[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 76, 54)] autorelease];
         self.iconView.backgroundColor = [UIColor clearColor];
         self.iconView.layer.cornerRadius = 8;

@@ -141,12 +141,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)apiLibraryDidReceivedError:(NSString *)error {
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    [APILibrary alertWithException:error];
-}
-
-
 - (void)observeGameRequest {
     BOOL status = NO;
     NSString *error = nil;
@@ -233,10 +227,14 @@
     if (control.tag < self.feakAllRoles.count) {
         GameRoleInstance *aRole = [self.feakAllRoles objectAtIndex:control.tag];
         if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
-            UnKilledViewController *unkilledVC = [[[UnKilledViewController alloc] initWithNibName:@"UnKilledViewController" bundle:nil] autorelease];
-            unkilledVC.currentGame = self.currentGame;
-            unkilledVC.currentRole = self.currentRole;
-            [self.navigationController pushViewController:unkilledVC animated:YES];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"请注意" 
+                                                                message:@"确定要复活角色吗？" 
+                                                               delegate:self 
+                                                      cancelButtonTitle:@"取消" 
+                                                      otherButtonTitles:@"确定", nil];
+            alertView.tag = control.tag;
+            [alertView show];
+            [alertView release];
         } else {
             ObserveViewController *observeVC = [[[ObserveViewController alloc] initWithNibName:@"ObserveViewController" bundle:nil] autorelease];
             observeVC.currentGame = self.currentGame;
@@ -339,6 +337,11 @@
     [charactorButton setImage:[UIImage imageWithName:[[APILibrary sharedInstance] charactorKeyWithRoleID:self.currentRole.roleID] tableName:@"selcharacter"] forState:UIControlStateHighlighted];
 }
 
+- (void)apiLibraryDidReceivedError:(NSString *)error {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [APILibrary alertWithException:error];
+}
+
 - (NSString  *)roleInstanceUserNameAtUserID:(NSString *)roleID {
     if ([roleID isEqualToString:@"0"]) {
         return @"God";
@@ -403,6 +406,31 @@
             unkilledVC.currentGame = self.currentGame;
             unkilledVC.currentRole = self.currentRole;
             [self.navigationController pushViewController:unkilledVC animated:YES];
+        }
+    }
+}
+
+- (void)handleUnkilledRequestWithRole:(GameRoleInstance *)role {
+    BOOL status = NO;
+    NSString *error = nil;
+    [APILibrary apiLibrary:&status
+                  metError:&error 
+                    gameID:role.gameID 
+                     whoID:role.userID 
+      unkilledWithDelegate:self];
+}
+
+- (void)apiLibraryDidReceivedUnKilledByResult:(id)result {
+    [self observeGameRequest];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        NSInteger index = alertView.tag;
+        if (index < self.feakAllRoles.count) {
+            GameRoleInstance *role = [self.feakAllRoles objectAtIndex:index];
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [self performSelector:@selector(handleUnkilledRequestWithRole:) withObject:role afterDelay:0.5];
         }
     }
 }

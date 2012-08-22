@@ -180,7 +180,6 @@
 - (void)handleCreateGameWithGameTypeID:(NSString *)gameID {
     BOOL status = NO;
     NSString *error = nil;
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [APILibrary apiLibrary:&status metError:&error createWithGameTypeID:gameID withDelegate:self];
 }
 
