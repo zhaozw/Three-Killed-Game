@@ -14,8 +14,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4EFC979B15D8D941003587DD"
-               BuildableName = "ThreeKilled.app"
-               BlueprintName = "ThreeKilled"
+               BuildableName = "SGOL.app"
+               BlueprintName = "SGOL"
                ReferencedContainer = "container:ThreeKilled.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,8 +32,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4EFC979B15D8D941003587DD"
-            BuildableName = "ThreeKilled.app"
-            BlueprintName = "ThreeKilled"
+            BuildableName = "SGOL.app"
+            BlueprintName = "SGOL"
             ReferencedContainer = "container:ThreeKilled.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,8 +51,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4EFC979B15D8D941003587DD"
-            BuildableName = "ThreeKilled.app"
-            BlueprintName = "ThreeKilled"
+            BuildableName = "SGOL.app"
+            BlueprintName = "SGOL"
             ReferencedContainer = "container:ThreeKilled.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -69,8 +69,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4EFC979B15D8D941003587DD"
-            BuildableName = "ThreeKilled.app"
-            BlueprintName = "ThreeKilled"
+            BuildableName = "SGOL.app"
+            BlueprintName = "SGOL"
             ReferencedContainer = "container:ThreeKilled.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

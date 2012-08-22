@@ -867,9 +867,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4EFC979B15D8D941003587DD /* ThreeKilled */ = {
+		4EFC979B15D8D941003587DD /* SGOL */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4EFC97B415D8D941003587DD /* Build configuration list for PBXNativeTarget "ThreeKilled" */;
+			buildConfigurationList = 4EFC97B415D8D941003587DD /* Build configuration list for PBXNativeTarget "SGOL" */;
 			buildPhases = (
 				4EFC979815D8D941003587DD /* Sources */,
 				4EFC979915D8D941003587DD /* Frameworks */,
@@ -879,7 +879,7 @@
 			);
 			dependencies = (
 			);
-			name = ThreeKilled;
+			name = SGOL;
 			productName = ThreeKilled;
 			productReference = 4EFC979C15D8D941003587DD /* ThreeKilled.app */;
 			productType = "com.apple.product-type.application";
@@ -906,7 +906,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4EFC979B15D8D941003587DD /* ThreeKilled */,
+				4EFC979B15D8D941003587DD /* SGOL */,
 			);
 		};
 /* End PBXProject section */
@@ -1190,7 +1190,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4EFC97B415D8D941003587DD /* Build configuration list for PBXNativeTarget "ThreeKilled" */ = {
+		4EFC97B415D8D941003587DD /* Build configuration list for PBXNativeTarget "SGOL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4EFC97B515D8D941003587DD /* Debug */,
