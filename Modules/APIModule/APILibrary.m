@@ -108,9 +108,7 @@
     if (experienceDictionary) {
         NSDictionary *experience = [experienceDictionary dictionaryForKey:@"YongGuan"];
         if (experience) {
-            if (experience) {
-                return [experience forcedStringForKey:rank];
-            }
+            return [experience forcedStringForKey:rank];
         }
     }
     return nil;

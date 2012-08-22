@@ -100,7 +100,7 @@
     nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.textAlignment = UITextAlignmentCenter;
     
-    acLabel.text = @"君临天下";
+    acLabel.text = @"虎牙精英";
     [acLabel setNumberOfLines:0];
     [acLabel sizeToFit];
     acLabel.backgroundColor = [UIColor clearColor];
@@ -185,6 +185,14 @@
     }
     self.rankings = container;
     [listView reloadData];
+//    NSInteger count = 1;
+//    for (RankingData *data in self.rankings) {
+//        if ([[data.firstName lowercaseString] isEqualToString:[[APILibrary sharedInstance].userData.usrName lowercaseString]]) {
+//            acLabel.text = [[APILibrary sharedInstance] yongGuanNameWithRank:[NSString stringWithFormat:@"%d",count]];
+//        }
+//        count++;
+//    }
+    
 }
 
 - (void)handleJoinGameWithGameInstance:(GameInstance *)aGame {
