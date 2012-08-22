@@ -59,7 +59,10 @@
     [dianjiangButton setImage:[UIImage imageWithName:@"dianjiang_on" tableName:@"table 2"] forState:UIControlStateHighlighted];
     [backButton setImage:[UIImage imageWithName:@"back_on" tableName:@"btable 2"] forState:UIControlStateNormal];
     [backButton setImage:[UIImage imageWithName:@"back" tableName:@"btable 2"] forState:UIControlStateHighlighted];
-    
+    [closeButton setImage:[UIImage imageWithName:@"close" tableName:@"table 2"] forState:UIControlStateNormal];
+    [closeButton setImage:[UIImage imageWithName:@"close_on" tableName:@"table 2"] forState:UIControlStateHighlighted];
+    [openButton setImage:[UIImage imageWithName:@"open" tableName:@"table 2"] forState:UIControlStateNormal];
+    [openButton setImage:[UIImage imageWithName:@"open_on" tableName:@"table 2"] forState:UIControlStateHighlighted];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self performSelector:@selector(observeGameRequest) withObject:nil afterDelay:0.5];
 }
@@ -74,7 +77,75 @@
     [self performSelector:@selector(observeGameRequest) withObject:nil afterDelay:0.5];
 }
 
+- (void)handleOpenRequest {
+    BOOL status = NO;
+    NSString *error = nil;
+    [APILibrary apiLibrary:&status metError:&error finishWithGameID:self.currentGame.gameID withDelegate:self];
+}
+
+- (IBAction)openButtonClicked:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self performSelector:@selector(handleOpenRequest) withObject:nil afterDelay:0.5];
+}
+
+- (void)handleCloseRequest {
+    BOOL status = NO;
+    NSString *error = nil;
+    [APILibrary apiLibrary:&status metError:&error closeWithGameID:self.currentGame.gameID withDelegate:self];
+}
+
+- (IBAction)closeButtonClicked:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self performSelector:@selector(handleCloseRequest) withObject:nil afterDelay:0.5];
+}
+
+- (void)handleOneOnOneRequest {
+    BOOL status = NO;
+    NSString *error = nil;
+    [APILibrary apiLibrary:&status metError:&error onOnoneWithGameID:self.currentGame.gameID withDelegate:self];
+}
+
+- (void)handleFinishRequest {
+    BOOL status = NO;
+    NSString *error = nil;
+    [APILibrary apiLibrary:&status metError:&error finishWithGameID:self.currentGame.gameID withDelegate:self];
+}
+
+- (IBAction)finishButtonClicked:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self performSelector:@selector(handleFinishRequest) withObject:nil afterDelay:0.5];
+}
+
+- (IBAction)oneOnoneButtonClicked:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self performSelector:@selector(handleOneOnOneRequest) withObject:nil afterDelay:0.5];
+}
+
 #pragma mark - Instance Method
+- (void)apiLibraryDidReceivedReopenResult:(id)result {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+- (void)apiLibraryDidReceivedCloseResult:(id)result {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)apiLibraryDidReceivedFinishResult:(id)result {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)apiLibraryDidReceivedOneononeResult:(id)result {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)apiLibraryDidReceivedError:(NSString *)error {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [APILibrary alertWithException:error];
+}
+
 
 - (void)observeGameRequest {
     BOOL status = NO;
@@ -266,11 +337,6 @@
     self.currentGame.gameTypeID = [role forcedStringForKey:@"game_type_id"];
     [charactorButton setImage:[UIImage imageWithName:[[APILibrary sharedInstance] charactorKeyWithRoleID:self.currentRole.roleID] tableName:@"selcharacter"] forState:UIControlStateNormal];
     [charactorButton setImage:[UIImage imageWithName:[[APILibrary sharedInstance] charactorKeyWithRoleID:self.currentRole.roleID] tableName:@"selcharacter"] forState:UIControlStateHighlighted];
-}
-
-- (void)apiLibraryDidReceivedError:(NSString *)error {
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    [APILibrary alertWithException:error];
 }
 
 - (NSString  *)roleInstanceUserNameAtUserID:(NSString *)roleID {

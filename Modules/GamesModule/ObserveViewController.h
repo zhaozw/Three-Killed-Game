@@ -20,6 +20,7 @@
     IBOutlet UIButton *dianjiangButton;
     IBOutlet UIButton *backButton;
 
+
     NSUInteger _emptyCellIndex;
     
     NSUInteger _dragOriginIndex;

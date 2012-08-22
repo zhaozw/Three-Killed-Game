@@ -77,8 +77,8 @@
     [rightButton setImage:[UIImage imageWithName:@"previous" tableName:@"hall 2"] forState:UIControlStateNormal];
     [rightButton setImage:[UIImage imageWithName:@"previous_on" tableName:@"hall 2"] forState:UIControlStateHighlighted];
     
-    [returnButton setImage:[UIImage imageWithName:@"return" tableName:@"btable1 2"] forState:UIControlStateNormal];
-    [returnButton setImage:[UIImage imageWithName:@"return_on" tableName:@"btable1 2"] forState:UIControlStateHighlighted];
+    [returnButton setImage:[UIImage imageWithName:@"back" tableName:@"btable 2"] forState:UIControlStateNormal];
+    [returnButton setImage:[UIImage imageWithName:@"back_on" tableName:@"btable 2"] forState:UIControlStateHighlighted];
     
     [createButton setImage:[UIImage imageWithName:@"create" tableName:@"hall 2"] forState:UIControlStateNormal];
     [createButton setImage:[UIImage imageWithName:@"create_on" tableName:@"hall 2"] forState:UIControlStateHighlighted];
@@ -229,7 +229,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (pageGames) {
         if (indexPath.row < self.games.count) {
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];

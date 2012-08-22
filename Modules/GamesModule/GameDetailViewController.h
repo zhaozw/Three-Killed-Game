@@ -22,6 +22,9 @@
     IBOutlet UIButton *dianjiangButton;
     IBOutlet UIButton *backButton;
     IBOutlet UIButton *charactorButton;
+    IBOutlet UIButton *closeButton;
+    IBOutlet UIButton *openButton;
+    IBOutlet UIButton *onOneOneButton;
     IBOutlet UIScrollView *tableContentView;
     
     NSMutableArray *feakAllRoles;
@@ -32,4 +35,9 @@
 
 - (IBAction)navBackButtonClicked:(id)sender;
 - (IBAction)refreshButtonClicked:(id)sender;
+- (IBAction)openButtonClicked:(id)sender;
+- (IBAction)closeButtonClicked:(id)sender;
+- (IBAction)finishButtonClicked:(id)sender;
+- (IBAction)oneOnoneButtonClicked:(id)sender;
+
 @end
