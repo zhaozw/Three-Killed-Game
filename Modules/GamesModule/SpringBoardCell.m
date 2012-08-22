@@ -24,25 +24,28 @@
 {
     self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.iconView = [[[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 70, 72)] autorelease];
+        self.iconView = [[[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 76, 54)] autorelease];
         self.iconView.backgroundColor = [UIColor clearColor];
-        self.iconView.layer.cornerRadius = 2;
+        self.iconView.layer.cornerRadius = 8;
         self.iconView.layer.masksToBounds = YES;
         self.iconView.alpha = 0.5;
         [self.contentView addSubview:self.iconView];
         
-        self.nameLabel = [[[UILabel alloc] initWithFrame:CGRectMake(70, 2, 16, 70)] autorelease];
-        self.nameLabel.layer.cornerRadius = 2;
+        self.nameLabel = [[[UILabel alloc] initWithFrame:CGRectMake(2, 56, 76, 12)] autorelease];
+        self.nameLabel.layer.cornerRadius = 8;
         self.nameLabel.layer.masksToBounds = YES;
+        self.nameLabel.textAlignment = UITextAlignmentCenter;
         self.iconView.alpha = 0.5;
         self.nameLabel.backgroundColor = [UIColor clearColor];
-        self.nameLabel.textColor = [UIColor whiteColor];
+        self.nameLabel.textColor = [UIColor yellowColor];
+        self.nameLabel.font = [UIFont boldSystemFontOfSize:12];
         [self.contentView addSubview:self.nameLabel];
         
+        self.layer.cornerRadius = 8;
+        self.layer.masksToBounds = YES;
+        self.backgroundColor = [UIColor clearColor];
+        self.contentView.alpha = 0.5;
         self.contentView.backgroundColor = [UIColor clearColor];
-        
-        self.contentView.opaque = NO;
-        self.opaque = NO;
         self.selectionStyle = AQGridViewCellSelectionStyleBlueGray;
     }
     return self;

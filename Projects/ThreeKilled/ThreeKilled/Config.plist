@@ -13,7 +13,18 @@
 	<dict>
 		<key>NewGameModule</key>
 		<dict>
-			<key>RoleTypeTable</key>
+			<key>RoleCharactorTypeTable</key>
+			<dict>
+				<key>1</key>
+				<string>zhongchen</string>
+				<key>2</key>
+				<string>zhugong</string>
+				<key>3</key>
+				<string>neijian</string>
+				<key>4</key>
+				<string>fanzei</string>
+			</dict>
+			<key>RoleDeadTypeTable</key>
 			<dict>
 				<key>1</key>
 				<string>zhongchen_dead</string>

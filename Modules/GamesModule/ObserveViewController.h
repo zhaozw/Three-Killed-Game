@@ -37,14 +37,6 @@
 @property (nonatomic, retain)  GameInstance *currentGame;
 @property (nonatomic, retain)  GameRoleInstance *currentRole;
 
-//@property (nonatomic, retain)  IBOutlet UITableView *listView;
-//@property (nonatomic, retain)  IBOutlet UIView *tableFooterView;
-//@property (nonatomic, retain)  IBOutlet UIButton *openButton;
-//@property (nonatomic, retain)  IBOutlet UIButton *myRoleButton;
-//@property (nonatomic, retain)  IBOutlet UIButton *finishButton;
-//@property (nonatomic, retain)  IBOutlet UIButton *closeButton;
-//@property (nonatomic, retain)  IBOutlet UIButton *oneOnOneButton;
-
 - (IBAction)open:(id)sender;
 - (IBAction)finish:(id)sender;
 - (IBAction)oneOnone:(id)sender;

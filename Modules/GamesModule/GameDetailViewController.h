@@ -21,6 +21,7 @@
     IBOutlet UIButton *begainButton;
     IBOutlet UIButton *dianjiangButton;
     IBOutlet UIButton *backButton;
+    IBOutlet UIButton *charactorButton;
     IBOutlet UIScrollView *tableContentView;
     
     NSMutableArray *feakAllRoles;

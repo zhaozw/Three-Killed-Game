@@ -72,7 +72,25 @@
     if (modulesDictionary) {
         NSDictionary *aModule = [modulesDictionary dictionaryForKey:@"NewGameModule"];
         if (aModule) {
-            NSDictionary *table = [aModule dictionaryForKey:@"RoleTypeTable"];
+            NSDictionary *table = [aModule dictionaryForKey:@"RoleDeadTypeTable"];
+            if (table) {
+                return [table forcedStringForKey:roleID];
+            }
+        }
+    }
+    return nil;
+}
+
+- (NSString *)charactorKeyWithRoleID:(NSString *)roleID {
+    if (!_appConfig) {
+        NSString *mainFile = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];    
+        _appConfig = [[NSDictionary alloc] initWithContentsOfFile:mainFile];
+    }
+    NSDictionary *modulesDictionary = [_appConfig dictionaryForKey:@"Modules"];
+    if (modulesDictionary) {
+        NSDictionary *aModule = [modulesDictionary dictionaryForKey:@"NewGameModule"];
+        if (aModule) {
+            NSDictionary *table = [aModule dictionaryForKey:@"RoleCharactorTypeTable"];
             if (table) {
                 return [table forcedStringForKey:roleID];
             }

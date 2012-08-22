@@ -39,6 +39,7 @@
 - (NSString *)host;
 - (NSInteger)numberOfRolesWithGameTypeID:(NSString *)gameTypeID;
 - (NSString *)roleDeadKeyWithRoleID:(NSString *)roleID;
+- (NSString *)charactorKeyWithRoleID:(NSString *)roleID;
 + (void)alertWithException:(NSString *)exception;
 + (BOOL)apiLibrary:(BOOL *)status
           metError:(NSString **)error

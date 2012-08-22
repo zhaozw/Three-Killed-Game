@@ -74,6 +74,7 @@
 								<string key="NSFrame">{{20, 200}, {80, 30}}</string>
 								<reference key="NSSuperview" ref="873789252"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -128,6 +129,7 @@
 								<string key="NSFrame">{{80, 5}, {80, 80}}</string>
 								<reference key="NSSuperview" ref="873789252"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="871463848"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -325,7 +327,7 @@
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
-				<string key="-1.CustomClassName">NewGameViewController</string>
+				<string key="-1.CustomClassName">ObserveViewController</string>
 				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -370,32 +372,52 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">IconGrid</string>
-					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/IconGrid.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NewGameViewController</string>
+					<string key="className">ObserveViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">navBackButtonClicked:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">navBackButtonClicked:</string>
-						<object class="IBActionInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="close:">id</string>
+						<string key="finish:">id</string>
+						<string key="myRole:">id</string>
+						<string key="navBackButtonClicked:">id</string>
+						<string key="oneOnone:">id</string>
+						<string key="open:">id</string>
+						<string key="refreshButtonClicked:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="close:">
+							<string key="name">close:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="finish:">
+							<string key="name">finish:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="myRole:">
+							<string key="name">myRole:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="navBackButtonClicked:">
 							<string key="name">navBackButtonClicked:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-					</object>
+						<object class="IBActionInfo" key="oneOnone:">
+							<string key="name">oneOnone:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="open:">
+							<string key="name">open:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="refreshButtonClicked:">
+							<string key="name">refreshButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="backButton">UIButton</string>
 						<string key="begainButton">UIButton</string>
 						<string key="dianjiangButton">UIButton</string>
-						<string key="iconView">IconGrid</string>
+						<string key="iconView">AQGridView</string>
 						<string key="menuContainer">UIImageView</string>
 						<string key="navTitleBar">UIImageView</string>
 					</dictionary>
@@ -414,7 +436,7 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="iconView">
 							<string key="name">iconView</string>
-							<string key="candidateClassName">IconGrid</string>
+							<string key="candidateClassName">AQGridView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="menuContainer">
 							<string key="name">menuContainer</string>
@@ -427,7 +449,7 @@
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NewGameViewController.h</string>
+						<string key="minorKey">./Classes/ObserveViewController.h</string>
 					</object>
 				</object>
 			</array>

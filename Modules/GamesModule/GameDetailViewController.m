@@ -48,7 +48,7 @@
     iconView.padding = GridPaddingMake(17, 17, 17, 17);
     iconView.spacing = GridSpacingMake(16, 16);
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"game_bg.png"]];
-    navTitleBar.image = [UIImage imageWithName:@"titlebar" tableName:@"btable1 2"];
+    navTitleBar.image = [UIImage imageWithName:@"sanguosha" tableName:@"btable 2"];
     navTitleBar.backgroundColor = [UIColor clearColor];
     
     menuContainer.image = [UIImage imageWithName:@"frame" tableName:@"table1 2"];
@@ -99,28 +99,12 @@
         CGRect frame = CGRectMake(0, 0, 90, 80);
         UIImageView *imageView = [[[UIImageView alloc] initWithFrame:frame] autorelease];
         UIImage *backgroundImage = nil;
-        
-        UIImageView *portriatView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 70, 60)];
-        portriatView.image = [UIImage imageWithName:@"female_face" tableName:@"utl 2"];
-        portriatView.layer.cornerRadius = 2;
-        portriatView.layer.masksToBounds = YES;
-        portriatView.backgroundColor = [UIColor blackColor];
-        portriatView.alpha = 0.5;
-        [imageView addSubview:portriatView];
-        
-        UILabel *seatlabel = [[[UILabel alloc] initWithFrame:CGRectMake(2, 60, 69, 18)] autorelease];
-        seatlabel.textColor = [UIColor yellowColor];
-        seatlabel.font = [UIFont boldSystemFontOfSize:12];
-        [seatlabel sizeToFit];
-        seatlabel.backgroundColor = [UIColor clearColor];
-        [imageView addSubview:seatlabel];
-        
         if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
             backgroundImage = [UIImage imageWithName:[[APILibrary sharedInstance] roleDeadKeyWithRoleID:aRole.roleID] tableName:@"gameIcon 2"];
-            seatlabel.text = [NSString stringWithFormat:@"%@ By:%@",aRole.userName,[self roleInstanceUserNameAtUserID:aRole.killedBy]];
+            //seatlabel.text = [NSString stringWithFormat:@"%@ By:%@",aRole.userName,[self roleInstanceUserNameAtUserID:aRole.killedBy]];
         } else {
             backgroundImage = [UIImage imageWithName:@"portriat" tableName:@"hall 2"];
-            seatlabel.text = aRole.userName;
+            //seatlabel.text = aRole.userName;
         }
         imageView.image = backgroundImage;
         imageView.layer.cornerRadius = 5;
@@ -128,6 +112,30 @@
         imageView.backgroundColor = [UIColor blackColor];
         imageView.alpha = 0.5;
         
+        UIImageView *portriatView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 70, 60)];
+        portriatView.image = [UIImage imageWithName:@"female_face" tableName:@"utl 2"];
+        portriatView.layer.cornerRadius = 5;
+        portriatView.layer.masksToBounds = YES;
+        portriatView.backgroundColor = [UIColor blackColor];
+        portriatView.alpha = 0.5;
+        [imageView addSubview:portriatView];
+        
+        UILabel *seatlabel = [[[UILabel alloc] initWithFrame:CGRectMake(2, 56, 69, 24)] autorelease];
+        seatlabel.textColor = [UIColor yellowColor];
+        seatlabel.font = [UIFont boldSystemFontOfSize:10];
+        seatlabel.numberOfLines = 2;
+        if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
+            seatlabel.text = [NSString stringWithFormat:@"%@ By:%@",aRole.userName,[self roleInstanceUserNameAtUserID:aRole.killedBy]];
+        } else {
+            seatlabel.text = aRole.userName;
+        }
+        
+        seatlabel.textAlignment = UITextAlignmentCenter;
+        
+        seatlabel.backgroundColor = [UIColor clearColor];
+        [imageView addSubview:seatlabel];
+        
+
         UILabel *namelabel = [[[UILabel alloc] initWithFrame:CGRectMake(73, 7, 13, 60)] autorelease];
         namelabel.text = [NSString stringWithFormat:@"%@号位",aRole.seatNum];
         namelabel.textColor = [UIColor yellowColor];
@@ -256,6 +264,8 @@
     self.currentRole = aRole;
     self.currentGame.name = [role forcedStringForKey:@"game_name"];
     self.currentGame.gameTypeID = [role forcedStringForKey:@"game_type_id"];
+    [charactorButton setImage:[UIImage imageWithName:[[APILibrary sharedInstance] charactorKeyWithRoleID:self.currentRole.roleID] tableName:@"selcharacter"] forState:UIControlStateNormal];
+    [charactorButton setImage:[UIImage imageWithName:[[APILibrary sharedInstance] charactorKeyWithRoleID:self.currentRole.roleID] tableName:@"selcharacter"] forState:UIControlStateHighlighted];
 }
 
 - (void)apiLibraryDidReceivedError:(NSString *)error {
