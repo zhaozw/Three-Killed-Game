@@ -99,6 +99,23 @@
     return nil;
 }
 
+- (NSString *)yongGuanNameWithRank:(NSString *)rank {
+    if (!_appConfig) {
+        NSString *mainFile = [[NSBundle mainBundle] pathForResource:@"Config" ofType:@"plist"];    
+        _appConfig = [[NSDictionary alloc] initWithContentsOfFile:mainFile];
+    }
+    NSDictionary *experienceDictionary = [_appConfig dictionaryForKey:@"LevelExperience"];
+    if (experienceDictionary) {
+        NSDictionary *experience = [experienceDictionary dictionaryForKey:@"YongGuan"];
+        if (experience) {
+            if (experience) {
+                return [experience forcedStringForKey:rank];
+            }
+        }
+    }
+    return nil;
+}
+
 + (void)alertWithException:(NSString *)exception {
     NSString *title = NSLocalizedString(@"Exception", nil);    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title 

@@ -40,6 +40,7 @@
 - (NSInteger)numberOfRolesWithGameTypeID:(NSString *)gameTypeID;
 - (NSString *)roleDeadKeyWithRoleID:(NSString *)roleID;
 - (NSString *)charactorKeyWithRoleID:(NSString *)roleID;
+- (NSString *)yongGuanNameWithRank:(NSString *)rank;
 + (void)alertWithException:(NSString *)exception;
 + (BOOL)apiLibrary:(BOOL *)status
           metError:(NSString **)error

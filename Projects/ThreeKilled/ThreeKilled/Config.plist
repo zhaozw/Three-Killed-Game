@@ -56,5 +56,39 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>LevelExperience</key>
+	<dict>
+		<key>YongGuan</key>
+		<dict>
+			<key>1</key>
+			<string>狂\n战\n士</string>
+			<key>2</key>
+			<string>龙\n牙\n精\n英</string>
+			<key>3</key>
+			<string>虎\n牙\n精\n英</string>
+			<key>4</key>
+			<string>狼\n牙\n精\n英</string>
+			<key>5</key>
+			<string>铁\n血\n精\n英</string>
+			<key>6</key>
+			<string>武\n士\n精\n英</string>
+			<key>7</key>
+			<string>镜\n武\n士</string>
+			<key>8</key>
+			<string>银\n盔\n武\n士</string>
+			<key>9</key>
+			<string>钢\n甲\n武\n士</string>
+			<key>10</key>
+			<string>铜\n盔\n武\n士</string>
+			<key>11</key>
+			<string>革\n甲\n武\n士</string>
+			<key>12</key>
+			<string>布\n衣\n武\n士</string>
+			<key>13</key>
+			<string>钝\n刀\n武\n士</string>
+			<key>14</key>
+			<string>落\n魄\n武\n士</string>
+		</dict>
+	</dict>
 </dict>
 </plist>
