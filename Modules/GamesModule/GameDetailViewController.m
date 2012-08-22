@@ -53,16 +53,18 @@
     
     menuContainer.image = [UIImage imageWithName:@"frame" tableName:@"table1 2"];
     menuContainer.backgroundColor = [UIColor clearColor];
-    [begainButton setImage:[UIImage imageWithName:@"kaishi" tableName:@"table 2"] forState:UIControlStateNormal];
-    [begainButton setImage:[UIImage imageWithName:@"kaishi_on" tableName:@"table 2"] forState:UIControlStateHighlighted];
-    [dianjiangButton setImage:[UIImage imageWithName:@"dianjiang" tableName:@"table 2"] forState:UIControlStateNormal];
-    [dianjiangButton setImage:[UIImage imageWithName:@"dianjiang_on" tableName:@"table 2"] forState:UIControlStateHighlighted];
+    [begainButton setImage:[UIImage imageWithName:@"refresh" tableName:@"table_2"] forState:UIControlStateNormal];
+    [begainButton setImage:[UIImage imageWithName:@"refresh_on" tableName:@"table_2"] forState:UIControlStateHighlighted];
+    [dianjiangButton setImage:[UIImage imageWithName:@"finish" tableName:@"table_2"] forState:UIControlStateNormal];
+    [dianjiangButton setImage:[UIImage imageWithName:@"finish_on" tableName:@"table_2"] forState:UIControlStateHighlighted];
     [backButton setImage:[UIImage imageWithName:@"back_on" tableName:@"btable 2"] forState:UIControlStateNormal];
     [backButton setImage:[UIImage imageWithName:@"back" tableName:@"btable 2"] forState:UIControlStateHighlighted];
     [closeButton setImage:[UIImage imageWithName:@"close" tableName:@"table 2"] forState:UIControlStateNormal];
     [closeButton setImage:[UIImage imageWithName:@"close_on" tableName:@"table 2"] forState:UIControlStateHighlighted];
     [openButton setImage:[UIImage imageWithName:@"open" tableName:@"table 2"] forState:UIControlStateNormal];
     [openButton setImage:[UIImage imageWithName:@"open_on" tableName:@"table 2"] forState:UIControlStateHighlighted];
+    [onOneOneButton setImage:[UIImage imageWithName:@"dantiao" tableName:@"table_2"] forState:UIControlStateNormal];
+    [onOneOneButton setImage:[UIImage imageWithName:@"dantiao_on" tableName:@"table_2"] forState:UIControlStateHighlighted];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self performSelector:@selector(observeGameRequest) withObject:nil afterDelay:0.5];
 }

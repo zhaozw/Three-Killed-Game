@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>refresh</key>
+	<string>81,180,82,82</string>
+	<key>refresh_on</key>
+	<string>161,180,82,82</string>
+	<key>finish</key>
+	<string>0,261,56,56</string>
+	<key>finish_on</key>
+	<string>56,261,56,56</string>
+	<key>dantiao</key>
+	<string>124,332,54,26</string>
+	<key>dantiao_on</key>
+	<string>181,332,54,26</string>
+</dict>
+</plist>

@@ -37,6 +37,10 @@
 		066D5EC815DFE5DC0068FB3D /* table 2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 066D5EC715DFE5DC0068FB3D /* table 2.plist */; };
 		066D5ECA15DFE6390068FB3D /* table1 2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 066D5EC915DFE6390068FB3D /* table1 2.plist */; };
 		066D5ECC15DFE6CE0068FB3D /* utl 2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 066D5ECB15DFE6CE0068FB3D /* utl 2.plist */; };
+		06FE307A15E59D8D00DE5358 /* hall_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 06FE307815E59D8D00DE5358 /* hall_2.png */; };
+		06FE307B15E59D8D00DE5358 /* table_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 06FE307915E59D8D00DE5358 /* table_2.png */; };
+		06FE307E15E59DA500DE5358 /* hall_2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06FE307D15E59DA500DE5358 /* hall_2.plist */; };
+		06FE308015E59DB300DE5358 /* table_2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06FE307F15E59DB300DE5358 /* table_2.plist */; };
 		4E16A29015E37BED007A7754 /* AQGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E16A27C15E37BED007A7754 /* AQGridView.m */; };
 		4E16A29115E37BED007A7754 /* AQGridViewAnimatorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E16A27E15E37BED007A7754 /* AQGridViewAnimatorItem.m */; };
 		4E16A29215E37BED007A7754 /* AQGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E16A28115E37BED007A7754 /* AQGridViewCell.m */; };
@@ -189,6 +193,10 @@
 		066D5EC715DFE5DC0068FB3D /* table 2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "table 2.plist"; sourceTree = "<group>"; };
 		066D5EC915DFE6390068FB3D /* table1 2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "table1 2.plist"; sourceTree = "<group>"; };
 		066D5ECB15DFE6CE0068FB3D /* utl 2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "utl 2.plist"; sourceTree = "<group>"; };
+		06FE307815E59D8D00DE5358 /* hall_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hall_2.png; sourceTree = "<group>"; };
+		06FE307915E59D8D00DE5358 /* table_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table_2.png; sourceTree = "<group>"; };
+		06FE307D15E59DA500DE5358 /* hall_2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hall_2.plist; sourceTree = "<group>"; };
+		06FE307F15E59DB300DE5358 /* table_2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = table_2.plist; sourceTree = "<group>"; };
 		4E16A27915E37BED007A7754 /* AQGridView+CellLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AQGridView+CellLayout.h"; sourceTree = "<group>"; };
 		4E16A27A15E37BED007A7754 /* AQGridView+CellLocationDelegation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AQGridView+CellLocationDelegation.h"; sourceTree = "<group>"; };
 		4E16A27B15E37BED007A7754 /* AQGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQGridView.h; sourceTree = "<group>"; };
@@ -417,6 +425,8 @@
 		066D5E9915DFDF870068FB3D /* contrib */ = {
 			isa = PBXGroup;
 			children = (
+				06FE307815E59D8D00DE5358 /* hall_2.png */,
+				06FE307915E59D8D00DE5358 /* table_2.png */,
 				0651FAA815E05ACA008613B4 /* result.png */,
 				066D5E9A15DFDF870068FB3D /* btable 2.png */,
 				066D5E9B15DFDF870068FB3D /* btable.png */,
@@ -447,6 +457,8 @@
 				066D5EC715DFE5DC0068FB3D /* table 2.plist */,
 				066D5EC915DFE6390068FB3D /* table1 2.plist */,
 				066D5ECB15DFE6CE0068FB3D /* utl 2.plist */,
+				06FE307D15E59DA500DE5358 /* hall_2.plist */,
+				06FE307F15E59DB300DE5358 /* table_2.plist */,
 			);
 			path = contrib;
 			sourceTree = "<group>";
@@ -987,6 +999,10 @@
 				0651FAA915E05ACA008613B4 /* result.png in Resources */,
 				0651FAAB15E066B8008613B4 /* hall 2.plist in Resources */,
 				0603996B15E2F46500C61F46 /* gameIcon.plist in Resources */,
+				06FE307A15E59D8D00DE5358 /* hall_2.png in Resources */,
+				06FE307B15E59D8D00DE5358 /* table_2.png in Resources */,
+				06FE307E15E59DA500DE5358 /* hall_2.plist in Resources */,
+				06FE308015E59DB300DE5358 /* table_2.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
