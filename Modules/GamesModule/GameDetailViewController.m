@@ -227,7 +227,7 @@
     if (control.tag < self.feakAllRoles.count) {
         GameRoleInstance *aRole = [self.feakAllRoles objectAtIndex:control.tag];
         if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"请注意" 
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"注意" 
                                                                 message:@"确定要复活角色吗？" 
                                                                delegate:self 
                                                       cancelButtonTitle:@"取消" 

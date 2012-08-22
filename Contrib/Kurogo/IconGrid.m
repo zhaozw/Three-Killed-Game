@@ -175,7 +175,7 @@ maxColumns = _maxColumns, alignment = _alignment, icons = _icons;
         rowView.hidden = NO;
         CGRect oldFrame = rowView.frame;
         rowView.frame = originFrame;
-        [UIView animateWithDuration:1.5 
+        [UIView animateWithDuration:0.5 
                               delay:0 
                             options:UIViewAnimationOptionLayoutSubviews
                          animations:^{
