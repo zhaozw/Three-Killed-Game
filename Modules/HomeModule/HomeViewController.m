@@ -209,16 +209,29 @@
     }
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.contentView.bounds];
     cell.selectedBackgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"cellselectedbkg" tableName:@"hall 2"]];
-    cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"cellbkg" tableName:@"hall 2"]];
     cell.textLabel.textColor = [UIColor whiteColor];
     if (pageGames) {
         GameInstance *aGame = [self.games objectAtIndex:indexPath.row];
         cell.imageView.image = [aGame statusImage];
         cell.textLabel.text = [NSString stringWithFormat:@"#%@ %@",aGame.gameID,aGame.name];
+        cell.accessoryView = nil;
     } else {
         RankingData *aRanking = [self.rankings objectAtIndex:indexPath.row];
         cell.imageView.image = nil;
-        cell.textLabel.text = [NSString stringWithFormat:@"%d. %@ %@          %d",indexPath.row + 1, aRanking.firstName,aRanking.lastName,aRanking.credits.integerValue];
+        cell.textLabel.text = [NSString stringWithFormat:@"%d. %@ %@",indexPath.row + 1, aRanking.firstName,aRanking.lastName];
+        UIImageView *accessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, tableView.rowHeight, tableView.rowHeight)];
+        accessoryView.image = [UIImage imageWithName:@"accessary" tableName:@"hall_2"];
+        accessoryView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"cellbkg" tableName:@"hall 2"]];
+        UILabel *numberLabel = [[[UILabel alloc] initWithFrame:CGRectMake(2, 1,CGRectGetWidth(accessoryView.frame) - 2, CGRectGetHeight(accessoryView.frame) - 10)] autorelease];
+        numberLabel.backgroundColor = [UIColor clearColor];
+        numberLabel.textAlignment = UITextAlignmentCenter;
+        numberLabel.textColor = [UIColor yellowColor];
+        numberLabel.font = [UIFont boldSystemFontOfSize:12];
+        numberLabel.text = aRanking.credits.debugDescription;
+        [accessoryView addSubview:numberLabel];
+        
+        cell.accessoryView = accessoryView;
+        
     }
 
     return cell;

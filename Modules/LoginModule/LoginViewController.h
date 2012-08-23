@@ -13,6 +13,7 @@
     IBOutlet UITextField *password;
     IBOutlet UIButton *login;
     IBOutlet UIButton *cancel;
+    IBOutlet UIImageView *logo;
 }
 @property (nonatomic, retain)  IBOutlet UIImageView *inputBackgroundView;
 @property (nonatomic, retain)  IBOutlet UIImageView *userNameBGView;

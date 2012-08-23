@@ -11,6 +11,7 @@
 #import "MBProgressHUD.h"
 #import "HomeViewController.h"
 #import "AppDelegate+TKAdditions.h"
+#import "UIKit+KGOAdditions.h"
 @interface LoginViewController ()
 
 @end
@@ -46,7 +47,7 @@
     [cancel setImage:cancelImageNormal forState:UIControlStateNormal];
     [cancel setImage:cancelImageHighlight forState:UIControlStateHighlighted];
     
-    
+    logo.image = [UIImage imageWithName:@"sanguosha" tableName:@"btable 2"];
 }
 
 - (void)viewDidUnload
