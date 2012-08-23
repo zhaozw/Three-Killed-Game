@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "APILibrary.h"
 #import "IconGrid.h"
-@interface NewGameViewController : UIViewController <APILibraryDelegate,IconGridDelegate>{
+@interface NewGameViewController : UIViewController <APILibraryDelegate>{
     NSArray *allKindsGames;
     IBOutlet IconGrid *iconView;
     IBOutlet UIImageView *navTitleBar;

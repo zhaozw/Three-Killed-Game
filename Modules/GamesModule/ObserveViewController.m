@@ -12,7 +12,6 @@
 #import "GameRoleInstance.h"
 #import "GameUserData.h"
 #import "GameDetailViewController.h"
-#import "UnKilledViewController.h"
 #import "Foundation+KGOAdditions.h"
 #import "UIKit+KGOAdditions.h"
 #import "AppDelegate+TKAdditions.h"
@@ -403,77 +402,6 @@
         return 1;
     }
     return self.allRoles.count;
-}
-
-- (NSString  *)roleInstanceUserNameAtUserID:(NSString *)roleID {
-    if ([roleID isEqualToString:@"0"]) {
-        return @"God";
-    } else {
-        if (self.allRoles) {
-            for (GameRoleInstance *aRole in self.allRoles) {
-                if ([aRole.userID isEqualToString:roleID]) {
-                    return aRole.userName;
-                }
-            }
-        }
-    }
-    return nil;
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"gamescell";
-    UITableViewCell *cell = nil;
-    cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
-    }
-    GameRoleInstance *aRole = [self.allRoles objectAtIndex:indexPath.section];
-    if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
-        cell.textLabel.text = [NSString stringWithFormat:@"Killed by :%@ --->%@",[self roleInstanceUserNameAtUserID:aRole.killedBy],aRole.roleName];
-    } else {
-        if (indexPath.section == indexPath.row) {
-            cell.textLabel.text = [NSString stringWithFormat:@"Killed by god"];
-        } else {
-            GameRoleInstance *otherRole = [self.allRoles objectAtIndex:indexPath.row];
-            cell.textLabel.text = [NSString stringWithFormat:@"Killed by %@",otherRole.userName];
-        }
-        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-    }
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    GameRoleInstance *aRole = [self.allRoles objectAtIndex:indexPath.section];
-    if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
-        UnKilledViewController *unkilledVC = [[UnKilledViewController alloc] initWithNibName:@"UnKilledViewController" bundle:nil];
-        unkilledVC.currentRole = aRole;
-        unkilledVC.currentGame = self.currentGame;
-        [self.navigationController pushViewController:unkilledVC animated:YES];
-    } else {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        if (indexPath.section == indexPath.row) {
-            BOOL status = NO;
-            NSString *error = nil;
-            [APILibrary apiLibrary:&status 
-                          metError:&error 
-                              game:self.currentGame 
-                               who:aRole 
-                          killedBy:aRole 
-                      withDelegate:self];
-        } else {
-            GameRoleInstance *otherRole = [self.allRoles objectAtIndex:indexPath.row];
-            BOOL status = NO;
-            NSString *error = nil;
-            [APILibrary apiLibrary:&status 
-                          metError:&error 
-                              game:self.currentGame 
-                               who:aRole 
-                          killedBy:otherRole 
-                      withDelegate:self];
-        }
-    }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

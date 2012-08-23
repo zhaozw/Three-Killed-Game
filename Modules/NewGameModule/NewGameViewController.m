@@ -49,7 +49,6 @@
 {
     [super viewDidLoad];
     iconView.backgroundColor = [UIColor clearColor];
-    iconView.delegate = self;
     iconView.padding = GridPaddingMake(17, 17, 17, 17);
     iconView.spacing = GridSpacingMake(16, 16);
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"game_bg.png"]];
@@ -107,10 +106,6 @@
 
 - (void)handleAnimation {
     [iconView animationWithRect:CGRectMake(0, 0, 80, 40)];
-}
-
-- (void)iconGridFrameDidChange:(IconGrid *)iconGrid {
-    
 }
 
 - (void)layoutGames:(NSArray *)games
@@ -182,31 +177,5 @@
     NSString *error = nil;
     [APILibrary apiLibrary:&status metError:&error createWithGameTypeID:gameID withDelegate:self];
 }
-
-//#pragma mark - UITableView
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return self.allKindsGames.count;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    static NSString *identifier = @"asdfgh";
-//    UITableViewCell *cell = nil;
-//    cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-//    if (!cell) {
-//        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
-//    }
-//    GameInstance *aGame = [self.allKindsGames objectAtIndex:indexPath.row];
-//    cell.textLabel.text = [NSString stringWithFormat:@"%@",aGame.name];
-//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//    return cell;
-//}
-//
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    GameInstance *aGame = [self.allKindsGames objectAtIndex:indexPath.row];
-//    [self handleCreateGameWithGameTypeID:aGame.gameTypeID];
-//}
-
-
 
 @end

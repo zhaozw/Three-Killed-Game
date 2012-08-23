@@ -136,8 +136,6 @@
 		4E9A51F815DC875B00A0D4A1 /* input.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51F515DC875A00A0D4A1 /* input.png */; };
 		4E9A51F915DC875B00A0D4A1 /* title_back 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51F615DC875A00A0D4A1 /* title_back 2.png */; };
 		4E9A51FA15DC875B00A0D4A1 /* title_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51F715DC875B00A0D4A1 /* title_back.png */; };
-		4E9A522815DCC14400A0D4A1 /* UnKilledViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9A522615DCC14400A0D4A1 /* UnKilledViewController.m */; };
-		4E9A522915DCC14400A0D4A1 /* UnKilledViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A522715DCC14400A0D4A1 /* UnKilledViewController.xib */; };
 		4E9A5FB015D9DBD900BD8EC6 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A5FAF15D9DBD900BD8EC6 /* Config.plist */; };
 		4E9BDE4615DB863D00D2F076 /* GameRoleInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDE4515DB863D00D2F076 /* GameRoleInstance.m */; };
 		4E9BDE4B15DB8D9B00D2F076 /* ObserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDE4915DB8D9B00D2F076 /* ObserveViewController.m */; };
@@ -362,9 +360,6 @@
 		4E9A51F515DC875A00A0D4A1 /* input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input.png; sourceTree = "<group>"; };
 		4E9A51F615DC875A00A0D4A1 /* title_back 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title_back 2.png"; sourceTree = "<group>"; };
 		4E9A51F715DC875B00A0D4A1 /* title_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_back.png; sourceTree = "<group>"; };
-		4E9A522515DCC14400A0D4A1 /* UnKilledViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnKilledViewController.h; sourceTree = "<group>"; };
-		4E9A522615DCC14400A0D4A1 /* UnKilledViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnKilledViewController.m; sourceTree = "<group>"; };
-		4E9A522715DCC14400A0D4A1 /* UnKilledViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnKilledViewController.xib; sourceTree = "<group>"; };
 		4E9A5FAF15D9DBD900BD8EC6 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		4E9BDE4415DB863D00D2F076 /* GameRoleInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRoleInstance.h; sourceTree = "<group>"; };
 		4E9BDE4515DB863D00D2F076 /* GameRoleInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameRoleInstance.m; sourceTree = "<group>"; };
@@ -518,9 +513,6 @@
 				4E9BDE4815DB8D9B00D2F076 /* ObserveViewController.h */,
 				4E9BDE4915DB8D9B00D2F076 /* ObserveViewController.m */,
 				4E9BDE4A15DB8D9B00D2F076 /* ObserveViewController.xib */,
-				4E9A522515DCC14400A0D4A1 /* UnKilledViewController.h */,
-				4E9A522615DCC14400A0D4A1 /* UnKilledViewController.m */,
-				4E9A522715DCC14400A0D4A1 /* UnKilledViewController.xib */,
 			);
 			path = GamesModule;
 			sourceTree = "<group>";
@@ -958,7 +950,6 @@
 				4E9A51F815DC875B00A0D4A1 /* input.png in Resources */,
 				4E9A51F915DC875B00A0D4A1 /* title_back 2.png in Resources */,
 				4E9A51FA15DC875B00A0D4A1 /* title_back.png in Resources */,
-				4E9A522915DCC14400A0D4A1 /* UnKilledViewController.xib in Resources */,
 				4E34ABFF15DE403500374040 /* home_title_bar_reverse.png in Resources */,
 				4E34AC0015DE403500374040 /* home_title_bar.png in Resources */,
 				4E34AC0C15DE4CD300374040 /* game_bg.png in Resources */,
@@ -1068,7 +1059,6 @@
 				4E9BDE4B15DB8D9B00D2F076 /* ObserveViewController.m in Sources */,
 				4E9BDE4F15DB96EC00D2F076 /* GameUserData.m in Sources */,
 				4E9BDE5215DBABB700D2F076 /* RankingData.m in Sources */,
-				4E9A522815DCC14400A0D4A1 /* UnKilledViewController.m in Sources */,
 				4EFCAA9A15E20A77003A0A1A /* IconGrid.m in Sources */,
 				4E16A29015E37BED007A7754 /* AQGridView.m in Sources */,
 				4E16A29115E37BED007A7754 /* AQGridViewAnimatorItem.m in Sources */,

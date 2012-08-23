@@ -11,7 +11,6 @@
 #import "Foundation+KGOAdditions.h"
 #import "GameRoleInstance.h"
 #import "ObserveViewController.h"
-#import "UnKilledViewController.h"
 #import "Foundation+KGOAdditions.h"
 #import "UIKit+KGOAdditions.h"
 #import <QuartzCore/QuartzCore.h>
@@ -357,59 +356,6 @@
         }
     }
     return nil;
-}
-
-#pragma mark - UITableView
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6;
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"gamescell";
-    UITableViewCell *cell = nil;
-    cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
-    }
-    if (indexPath.row == 0) {
-        cell.textLabel.text = [NSString stringWithFormat:@"玩家:%@",self.currentRole.userName];
-    } else if (indexPath.row == 1) {
-        cell.textLabel.text = [NSString stringWithFormat:@"游戏:%@",self.currentRole.gameName];
-    } else if (indexPath.row == 2) {
-        cell.textLabel.text = [NSString stringWithFormat:@"身份:%@",self.currentRole.roleName];
-        cell.textLabel.textColor = [UIColor whiteColor];
-    } else if (indexPath.row == 3) {
-        cell.textLabel.text = [NSString stringWithFormat:@"座位:%@",self.currentRole.seatNum];
-    } else if (indexPath.row == 4){
-        if (self.currentRole.killedBy.length > 0 && ![self.currentRole.killedBy isEqualToString:@"0"]) {
-            cell.textLabel.text = [NSString stringWithFormat:@"Killed By:%@",[self roleInstanceUserNameAtUserID:self.currentRole.killedBy]];
-            cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-        } else {
-            cell.textLabel.text = @"恭喜您还活在场上!";
-        }
-    } else {
-        cell.textLabel.text = [NSString stringWithFormat:@"详细信息->"];
-        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-    }
-                  
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 5) {
-        ObserveViewController *observeVC = [[[ObserveViewController alloc] initWithNibName:@"ObserveViewController" bundle:nil] autorelease];
-        observeVC.currentGame = self.currentGame;
-        [self.navigationController pushViewController:observeVC animated:YES];
-    } else if (indexPath.row == 4) {
-        if (self.currentRole.killedBy.length > 0) {
-            UnKilledViewController *unkilledVC = [[[UnKilledViewController alloc] initWithNibName:@"UnKilledViewController" bundle:nil] autorelease];
-            unkilledVC.currentGame = self.currentGame;
-            unkilledVC.currentRole = self.currentRole;
-            [self.navigationController pushViewController:unkilledVC animated:YES];
-        }
-    }
 }
 
 - (void)handleUnkilledRequestWithRole:(GameRoleInstance *)role {
