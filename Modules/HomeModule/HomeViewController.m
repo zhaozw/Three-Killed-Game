@@ -24,6 +24,12 @@
 @implementation HomeViewController
 @synthesize games;
 @synthesize rankings;
+- (void)dealloc {
+    self.games = nil;
+    self.rankings = nil;
+    [_refreshHeaderView release];
+    [super dealloc];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -97,7 +103,7 @@
 {
     [super viewDidLoad];
     [self updateUserInterface];
-    return;
+    
     pageGames = YES;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
@@ -376,8 +382,11 @@
 #pragma mark EGORefreshTableHeaderDelegate Methods
 
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
-    [NSThread detachNewThreadSelector:@selector(requestGames) toTarget:self withObject:nil];
-    [NSThread detachNewThreadSelector:@selector(requestRanks) toTarget:self withObject:nil];
+    if (pageGames) {
+        [NSThread detachNewThreadSelector:@selector(requestGames) toTarget:self withObject:nil];
+    } else {
+        [NSThread detachNewThreadSelector:@selector(requestRanks) toTarget:self withObject:nil];
+    }
 }
 
 - (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
