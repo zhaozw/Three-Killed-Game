@@ -34,32 +34,11 @@
     return self;
 }
 
-- (void)requestGames {
-    [leftButton setHidden:YES];
-    [rightButton setHidden:NO];
-    BOOL status = NO;
-    NSString *error = nil;
-    [APILibrary apiLibrary:&status
-                  metError:&error
- getAvalibelGamesWithParam:nil
-              withDelegate:self];
-}
-
-- (void)requestRanks {
-    [leftButton setHidden:NO];
-    [rightButton setHidden:YES];
-    BOOL status = NO;
-    NSString *error = nil;
-    [APILibrary apiLibrary:&status metError:&error rankingWithDelegate:self];
-}
-
 - (void)viewDidAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+- (void)updateUserInterface {
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"game_bg.png"]];
     
     navTitleImageView.image = [UIImage imageWithName:@"titlebar" tableName:@"hall 2"];
@@ -82,7 +61,7 @@
     
     [createButton setImage:[UIImage imageWithName:@"create" tableName:@"hall 2"] forState:UIControlStateNormal];
     [createButton setImage:[UIImage imageWithName:@"create_on" tableName:@"hall 2"] forState:UIControlStateHighlighted];
-          
+    
     infoTopView.image = [UIImage imageWithName:@"portriat" tableName:@"hall 2"];
     infoTopView.backgroundColor = [UIColor clearColor];
     
@@ -99,10 +78,17 @@
     nameLabel.text = [APILibrary sharedInstance].userData.usrName;
     nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.textAlignment = UITextAlignmentCenter;
-    
+}
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self updateUserInterface];
+    pageGames = YES;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self performSelector:@selector(requestGames) withObject:nil afterDelay:0.5];
+    
+    [NSThread detachNewThreadSelector:@selector(requestGames) toTarget:self withObject:nil];
+    [NSThread detachNewThreadSelector:@selector(requestRanks) toTarget:self withObject:nil];
 }
 
 - (void)viewDidUnload
@@ -126,16 +112,21 @@
 
 #pragma mark - IBActions
 - (IBAction)previous:(id)sender {
-    if (!pageGames) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [self performSelector:@selector(requestGames) withObject:nil afterDelay:0.5];
-    }
+    pageGames = !pageGames;
+    [self detachNewThreadWithFlag:pageGames];
 }
 
 - (IBAction)next:(id)sender {
-    if (pageGames) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [self performSelector:@selector(requestRanks) withObject:nil afterDelay:0.5];
+    pageGames = !pageGames;
+    [self detachNewThreadWithFlag:pageGames];
+}
+
+- (void)detachNewThreadWithFlag:(BOOL)flag {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if (flag) {
+        [NSThread detachNewThreadSelector:@selector(requestGames) toTarget:self withObject:nil];
+    } else {
+        [NSThread detachNewThreadSelector:@selector(requestRanks) toTarget:self withObject:nil];
     }
 }
 
@@ -148,6 +139,56 @@
     [self.navigationController pushViewController:newGameVC animated:NO];
 }
 
+#pragma mark - Request
+- (void)requestGames {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	@synchronized(self) 
+    {
+        BOOL status = NO;
+        NSString *error = nil;
+        [APILibrary apiLibrary:&status
+                      metError:&error
+     getAvalibelGamesWithParam:nil
+                  withDelegate:self];
+	}
+	[pool release];
+}
+
+- (void)requestRanks {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	@synchronized(self) 
+    {
+        BOOL status = NO;
+        NSString *error = nil;
+        [APILibrary apiLibrary:&status metError:&error rankingWithDelegate:self];
+	}
+	[pool release];
+}
+
+#pragma mark -APILibraryDelegate
+- (void)apiLibraryDidReceivedResult:(id)result {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    pageGames = YES;
+    NSArray *results = (NSArray *)result;
+    NSMutableArray *container = [NSMutableArray array];
+    if (results) {
+        for (NSDictionary *gameDictionary in results) {
+            GameInstance *aGame = [[GameInstance alloc] init];
+            aGame.gameID = [gameDictionary forcedStringForKey:@"id"];
+            aGame.name = [gameDictionary forcedStringForKey:@"name"];
+            [container addObject:aGame];
+            [aGame release];
+        }
+    }
+    self.games = container;
+    [self performSelectorOnMainThread:@selector(updateData) withObject:nil waitUntilDone:NO];
+}
+
+- (void)apiLibraryDidReceivedError:(NSString *)error {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [APILibrary alertWithException:error];
+}
+
 - (void)apiLibraryDidReceivedJoinGameResult:(id)result {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     GameInstance *currentGame = [[[GameInstance alloc] init] autorelease];
@@ -158,8 +199,6 @@
 }
 
 - (void)apiLibraryDidReceivedRankingResult:(id)result {
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    pageGames = NO;
     NSArray *results = (NSArray *)result;
     NSMutableArray *container = [NSMutableArray array];
     for (NSDictionary *aRank in results) {
@@ -169,18 +208,7 @@
         [aRankData release];
     }
     self.rankings = container;
-    [listView reloadData];
-
-    NSInteger count = 1;
-    for (RankingData *data in self.rankings) {
-        if ([[data.firstName capitalizedString] isEqualToString:[[APILibrary sharedInstance].userData.usrName capitalizedString]]) {
-            acLabel.text = [[APILibrary sharedInstance] yongGuanNameWithRank:[NSString stringWithFormat:@"%d",count]];
-            [acLabel setNumberOfLines:0];
-            [acLabel sizeToFit];
-            acLabel.backgroundColor = [UIColor clearColor];
-        }
-        count++;
-    }
+    [self performSelectorOnMainThread:@selector(updateData) withObject:nil waitUntilDone:NO];
 }
 
 - (void)handleJoinGameWithGameInstance:(GameInstance *)aGame {
@@ -191,6 +219,21 @@
 
 
 #pragma mark - UITableView
+- (void)updateData {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    NSInteger count = 1;
+    for (RankingData *data in self.rankings) {
+        if ([[data.firstName capitalizedString] isEqualToString:[[APILibrary sharedInstance].userData.usrName capitalizedString]]) {
+            acLabel.text = [[APILibrary sharedInstance] yongGuanNameWithRank:[NSString stringWithFormat:@"%d",count]];
+            [acLabel setNumberOfLines:0];
+            [acLabel sizeToFit];
+            acLabel.backgroundColor = [UIColor clearColor];
+        }
+        count++;
+    }
+    [listView reloadData];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (pageGames) {
         return self.games.count;
@@ -246,29 +289,4 @@
         }
     }
 }
-
-#pragma mark -APILibraryDelegate
-- (void)apiLibraryDidReceivedResult:(id)result {
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    pageGames = YES;
-    NSArray *results = (NSArray *)result;
-    NSMutableArray *container = [NSMutableArray array];
-    if (results) {
-        for (NSDictionary *gameDictionary in results) {
-            GameInstance *aGame = [[GameInstance alloc] init];
-            aGame.gameID = [gameDictionary forcedStringForKey:@"id"];
-            aGame.name = [gameDictionary forcedStringForKey:@"name"];
-            [container addObject:aGame];
-            [aGame release];
-        }
-    }
-    self.games = container;
-    [listView reloadData];
-}
-
-- (void)apiLibraryDidReceivedError:(NSString *)error {
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    [APILibrary alertWithException:error];
-}
-
 @end
