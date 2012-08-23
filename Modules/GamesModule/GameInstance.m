@@ -33,7 +33,10 @@
 }
 
 - (UIImage *)statusImage {
-    return [UIImage imageWithName:@"green_status" tableName:@"btable 2"];
+    if (self.allRoles.count < self.playerCount.integerValue) {
+        return [UIImage imageWithName:@"green_status" tableName:@"btable 2"];
+    }
+    return [UIImage imageWithName:@"red_status" tableName:@"btable 2"];
 }
 
 @end

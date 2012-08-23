@@ -55,6 +55,8 @@
 				<integer>10</integer>
 			</dict>
 		</dict>
+		<key>HomeModule</key>
+		<dict/>
 	</dict>
 	<key>LevelExperience</key>
 	<dict>

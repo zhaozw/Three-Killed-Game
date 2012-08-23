@@ -30,11 +30,11 @@
     IBOutlet UILabel *nameLabel;
     IBOutlet UILabel *acLabel;
     
-    NSArray *games;
+    NSMutableArray *games;
     NSArray *rankings;
     BOOL pageGames;
 }
-@property (nonatomic, retain)  NSArray *games;
+@property (nonatomic, retain)  NSMutableArray *games;
 @property (nonatomic, retain)  NSArray *rankings;
 
 - (IBAction)previous:(id)sender;

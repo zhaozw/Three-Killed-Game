@@ -165,22 +165,36 @@
 	[pool release];
 }
 
+- (void)requestGameDetailWithGameID:(NSString *)gameID {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	@synchronized(self) 
+    {
+        BOOL status = NO;
+        NSString *error = nil;
+        [APILibrary apiLibrary:&status 
+                      metError:&error 
+         observeGameWithGameID:gameID 
+                  withDelegate:self];
+	}
+	[pool release];
+}
+
 #pragma mark -APILibraryDelegate
 - (void)apiLibraryDidReceivedResult:(id)result {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     pageGames = YES;
     NSArray *results = (NSArray *)result;
-    NSMutableArray *container = [NSMutableArray array];
+    self.games = [NSMutableArray array];
     if (results) {
         for (NSDictionary *gameDictionary in results) {
             GameInstance *aGame = [[GameInstance alloc] init];
             aGame.gameID = [gameDictionary forcedStringForKey:@"id"];
             aGame.name = [gameDictionary forcedStringForKey:@"name"];
-            [container addObject:aGame];
+            [NSThread detachNewThreadSelector:@selector(requestGameDetailWithGameID:) toTarget:self withObject:aGame.gameID];
+            [self.games addObject:aGame];
             [aGame release];
         }
     }
-    self.games = container;
     [self performSelectorOnMainThread:@selector(updateData) withObject:nil waitUntilDone:NO];
 }
 
@@ -215,6 +229,36 @@
     BOOL status = NO;
     NSString *error = nil;
     [APILibrary apiLibrary:&status metError:&error joinGameWithGameID:aGame.gameID withDelegate:self];
+}
+
+- (GameInstance *)gameInstanceWithGameID:(NSString *)gameID {
+    for (GameInstance *aGame in self.games) {
+        if ([aGame.gameID isEqualToString:gameID]) {
+            return aGame;
+        }
+    }
+    return nil;
+}
+
+- (void)apiLibraryDidReceivedObserveResult:(id)result {
+    GameInstance *aGame = [self gameInstanceWithGameID:[result forcedStringForKey:@"id"]];
+    if (aGame) {
+        aGame.playerCount = [result forcedNumberForKey:@"playerCount"];
+        NSDictionary *aResult = (NSDictionary *)result;
+        NSArray *players = [aResult arrayForKey:@"players"];
+        NSMutableArray *playerContainer = [NSMutableArray array];
+        for (NSDictionary *role in players) {
+            GameRoleInstance *aRole = [[GameRoleInstance alloc] init];
+            [aRole updateWithDictionary:role];
+            if ([[[APILibrary sharedInstance].userData.usrName capitalizedString] isEqualToString:[aRole.userName capitalizedString]]) {
+                continue;
+            }
+            [playerContainer addObject:aRole];
+            [aRole release];
+        }
+        aGame.allRoles = playerContainer;
+    }
+    [self performSelectorOnMainThread:@selector(updateData) withObject:nil waitUntilDone:NO];
 }
 
 
@@ -256,8 +300,19 @@
     if (pageGames) {
         GameInstance *aGame = [self.games objectAtIndex:indexPath.row];
         cell.imageView.image = [aGame statusImage];
-        cell.textLabel.text = [NSString stringWithFormat:@"#%@ %@",aGame.gameID,aGame.name];
-        cell.accessoryView = nil;
+        cell.textLabel.text = [NSString stringWithFormat:@"%@号房 %@",aGame.gameID,aGame.name];
+        
+        UIImageView *accessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, tableView.rowHeight, tableView.rowHeight)];
+        accessoryView.image = [UIImage imageWithName:@"accessary" tableName:@"hall_2"];
+        accessoryView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"cellbkg" tableName:@"hall 2"]];
+        UILabel *numberLabel = [[[UILabel alloc] initWithFrame:CGRectMake(2, 1,CGRectGetWidth(accessoryView.frame) - 2, CGRectGetHeight(accessoryView.frame) - 10)] autorelease];
+        numberLabel.backgroundColor = [UIColor clearColor];
+        numberLabel.textAlignment = UITextAlignmentCenter;
+        numberLabel.textColor = [UIColor yellowColor];
+        numberLabel.font = [UIFont boldSystemFontOfSize:12];
+        numberLabel.text = [NSString stringWithFormat:@"%d/%d",[aGame.allRoles count],aGame.playerCount.integerValue];
+        [accessoryView addSubview:numberLabel];
+        cell.accessoryView = accessoryView;
     } else {
         RankingData *aRanking = [self.rankings objectAtIndex:indexPath.row];
         cell.imageView.image = nil;
