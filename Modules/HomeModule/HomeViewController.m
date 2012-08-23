@@ -100,24 +100,9 @@
     nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.textAlignment = UITextAlignmentCenter;
     
-    acLabel.text = @"虎牙精英";
-    [acLabel setNumberOfLines:0];
-    [acLabel sizeToFit];
-    acLabel.backgroundColor = [UIColor clearColor];
-    
 
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self performSelector:@selector(requestGames) withObject:nil afterDelay:0.5];
-    //    UIImage *masthead = [[UIImage imageNamed:@"home_title_bar.png"] resizableImageWithCapInsets:(UIEdgeInsets)];
-    //    self.navigationItem.titleView = [[[UIImageView alloc] initWithImage:masthead] autorelease];
-    //    self.title = [NSString stringWithFormat:@"欢迎您:%@ %@",[APILibrary sharedInstance].userData.firstName,[APILibrary sharedInstance].userData.lastName];
-    //    GamesViewController *gamesVC = [[[GamesViewController alloc] initWithNibName:@"GamesViewController" bundle:nil] autorelease];
-    //    gamesVC.title = @"Games";
-    //    NewGameViewController *newgameVC = [[[NewGameViewController alloc] initWithNibName:@"NewGameViewController" bundle:nil] autorelease];
-    //    newgameVC.title = @"New Game";
-    //    RangkingsViewController *rangkingsVC = [[[RangkingsViewController alloc] initWithNibName:@"RangkingsViewController" bundle:nil] autorelease];
-    //    rangkingsVC.title = @"Rankings";
-    //    self.viewControllers = [NSArray arrayWithObjects:gamesVC,newgameVC,rangkingsVC, nil];
 }
 
 - (void)viewDidUnload
@@ -185,14 +170,17 @@
     }
     self.rankings = container;
     [listView reloadData];
-//    NSInteger count = 1;
-//    for (RankingData *data in self.rankings) {
-//        if ([[data.firstName lowercaseString] isEqualToString:[[APILibrary sharedInstance].userData.usrName lowercaseString]]) {
-//            acLabel.text = [[APILibrary sharedInstance] yongGuanNameWithRank:[NSString stringWithFormat:@"%d",count]];
-//        }
-//        count++;
-//    }
-    
+
+    NSInteger count = 1;
+    for (RankingData *data in self.rankings) {
+        if ([[data.firstName capitalizedString] isEqualToString:[[APILibrary sharedInstance].userData.usrName capitalizedString]]) {
+            acLabel.text = [[APILibrary sharedInstance] yongGuanNameWithRank:[NSString stringWithFormat:@"%d",count]];
+            [acLabel setNumberOfLines:0];
+            [acLabel sizeToFit];
+            acLabel.backgroundColor = [UIColor clearColor];
+        }
+        count++;
+    }
 }
 
 - (void)handleJoinGameWithGameInstance:(GameInstance *)aGame {

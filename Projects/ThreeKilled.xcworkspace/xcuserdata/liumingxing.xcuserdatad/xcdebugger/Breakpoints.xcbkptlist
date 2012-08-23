@@ -11,19 +11,6 @@
          timestampString = "367325934.312612"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "566"
-         endingLineNumber = "566"
-         landmarkName = "+apiLibrary:metError:finishWithGameID:withDelegate:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "../Modules/APIModule/APILibrary.m"
-         timestampString = "367325934.312612"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
          startingLineNumber = "527"
          endingLineNumber = "527"
          landmarkName = "+apiLibrary:metError:reopenWithGameID:withDelegate:"
