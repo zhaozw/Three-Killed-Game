@@ -63,6 +63,15 @@
 		4E34AC1815DE4DAF00374040 /* home_prexious_page_disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E34AC1415DE4DAE00374040 /* home_prexious_page_disable.png */; };
 		4E34AC1915DE4DAF00374040 /* home_prexious_page.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E34AC1515DE4DAF00374040 /* home_prexious_page.png */; };
 		4E34AC1B15DE4F5900374040 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E34AC1A15DE4F5900374040 /* QuartzCore.framework */; };
+		4E51C53415E60E7E0003ED16 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E51C52A15E60E7E0003ED16 /* EGORefreshTableHeaderView.m */; };
+		4E51C53515E60E7E0003ED16 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E51C52C15E60E7E0003ED16 /* blackArrow.png */; };
+		4E51C53615E60E7E0003ED16 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E51C52D15E60E7E0003ED16 /* blackArrow@2x.png */; };
+		4E51C53715E60E7E0003ED16 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E51C52E15E60E7E0003ED16 /* blueArrow.png */; };
+		4E51C53815E60E7E0003ED16 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E51C52F15E60E7E0003ED16 /* blueArrow@2x.png */; };
+		4E51C53915E60E7E0003ED16 /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E51C53015E60E7E0003ED16 /* grayArrow.png */; };
+		4E51C53A15E60E7E0003ED16 /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E51C53115E60E7E0003ED16 /* grayArrow@2x.png */; };
+		4E51C53B15E60E7E0003ED16 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E51C53215E60E7E0003ED16 /* whiteArrow.png */; };
+		4E51C53C15E60E7E0003ED16 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E51C53315E60E7E0003ED16 /* whiteArrow@2x.png */; };
 		4E69C82B15DA4BF4003EEE79 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C82A15DA4BF4003EEE79 /* MBProgressHUD.m */; };
 		4E69C83E15DA4C6E003EEE79 /* GameDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C82F15DA4C6E003EEE79 /* GameDetailViewController.m */; };
 		4E69C83F15DA4C6E003EEE79 /* GameDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E69C83015DA4C6E003EEE79 /* GameDetailViewController.xib */; };
@@ -231,6 +240,16 @@
 		4E34AC1415DE4DAE00374040 /* home_prexious_page_disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_prexious_page_disable.png; sourceTree = "<group>"; };
 		4E34AC1515DE4DAF00374040 /* home_prexious_page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_prexious_page.png; sourceTree = "<group>"; };
 		4E34AC1A15DE4F5900374040 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4E51C52915E60E7E0003ED16 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		4E51C52A15E60E7E0003ED16 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		4E51C52C15E60E7E0003ED16 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		4E51C52D15E60E7E0003ED16 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
+		4E51C52E15E60E7E0003ED16 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		4E51C52F15E60E7E0003ED16 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		4E51C53015E60E7E0003ED16 /* grayArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayArrow.png; sourceTree = "<group>"; };
+		4E51C53115E60E7E0003ED16 /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
+		4E51C53215E60E7E0003ED16 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
+		4E51C53315E60E7E0003ED16 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		4E69C82915DA4BF4003EEE79 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		4E69C82A15DA4BF4003EEE79 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		4E69C82E15DA4C6E003EEE79 /* GameDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDetailViewController.h; sourceTree = "<group>"; };
@@ -488,6 +507,47 @@
 			path = AQGridView;
 			sourceTree = "<group>";
 		};
+		4E51C52615E60E7E0003ED16 /* EGOTableViewPullRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				4E51C52715E60E7E0003ED16 /* Classes */,
+				4E51C52B15E60E7E0003ED16 /* Resources */,
+			);
+			path = EGOTableViewPullRefresh;
+			sourceTree = "<group>";
+		};
+		4E51C52715E60E7E0003ED16 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4E51C52815E60E7E0003ED16 /* View */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		4E51C52815E60E7E0003ED16 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E51C52915E60E7E0003ED16 /* EGORefreshTableHeaderView.h */,
+				4E51C52A15E60E7E0003ED16 /* EGORefreshTableHeaderView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4E51C52B15E60E7E0003ED16 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4E51C52C15E60E7E0003ED16 /* blackArrow.png */,
+				4E51C52D15E60E7E0003ED16 /* blackArrow@2x.png */,
+				4E51C52E15E60E7E0003ED16 /* blueArrow.png */,
+				4E51C52F15E60E7E0003ED16 /* blueArrow@2x.png */,
+				4E51C53015E60E7E0003ED16 /* grayArrow.png */,
+				4E51C53115E60E7E0003ED16 /* grayArrow@2x.png */,
+				4E51C53215E60E7E0003ED16 /* whiteArrow.png */,
+				4E51C53315E60E7E0003ED16 /* whiteArrow@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		4E69C82815DA4BF4003EEE79 /* MBP */ = {
 			isa = PBXGroup;
 			children = (
@@ -743,6 +803,7 @@
 		4EB2F73A15D8F26300FD9F05 /* Contrib */ = {
 			isa = PBXGroup;
 			children = (
+				4E51C52615E60E7E0003ED16 /* EGOTableViewPullRefresh */,
 				4E16A27815E37BED007A7754 /* AQGridView */,
 				4E69C90B15DA4DE0003EEE79 /* Kurogo */,
 				4E69C86215DA4D72003EEE79 /* ASIHTTP */,
@@ -994,6 +1055,14 @@
 				06FE307B15E59D8D00DE5358 /* table_2.png in Resources */,
 				06FE307E15E59DA500DE5358 /* hall_2.plist in Resources */,
 				06FE308015E59DB300DE5358 /* table_2.plist in Resources */,
+				4E51C53515E60E7E0003ED16 /* blackArrow.png in Resources */,
+				4E51C53615E60E7E0003ED16 /* blackArrow@2x.png in Resources */,
+				4E51C53715E60E7E0003ED16 /* blueArrow.png in Resources */,
+				4E51C53815E60E7E0003ED16 /* blueArrow@2x.png in Resources */,
+				4E51C53915E60E7E0003ED16 /* grayArrow.png in Resources */,
+				4E51C53A15E60E7E0003ED16 /* grayArrow@2x.png in Resources */,
+				4E51C53B15E60E7E0003ED16 /* whiteArrow.png in Resources */,
+				4E51C53C15E60E7E0003ED16 /* whiteArrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1071,6 +1140,7 @@
 				4E16A29815E37BED007A7754 /* NSIndexSet+AQIsSetContiguous.m in Sources */,
 				4E16A29915E37BED007A7754 /* UIColor+AQGridView.m in Sources */,
 				4E16A2B015E387D2007A7754 /* SpringBoardCell.m in Sources */,
+				4E51C53415E60E7E0003ED16 /* EGORefreshTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

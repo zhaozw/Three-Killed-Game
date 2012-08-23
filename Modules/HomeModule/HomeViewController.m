@@ -39,6 +39,19 @@
 }
 
 - (void)updateUserInterface {
+    if (_refreshHeaderView == nil) {
+		
+		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - listView.bounds.size.height, listView.frame.size.width, listView.bounds.size.height)];
+		view.delegate = self;
+        view.backgroundColor = [UIColor clearColor];
+		[listView addSubview:view];
+		_refreshHeaderView = view;
+		[view release];
+	}
+	
+	//  update the last update date
+	[_refreshHeaderView refreshLastUpdatedDate];
+    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"game_bg.png"]];
     
     navTitleImageView.image = [UIImage imageWithName:@"titlebar" tableName:@"hall 2"];
@@ -84,6 +97,7 @@
 {
     [super viewDidLoad];
     [self updateUserInterface];
+    return;
     pageGames = YES;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
@@ -265,6 +279,7 @@
 #pragma mark - UITableView
 - (void)updateData {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:listView];
     NSInteger count = 1;
     for (RankingData *data in self.rankings) {
         if ([[data.firstName capitalizedString] isEqualToString:[[APILibrary sharedInstance].userData.usrName capitalizedString]]) {
@@ -343,5 +358,35 @@
             [self performSelector:@selector(handleJoinGameWithGameInstance:) withObject:aGame afterDelay:0.5];
         }
     }
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+}
+
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+    [NSThread detachNewThreadSelector:@selector(requestGames) toTarget:self withObject:nil];
+    [NSThread detachNewThreadSelector:@selector(requestRanks) toTarget:self withObject:nil];
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+	return NO;
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+	
+	return [NSDate date]; // should return date data source was last changed
+	
 }
 @end

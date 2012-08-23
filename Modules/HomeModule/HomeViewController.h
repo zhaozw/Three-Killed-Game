@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "APILibrary.h"
-
-@interface HomeViewController : UIViewController <APILibraryDelegate>{
+#import "EGORefreshTableHeaderView.h"
+@interface HomeViewController : UIViewController <APILibraryDelegate,EGORefreshTableHeaderDelegate>{
     IBOutlet UIImageView *navTitleImageView;
     IBOutlet UITableView *listView;
     IBOutlet UIView *bottomContainer;
@@ -29,6 +29,8 @@
     
     IBOutlet UILabel *nameLabel;
     IBOutlet UILabel *acLabel;
+    
+    EGORefreshTableHeaderView *_refreshHeaderView;
     
     NSMutableArray *games;
     NSArray *rankings;

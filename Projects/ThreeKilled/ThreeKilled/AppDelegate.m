@@ -20,8 +20,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    BOOL success = [self helloRequest];
-    if (success)[self loadLoginViewController];
+//    BOOL success = [self helloRequest];
+//    if (success)[self loadLoginViewController];
+    [self loadNavigationContainer];
     return YES;
 }
 
