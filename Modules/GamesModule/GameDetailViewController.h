@@ -10,12 +10,12 @@
 #import "APILibrary.h"
 #import "GameInstance.h"
 #import "GameRoleInstance.h"
-#import "IconGrid.h"
+#import "AutoIconGrid.h"
 @interface GameDetailViewController : UIViewController <APILibraryDelegate,IconGridDelegate>{
     GameInstance *currentGame;
     GameRoleInstance *currentRole;
 
-    IBOutlet IconGrid *iconView;
+    IBOutlet AutoIconGrid *iconView;
     IBOutlet UIImageView *navTitleBar;
     IBOutlet UIImageView *menuContainer;
     IBOutlet UIButton *begainButton;

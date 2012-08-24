@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "APILibrary.h"
-#import "IconGrid.h"
+#import "AutoIconGrid.h"
 @interface NewGameViewController : UIViewController <APILibraryDelegate>{
     NSArray *allKindsGames;
-    IBOutlet IconGrid *iconView;
+    IBOutlet AutoIconGrid *iconView;
     IBOutlet UIImageView *navTitleBar;
     IBOutlet UIImageView *menuContainer;
     IBOutlet UIButton *begainButton;

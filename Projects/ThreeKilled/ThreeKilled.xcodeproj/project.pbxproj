@@ -166,7 +166,7 @@
 		4EFC97AB15D8D941003587DD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC97A915D8D941003587DD /* Localizable.strings */; };
 		4EFC97AD15D8D941003587DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC97AC15D8D941003587DD /* main.m */; };
 		4EFC97B115D8D941003587DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC97B015D8D941003587DD /* AppDelegate.m */; };
-		4EFCAA9A15E20A77003A0A1A /* IconGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCAA9915E20A77003A0A1A /* IconGrid.m */; };
+		4EFCAA9A15E20A77003A0A1A /* AutoIconGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCAA9915E20A77003A0A1A /* AutoIconGrid.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -411,8 +411,8 @@
 		4EFC97B015D8D941003587DD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4EFCAA9515E20381003A0A1A /* IconGridScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IconGridScrollView.h; sourceTree = "<group>"; };
 		4EFCAA9615E20381003A0A1A /* IconGridScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IconGridScrollView.m; sourceTree = "<group>"; };
-		4EFCAA9815E20A77003A0A1A /* IconGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconGrid.h; sourceTree = "<group>"; };
-		4EFCAA9915E20A77003A0A1A /* IconGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconGrid.m; sourceTree = "<group>"; };
+		4EFCAA9815E20A77003A0A1A /* AutoIconGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; path = AutoIconGrid.h; sourceTree = "<group>"; };
+		4EFCAA9915E20A77003A0A1A /* AutoIconGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoIconGrid.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -732,8 +732,8 @@
 		4E69C90B15DA4DE0003EEE79 /* Kurogo */ = {
 			isa = PBXGroup;
 			children = (
-				4EFCAA9815E20A77003A0A1A /* IconGrid.h */,
-				4EFCAA9915E20A77003A0A1A /* IconGrid.m */,
+				4EFCAA9815E20A77003A0A1A /* AutoIconGrid.h */,
+				4EFCAA9915E20A77003A0A1A /* AutoIconGrid.m */,
 				4EFCAA9515E20381003A0A1A /* IconGridScrollView.h */,
 				4EFCAA9615E20381003A0A1A /* IconGridScrollView.m */,
 				4E69C90C15DA4DE0003EEE79 /* Foundation+KGOAdditions.h */,
@@ -1128,7 +1128,7 @@
 				4E9BDE4B15DB8D9B00D2F076 /* ObserveViewController.m in Sources */,
 				4E9BDE4F15DB96EC00D2F076 /* GameUserData.m in Sources */,
 				4E9BDE5215DBABB700D2F076 /* RankingData.m in Sources */,
-				4EFCAA9A15E20A77003A0A1A /* IconGrid.m in Sources */,
+				4EFCAA9A15E20A77003A0A1A /* AutoIconGrid.m in Sources */,
 				4E16A29015E37BED007A7754 /* AQGridView.m in Sources */,
 				4E16A29115E37BED007A7754 /* AQGridViewAnimatorItem.m in Sources */,
 				4E16A29215E37BED007A7754 /* AQGridViewCell.m in Sources */,

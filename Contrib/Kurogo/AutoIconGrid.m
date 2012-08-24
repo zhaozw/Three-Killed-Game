@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-#import "IconGrid.h"
+#import "AutoIconGrid.h"
 
 GridPadding GridPaddingMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right) {
     GridPadding padding = {top, left, bottom, right};
@@ -35,14 +35,14 @@ GridSpacing GridSpacingMake(CGFloat width, CGFloat height) {
 const GridPadding GridPaddingZero = {0, 0, 0, 0};
 const GridSpacing GridSpacingZero = {0, 0};
 
-@interface IconGrid (Private)
+@interface AutoIconGrid (Private)
 
 - (void)layoutRow:(NSArray *)rowIcons width:(CGFloat)rowWidth;
 
 @end
 
 
-@implementation IconGrid
+@implementation AutoIconGrid
 
 @synthesize delegate, padding = _padding, spacing = _spacing,
 maxColumns = _maxColumns, alignment = _alignment, icons = _icons;
@@ -71,60 +71,65 @@ maxColumns = _maxColumns, alignment = _alignment, icons = _icons;
 
 - (void)layoutMoreIcons:(NSArray *)icons
 {
-    CGFloat availableWidth = CGRectGetWidth(self.bounds) - self.leftPadding - self.rightPadding;
-    if (availableWidth <= 0)
-        return;
-    
-    NSMutableArray *iconsInCurrentRow = [NSMutableArray array];
-    CGFloat currentRowWidth = _currentX;
-    
-    for (UIView *aView in icons) {
-        
-        CGFloat nextWidthNeeded = currentRowWidth + self.spacing.width + aView.frame.size.width;
-        CGFloat iconCount = iconsInCurrentRow.count;
-        // if we have a full row or are at the end, layout icons and flush the icons buffer
-        if ((iconCount && nextWidthNeeded > availableWidth) || (self.maxColumns && iconCount >= self.maxColumns))
-        {
-            [self layoutRow:iconsInCurrentRow width:currentRowWidth];
-            
-            CGFloat maxHeightInRow = 0;
-            for (UIView *rowView in iconsInCurrentRow) {
-                if (rowView.frame.size.height > maxHeightInRow)
-                    maxHeightInRow = rowView.frame.size.height;
-            }
-            _currentY += maxHeightInRow + _spacing.height;
-            
-            [iconsInCurrentRow removeAllObjects];
-            currentRowWidth = 0;
-        }
-        
-        // add our view to the queue, which may or may not be emtpy(ied)
-        [iconsInCurrentRow addObject:aView];
-        currentRowWidth += aView.frame.size.width;
-        if ([iconsInCurrentRow count] > 1) {
-            currentRowWidth += _spacing.width;        
-        }
+    CGPoint *points = malloc(icons.count * sizeof(CGPoint));
+    if (icons.count == 5) {
+        points[0] = CGPointMake(2, 0);
+        points[1] = CGPointMake(4, 1);
+        points[2] = CGPointMake(3, 3);
+        points[3] = CGPointMake(1, 3);
+        points[4] = CGPointMake(0, 1);
+    } else if (icons.count == 6) {
+        points[0] = CGPointMake(2, 0);
+        points[1] = CGPointMake(4, 1);
+        points[2] = CGPointMake(3, 3);
+        points[3] = CGPointMake(2, 3);
+        points[4] = CGPointMake(1, 3);
+        points[5] = CGPointMake(0, 1);
+    } else if (icons.count == 7) {
+        points[0] = CGPointMake(2, 0);
+        points[1] = CGPointMake(4, 1);
+        points[2] = CGPointMake(4, 2);
+        points[3] = CGPointMake(3, 3);
+        points[4] = CGPointMake(1, 3);
+        points[5] = CGPointMake(0, 2);
+        points[6] = CGPointMake(0, 1);
+    } else if (icons.count == 8) {
+        points[0] = CGPointMake(1, 0);
+        points[1] = CGPointMake(3, 0);
+        points[2] = CGPointMake(4, 1);
+        points[3] = CGPointMake(4, 2);
+        points[4] = CGPointMake(3, 3);
+        points[5] = CGPointMake(1, 3);
+        points[6] = CGPointMake(0, 2);
+        points[7] = CGPointMake(0, 1);
+    } else if (icons.count == 9) {
+        points[0] = CGPointMake(1, 0);
+        points[1] = CGPointMake(3, 0);
+        points[2] = CGPointMake(4, 1);
+        points[3] = CGPointMake(4, 2);
+        points[4] = CGPointMake(3, 3);
+        points[5] = CGPointMake(2, 3);
+        points[6] = CGPointMake(1, 3);
+        points[7] = CGPointMake(0, 2);
+        points[8] = CGPointMake(0, 1);
+    } else if (icons.count == 10) {
+        points[0] = CGPointMake(1, 0);
+        points[1] = CGPointMake(2, 0);
+        points[2] = CGPointMake(3, 0);
+        points[3] = CGPointMake(4, 1);
+        points[4] = CGPointMake(4, 2);
+        points[5] = CGPointMake(3, 3);
+        points[6] = CGPointMake(2, 3);
+        points[7] = CGPointMake(1, 3);
+        points[8] = CGPointMake(0, 2);
+        points[9] = CGPointMake(0, 1);
     }
-    // finish the loop
-    [self layoutRow:iconsInCurrentRow width:currentRowWidth];
     
-    // resize our frame if it is taller/shorter than the requisite icon space.
-    CGFloat maxHeight = 0;
-    for (UIView *anIcon in iconsInCurrentRow) {
-        if (maxHeight < anIcon.frame.size.height)
-            maxHeight = anIcon.frame.size.height;
-    }
-    
-    CGFloat bottomY = maxHeight + _currentY + self.bottomPadding;
-    
-    if (self.frame.size.height != bottomY) {
-        CGRect frame = self.frame;
-        frame.size.height = bottomY;
-        self.frame = frame;
-        
-		if ([delegate respondsToSelector:@selector(iconGridFrameDidChange:)]) {
-			[delegate iconGridFrameDidChange:self];
-		}
+    for (int i = 0; i < icons.count; i++) {
+        CGRect frame = [self iconFrameWithPoint:points[i]];
+        UIView *view = [icons objectAtIndex:i];
+        view.frame = frame;
+        [self addSubview:view];
     }
 }
 
@@ -134,7 +139,7 @@ maxColumns = _maxColumns, alignment = _alignment, icons = _icons;
     }
     [super layoutSubviews];
     
-    _currentX = 0;
+    _currentX = self.leftPadding;
     _currentY = self.topPadding;
     
     [self layoutMoreIcons:self.icons];
@@ -197,6 +202,17 @@ maxColumns = _maxColumns, alignment = _alignment, icons = _icons;
 
 - (void)dealloc {
     [super dealloc];
+}
+
+- (CGRect)iconFrameWithPoint:(CGPoint)point {
+    CGFloat availableWidth = CGRectGetWidth(self.bounds) - self.leftPadding - self.rightPadding;
+    CGFloat availableHeight = CGRectGetHeight(self.bounds) - self.topPadding - self.bottomPadding;
+    CGFloat widthUnit = floorf(availableWidth / 5);
+    CGFloat heightUnit = floorf(availableHeight / 4);
+    
+    CGFloat x = point.x * widthUnit;
+    CGFloat y = point.y * heightUnit;
+    return CGRectMake(x, y, widthUnit, heightUnit);
 }
 
 

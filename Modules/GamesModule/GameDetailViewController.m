@@ -44,8 +44,8 @@
     [super viewDidLoad];
     iconView.backgroundColor = [UIColor clearColor];
     iconView.delegate = self;
-    iconView.padding = GridPaddingMake(17, 17, 17, 17);
-    iconView.spacing = GridSpacingMake(16, 16);
+    iconView.padding = GridPaddingMake(0, 0, 0, 0);
+    iconView.spacing = GridSpacingMake(0, 0);
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"game_bg.png"]];
     navTitleBar.image = [UIImage imageWithName:@"sanguosha" tableName:@"btable 2"];
     navTitleBar.backgroundColor = [UIColor clearColor];
@@ -162,7 +162,7 @@
     NSMutableArray *views = [NSMutableArray array];
     for (NSInteger i = 0; i < roles.count; i++) {
         GameRoleInstance *aRole = [roles objectAtIndex:i];
-        CGRect frame = CGRectMake(0, 0, 90, 80);
+        CGRect frame = CGRectMake(0, 0, 60, 62);
         UIImageView *imageView = [[[UIImageView alloc] initWithFrame:frame] autorelease];
         UIImage *backgroundImage = nil;
         if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
@@ -178,7 +178,7 @@
         imageView.backgroundColor = [UIColor blackColor];
         imageView.alpha = 0.5;
         
-        UIImageView *portriatView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 70, 60)];
+        UIImageView *portriatView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 47, 39)];
         portriatView.image = [UIImage imageWithName:@"female_face" tableName:@"utl 2"];
         portriatView.layer.cornerRadius = 5;
         portriatView.layer.masksToBounds = YES;
@@ -186,7 +186,7 @@
         portriatView.alpha = 0.5;
         [imageView addSubview:portriatView];
         
-        UILabel *seatlabel = [[[UILabel alloc] initWithFrame:CGRectMake(2, 56, 69, 24)] autorelease];
+        UILabel *seatlabel = [[[UILabel alloc] initWithFrame:CGRectMake(2, 39, 47, 24)] autorelease];
         seatlabel.textColor = [UIColor yellowColor];
         seatlabel.font = [UIFont boldSystemFontOfSize:10];
         seatlabel.numberOfLines = 2;
@@ -202,7 +202,7 @@
         [imageView addSubview:seatlabel];
         
 
-        UILabel *namelabel = [[[UILabel alloc] initWithFrame:CGRectMake(73, 7, 13, 60)] autorelease];
+        UILabel *namelabel = [[[UILabel alloc] initWithFrame:CGRectMake(47, 4, 13, 45)] autorelease];
         namelabel.text = [NSString stringWithFormat:@"%@号位",aRole.seatNum];
         namelabel.textColor = [UIColor yellowColor];
         namelabel.font = [UIFont boldSystemFontOfSize:12];
@@ -245,7 +245,7 @@
     }
 }
 
-- (void)iconGridFrameDidChange:(IconGrid *)iconGrid
+- (void)iconGridFrameDidChange:(AutoIconGrid *)iconGrid
 {
     CGFloat expectedHeight = CGRectGetMaxY(iconGrid.frame) ;
     if ([tableContentView contentSize].height != expectedHeight) {

@@ -38,6 +38,7 @@ GridSpacing GridSpacingMake(CGFloat width, CGFloat height);
 extern const GridPadding GridPaddingZero;
 extern const GridSpacing GridSpacingZero;
 
+
 typedef enum {
     GridIconAlignmentLeft,
     GridIconAlignmentCenter,
@@ -46,7 +47,7 @@ typedef enum {
 
 @protocol IconGridDelegate;
 
-@interface IconGrid : UIView {
+@interface AutoIconGrid : UIView {
     
 	id<IconGridDelegate> delegate;
 
@@ -74,7 +75,7 @@ typedef enum {
 
 @protocol IconGridDelegate <NSObject>
 
-- (void)iconGridFrameDidChange:(IconGrid *)iconGrid;
+- (void)iconGridFrameDidChange:(AutoIconGrid *)iconGrid;
 
 @end
 
