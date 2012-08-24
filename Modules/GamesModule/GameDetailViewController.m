@@ -46,6 +46,12 @@
     iconView.delegate = self;
     iconView.padding = GridPaddingMake(0, 0, 0, 0);
     iconView.spacing = GridSpacingMake(0, 0);
+    
+    UILongPressGestureRecognizer *gr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(moveActionGestureRecognizerStateChanged:)];
+    gr.minimumPressDuration = 0.5;
+    gr.delegate = self;
+    [iconView addGestureRecognizer:gr];
+    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"game_bg.png"]];
     navTitleBar.image = [UIImage imageWithName:@"sanguosha" tableName:@"btable 2"];
     navTitleBar.backgroundColor = [UIColor clearColor];
@@ -157,64 +163,68 @@
     }
 }
 
+- (UIView *)role:(GameRoleInstance *)aRole viewAtIndex:(NSInteger)i {
+    
+    CGRect frame = CGRectMake(0, 0, 60, 62);
+    UIImageView *imageView = [[[UIImageView alloc] initWithFrame:frame] autorelease];
+    UIImage *backgroundImage = nil;
+    if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
+        backgroundImage = [UIImage imageWithName:[[APILibrary sharedInstance] roleDeadKeyWithRoleID:aRole.roleID] tableName:@"gameIcon 2"];
+    } else {
+        backgroundImage = [UIImage imageWithName:@"portriat" tableName:@"hall 2"];
+    }
+    imageView.image = backgroundImage;
+    imageView.layer.cornerRadius = 5;
+    imageView.layer.masksToBounds = YES;
+    imageView.backgroundColor = [UIColor blackColor];
+    imageView.alpha = 0.5;
+    
+    UIImageView *portriatView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 47, 39)];
+    portriatView.image = [UIImage imageWithName:@"female_face" tableName:@"utl 2"];
+    portriatView.layer.cornerRadius = 5;
+    portriatView.layer.masksToBounds = YES;
+    portriatView.backgroundColor = [UIColor blackColor];
+    portriatView.alpha = 0.5;
+    [imageView addSubview:portriatView];
+    
+    UILabel *seatlabel = [[[UILabel alloc] initWithFrame:CGRectMake(2, 39, 47, 24)] autorelease];
+    seatlabel.textColor = [UIColor yellowColor];
+    seatlabel.font = [UIFont boldSystemFontOfSize:10];
+    seatlabel.numberOfLines = 2;
+    if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
+        seatlabel.text = [NSString stringWithFormat:@"%@ By:%@",aRole.userName,[self roleInstanceUserNameAtUserID:aRole.killedBy]];
+    } else {
+        seatlabel.text = aRole.userName;
+    }
+    
+    seatlabel.textAlignment = UITextAlignmentCenter;
+    
+    seatlabel.backgroundColor = [UIColor clearColor];
+    [imageView addSubview:seatlabel];
+    
+    
+    UILabel *namelabel = [[[UILabel alloc] initWithFrame:CGRectMake(47, 4, 13, 45)] autorelease];
+    namelabel.text = [NSString stringWithFormat:@"%@号位",aRole.seatNum];
+    namelabel.textColor = [UIColor yellowColor];
+    namelabel.font = [UIFont boldSystemFontOfSize:12];
+    namelabel.numberOfLines = 4;
+    namelabel.backgroundColor = [UIColor clearColor];
+    [imageView addSubview:namelabel];
+    
+    //        UIControl *control = [[[UIControl alloc] initWithFrame:frame] autorelease];
+    //        control.tag = i;
+    //        [control addSubview:imageView];
+    //        [control addTarget:self action:@selector(thumbnailTapped:) forControlEvents:UIControlEventTouchUpInside];
+    return imageView;
+}
+
 - (void)layoutRoles:(NSArray *)roles
 {
     NSMutableArray *views = [NSMutableArray array];
     for (NSInteger i = 0; i < roles.count; i++) {
         GameRoleInstance *aRole = [roles objectAtIndex:i];
-        CGRect frame = CGRectMake(0, 0, 60, 62);
-        UIImageView *imageView = [[[UIImageView alloc] initWithFrame:frame] autorelease];
-        UIImage *backgroundImage = nil;
-        if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
-            backgroundImage = [UIImage imageWithName:[[APILibrary sharedInstance] roleDeadKeyWithRoleID:aRole.roleID] tableName:@"gameIcon 2"];
-            //seatlabel.text = [NSString stringWithFormat:@"%@ By:%@",aRole.userName,[self roleInstanceUserNameAtUserID:aRole.killedBy]];
-        } else {
-            backgroundImage = [UIImage imageWithName:@"portriat" tableName:@"hall 2"];
-            //seatlabel.text = aRole.userName;
-        }
-        imageView.image = backgroundImage;
-        imageView.layer.cornerRadius = 5;
-        imageView.layer.masksToBounds = YES;
-        imageView.backgroundColor = [UIColor blackColor];
-        imageView.alpha = 0.5;
-        
-        UIImageView *portriatView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 47, 39)];
-        portriatView.image = [UIImage imageWithName:@"female_face" tableName:@"utl 2"];
-        portriatView.layer.cornerRadius = 5;
-        portriatView.layer.masksToBounds = YES;
-        portriatView.backgroundColor = [UIColor blackColor];
-        portriatView.alpha = 0.5;
-        [imageView addSubview:portriatView];
-        
-        UILabel *seatlabel = [[[UILabel alloc] initWithFrame:CGRectMake(2, 39, 47, 24)] autorelease];
-        seatlabel.textColor = [UIColor yellowColor];
-        seatlabel.font = [UIFont boldSystemFontOfSize:10];
-        seatlabel.numberOfLines = 2;
-        if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
-            seatlabel.text = [NSString stringWithFormat:@"%@ By:%@",aRole.userName,[self roleInstanceUserNameAtUserID:aRole.killedBy]];
-        } else {
-            seatlabel.text = aRole.userName;
-        }
-        
-        seatlabel.textAlignment = UITextAlignmentCenter;
-        
-        seatlabel.backgroundColor = [UIColor clearColor];
-        [imageView addSubview:seatlabel];
-        
-
-        UILabel *namelabel = [[[UILabel alloc] initWithFrame:CGRectMake(47, 4, 13, 45)] autorelease];
-        namelabel.text = [NSString stringWithFormat:@"%@号位",aRole.seatNum];
-        namelabel.textColor = [UIColor yellowColor];
-        namelabel.font = [UIFont boldSystemFontOfSize:12];
-        namelabel.numberOfLines = 4;
-        namelabel.backgroundColor = [UIColor clearColor];
-        [imageView addSubview:namelabel];
-        
-        UIControl *control = [[[UIControl alloc] initWithFrame:frame] autorelease];
-        control.tag = i;
-        [control addSubview:imageView];
-        [control addTarget:self action:@selector(thumbnailTapped:) forControlEvents:UIControlEventTouchUpInside];
-        [views addObject:control];
+        NSLog(@"index:%d,role:%@",i,aRole.userName);
+        [views addObject:[self role:aRole viewAtIndex:i]];
     }
     iconView.icons = nil;
     [iconView addIcons:views];
@@ -368,17 +378,210 @@
       unkilledWithDelegate:self];
 }
 
+- (void)handleKilledByRequestWithRole:(GameRoleInstance *)role {
+    BOOL status = NO;
+    NSString *error = nil;
+    GameRoleInstance *who = [self.feakAllRoles objectAtIndex:draggedIndex];
+    [APILibrary apiLibrary:&status
+                  metError:&error
+                      game:self.currentGame
+                       who:who
+                  killedBy:role
+              withDelegate:self];
+}
+
 - (void)apiLibraryDidReceivedUnKilledByResult:(id)result {
     [self observeGameRequest];
 }
 
+- (void)apiLibraryWithGameInstance:(GameInstance *)agameInstance roleInstance:(GameRoleInstance *)roleInstance didReceivedKilledByResult:(NSString *)gameID {
+    [self observeGameRequest];
+}
+
+#pragma mark -
+#pragma mark UIGestureRecognizer Delegate/Actions
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    CGPoint location = [gestureRecognizer locationInView:iconView];
+    if (self.currentGame.allRoles.count == self.currentGame.playerCount.integerValue){
+        NSInteger index = [iconView indexForItemAtViewPoint:location];
+        if (index < self.feakAllRoles.count) {
+            GameRoleInstance *aRole = [self.feakAllRoles objectAtIndex:index];
+            NSLog(@"dragged role:%@",aRole.userName);
+            if (aRole) {
+                if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"注意"
+                                                                        message:@"确定要复活角色吗？"
+                                                                       delegate:self
+                                                              cancelButtonTitle:@"取消"
+                                                              otherButtonTitles:@"确定", nil];
+                    alertView.tag = index + 100;
+                    [alertView show];
+                    [alertView release];
+                } else {
+                    return YES;
+                }
+            }
+        }
+    }
+    return NO;
+}
+
+- (void)moveActionGestureRecognizerStateChanged:(UIGestureRecognizer *)recognizer
+{
+    switch (recognizer.state)
+    {
+        default:
+        case UIGestureRecognizerStateFailed:
+            break;
+        case UIGestureRecognizerStatePossible:
+        case UIGestureRecognizerStateCancelled:
+        {
+            [UIView beginAnimations:@"SnapBack" context:NULL];
+            [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+            [UIView setAnimationDuration:0.5];
+            [UIView setAnimationDelegate:self];
+            [UIView setAnimationDidStopSelector:@selector(finishedSnap:finished:context:)];
+            CGRect f = draggedView.frame;
+            f.origin = draggedOrigin;
+            draggedView.frame = f;
+            [UIView commitAnimations];
+            break;
+        }
+        case UIGestureRecognizerStateEnded:
+        {
+            CGPoint p = [recognizer locationInView:iconView];
+            NSUInteger index = [iconView indexForItemAtViewPoint:p];
+            if (index != NSNotFound)
+            {
+                [UIView beginAnimations:@"SnapToPlace" context:NULL];
+                [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+                [UIView setAnimationDuration:0.5];
+                [UIView setAnimationDelegate:self];
+                [UIView setAnimationDidStopSelector:@selector(finishedSnap:finished:context:)];
+                
+                CGRect f = [iconView iconFrameWithItemIndex:index];
+                draggedView.frame = f;
+                [UIView commitAnimations];
+                
+                GameRoleInstance *atRole = [self.feakAllRoles objectAtIndex:index];
+                GameRoleInstance *draggedRole = [self.feakAllRoles objectAtIndex:draggedIndex];
+                NSLog(@"dragged role:%@",draggedRole.userName);
+                NSLog(@"at role:%@",atRole.userName);
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"注意"
+                                                                    message:[NSString stringWithFormat:@"%@将会被%@杀死",draggedRole.userName,atRole.userName]
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"取消"
+                                                          otherButtonTitles:@"确定",nil];
+                alertView.tag = index;
+                [alertView show];
+                [alertView release];
+            
+            } else {
+                [UIView beginAnimations:@"SnapToPlace" context:NULL];
+                [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+                [UIView setAnimationDuration:0.5];
+                [UIView setAnimationDelegate:self];
+                [UIView setAnimationDidStopSelector:@selector(finishedSnap:finished:context:)];
+                CGRect f = draggedView.frame;
+                f.origin = draggedOrigin;
+                draggedView.frame = f;
+                [UIView commitAnimations];
+            }
+            break;
+        }
+            
+        case UIGestureRecognizerStateBegan:
+        {
+            NSUInteger index = [iconView indexForItemAtViewPoint:[recognizer locationInView:iconView]];
+            GameRoleInstance *role = [self.feakAllRoles objectAtIndex:index];
+            draggedView = [self role:role viewAtIndex:index];
+            [self.view addSubview:draggedView];
+            CGRect frame = [self.view convertRect:[iconView iconFrameWithViewPoint:[recognizer locationInView:iconView]] fromView:iconView];
+            draggedView.frame = frame;
+            
+//            // find the cell at the current point and copy it into our main view, applying some transforms
+//            AQGridViewCell *sourceCell = [iconView cellForItemAtIndex:index];
+//            CGRect frame = [self.view convertRect:sourceCell.frame fromView:iconView];
+//            _draggingCell = [[SpringBoardCell alloc] initWithFrame:frame reuseIdentifier:@""];
+//            GameRoleInstance *role = [self.currentGame.allRoles objectAtIndex:index];
+//            _draggingCell.iconView.image = [UIImage imageWithName:@"female_face" tableName:@"utl 2"];
+//            _draggingCell.nameLabel.text = role.userName;
+//            if (![role.userID isEqualToString:self.currentRole.userID]) {
+//                [_draggingCell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageWithName:@"portriat_black" tableName:@"hall 2"]]];
+//            } else {
+//                [_draggingCell setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageWithName:@"portriat" tableName:@"hall 2"]]];
+//            }
+//            [self.view addSubview: _draggingCell];
+            
+            // grab some info about the origin of this cell
+            draggedOrigin = frame.origin;
+            draggedIndex = index;
+            [UIView beginAnimations:@"" context: NULL];
+            [UIView setAnimationDuration: 0.2];
+            [UIView setAnimationCurve: UIViewAnimationCurveEaseOut];
+            
+            // transformation-- larger, slightly transparent
+            draggedView.transform = CGAffineTransformMakeScale( 1.2, 1.2 );
+            draggedView.alpha = 0.7;
+            
+            // also make it center on the touch point
+            draggedView.center = [recognizer locationInView:self.view];
+            [UIView commitAnimations];
+            
+//            // reload the grid underneath to get the empty cell in place
+//            [iconView reloadItemsAtIndices: [NSIndexSet indexSetWithIndex: index]
+//                             withAnimation: AQGridViewItemAnimationNone];
+            
+            break;
+        }
+            
+        case UIGestureRecognizerStateChanged:
+        {
+            // update draging cell location
+            draggedView.center = [recognizer locationInView:self.view];
+            
+//            // don't do anything with content if grid view is in the middle of an animation block
+//            if (iconView.isAnimatingUpdates )
+//                break;
+            
+            // update empty cell to follow, if necessary
+            NSUInteger index = [iconView indexForItemAtViewPoint:[recognizer locationInView:iconView]];
+			
+			// don't do anything if it's over an unused grid cell
+			if ( index == NSNotFound )
+			{
+//				// snap back to the last possible index
+//				index = [self.currentGame.allRoles count] - 1;
+			}
+            break;
+        }
+    }
+}
+
+- (void) finishedSnap: (NSString *) animationID finished: (NSNumber *) finished context: (void *) context
+{
+    [draggedView removeFromSuperview];
+    draggedView = nil;
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-        NSInteger index = alertView.tag;
-        if (index < self.feakAllRoles.count) {
-            GameRoleInstance *role = [self.feakAllRoles objectAtIndex:index];
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            [self performSelector:@selector(handleUnkilledRequestWithRole:) withObject:role afterDelay:0.5];
+        if (alertView.tag >= 100) {
+            NSInteger index = alertView.tag - 100;
+            if (index < self.feakAllRoles.count) {
+                GameRoleInstance *role = [self.feakAllRoles objectAtIndex:index];
+                [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                [self performSelector:@selector(handleUnkilledRequestWithRole:) withObject:role afterDelay:0.5];
+            }
+        } else {
+            NSInteger index = alertView.tag;
+            if (index < self.feakAllRoles.count) {
+                GameRoleInstance *role = [self.feakAllRoles objectAtIndex:index];
+                [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                [self performSelector:@selector(handleKilledByRequestWithRole:) withObject:role afterDelay:0.5];
+            }
         }
     }
 }

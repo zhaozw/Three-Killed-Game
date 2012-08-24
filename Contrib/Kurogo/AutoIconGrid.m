@@ -71,7 +71,11 @@ maxColumns = _maxColumns, alignment = _alignment, icons = _icons;
 
 - (void)layoutMoreIcons:(NSArray *)icons
 {
-    CGPoint *points = malloc(icons.count * sizeof(CGPoint));
+    if (points) {
+        free(points);
+        points = NULL;
+    }
+    points = malloc(icons.count * sizeof(CGPoint));
     if (icons.count == 5) {
         points[0] = CGPointMake(2, 0);
         points[1] = CGPointMake(4, 1);
@@ -131,6 +135,7 @@ maxColumns = _maxColumns, alignment = _alignment, icons = _icons;
         view.frame = frame;
         [self addSubview:view];
     }
+    
 }
 
 - (void)layoutSubviews {
@@ -201,6 +206,10 @@ maxColumns = _maxColumns, alignment = _alignment, icons = _icons;
 }
 
 - (void)dealloc {
+    if (points) {
+        free(points);
+        points = NULL;
+    }
     [super dealloc];
 }
 
@@ -213,6 +222,47 @@ maxColumns = _maxColumns, alignment = _alignment, icons = _icons;
     CGFloat x = point.x * widthUnit;
     CGFloat y = point.y * heightUnit;
     return CGRectMake(x, y, widthUnit, heightUnit);
+}
+
+- (CGPoint)pointForItemAtViewPoint:(CGPoint)point {
+    CGFloat availableWidth = CGRectGetWidth(self.bounds) - self.leftPadding - self.rightPadding;
+    CGFloat availableHeight = CGRectGetHeight(self.bounds) - self.topPadding - self.bottomPadding;
+    CGFloat widthUnit = floorf(availableWidth / 5);
+    CGFloat heightUnit = floorf(availableHeight / 4);
+    
+    int x = (int)point.x / (int)widthUnit;
+    int y = (int)point.y / (int)heightUnit;
+    return CGPointMake(x, y);
+}
+
+- (NSInteger)indexForItemAtIndexPoint:(CGPoint)point {
+    if (points) {
+        for (NSInteger index = 0; index < self.icons.count; index++) {
+            if (points[index].x == point.x && points[index].y == point.y) {
+                return index;
+            }
+        }
+    }
+    return NSNotFound;
+}
+
+- (NSInteger)indexForItemAtViewPoint:(CGPoint)point {
+    return [self indexForItemAtIndexPoint:[self pointForItemAtViewPoint:point]];
+}
+
+- (CGRect)iconFrameWithViewPoint:(CGPoint)point {
+    return [self iconFrameWithPoint:[self pointForItemAtViewPoint:point]];
+}
+
+- (CGPoint)IndexPointAtItemIndex:(NSInteger)index {
+    if (points && index < self.icons.count) {
+        return points[index];
+    }
+    return CGPointZero;
+}
+
+- (CGRect)iconFrameWithItemIndex:(NSInteger)index {
+    return [self iconFrameWithPoint:[self IndexPointAtItemIndex:index]];
 }
 
 

@@ -11,7 +11,7 @@
 #import "GameInstance.h"
 #import "GameRoleInstance.h"
 #import "AutoIconGrid.h"
-@interface GameDetailViewController : UIViewController <APILibraryDelegate,IconGridDelegate>{
+@interface GameDetailViewController : UIViewController <APILibraryDelegate,IconGridDelegate,UIGestureRecognizerDelegate>{
     GameInstance *currentGame;
     GameRoleInstance *currentRole;
 
@@ -27,6 +27,9 @@
     IBOutlet UIButton *onOneOneButton;
     IBOutlet UIScrollView *tableContentView;
     
+    UIView *draggedView;
+    NSInteger draggedIndex;
+    CGPoint draggedOrigin;
     NSMutableArray *feakAllRoles;
 }
 @property (nonatomic, retain)  GameInstance *currentGame;

@@ -54,6 +54,7 @@ typedef enum {
     // these determine where the next icon should be placed
     CGFloat _currentX;
     CGFloat _currentY;
+    CGPoint *points;
 }
 
 - (void)addIcons:(NSArray *)icons;
@@ -71,6 +72,9 @@ typedef enum {
 @property CGFloat bottomPadding;
 @property CGFloat leftPadding;
 - (void)animationWithRect:(CGRect)originFrame;
+- (NSInteger)indexForItemAtViewPoint:(CGPoint)point;
+- (CGRect)iconFrameWithViewPoint:(CGPoint)point;
+- (CGRect)iconFrameWithItemIndex:(NSInteger)index;
 @end
 
 @protocol IconGridDelegate <NSObject>
