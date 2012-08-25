@@ -64,9 +64,8 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
-
 #pragma mark - common
 - (void)forcedResignFirstResponder {
     [usrName resignFirstResponder];
