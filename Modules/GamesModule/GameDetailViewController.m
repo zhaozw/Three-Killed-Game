@@ -412,7 +412,7 @@
             if (aRole) {
                 if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"注意"
-                                                                        message:@"确定要复活角色吗？"
+                                                                        message:[NSString stringWithFormat:@"确定要复活%@吗?",aRole.userName]
                                                                        delegate:self
                                                               cancelButtonTitle:@"取消"
                                                               otherButtonTitles:@"确定", nil];
