@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController {
+@interface LoginViewController : UIViewController <UITextFieldDelegate>{
     IBOutlet UITextField *usrName;
     IBOutlet UITextField *password;
     IBOutlet UIButton *login;
     IBOutlet UIButton *lock;
     IBOutlet UIImageView *logo;
+    
+    BOOL lockStatus;
+    CGPoint inputOrigin;
+    CGPoint inputUp;
 }
 @property (nonatomic, retain)  IBOutlet UIImageView *inputBackgroundView;
 @property (nonatomic, retain)  IBOutlet UIImageView *userNameBGView;
