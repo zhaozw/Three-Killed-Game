@@ -33,19 +33,15 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_l.png"]];
-    self.inputBackgroundView.image = [UIImage imageNamed:@"input.png"];
+    self.inputBackgroundView.image = [UIImage imageWithName:@"input_background" tableName:@"btable 2"];
     userNameBGView.image = [UIImage imageNamed:@"title_back.png"];
     passwordBGView.image = [UIImage imageNamed:@"title_back.png"];
     
-    UIImage *loginImageNormal = [[UIImage imageNamed:@"comfirm_n.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:0];
-    UIImage *loginImageHighlight = [[UIImage imageNamed:@"comfirm_i.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:0];
-    [login setImage:loginImageNormal forState:UIControlStateNormal];
-    [login setImage:loginImageHighlight forState:UIControlStateHighlighted];
+    [login setImage:[UIImage imageWithName:@"login" tableName:@"btable 2"] forState:UIControlStateNormal];
+    [login setImage:[UIImage imageWithName:@"login_on" tableName:@"btable 2"] forState:UIControlStateHighlighted];
     
-    UIImage *cancelImageNormal = [[UIImage imageNamed:@"cancel_n.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:0];
-    UIImage *cancelImageHighlight = [[UIImage imageNamed:@"cancel_d.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:0];
-    [cancel setImage:cancelImageNormal forState:UIControlStateNormal];
-    [cancel setImage:cancelImageHighlight forState:UIControlStateHighlighted];
+    [lock setImage:[UIImage imageWithName:@"lock" tableName:@"btable 2"] forState:UIControlStateNormal];
+    [lock setImage:[UIImage imageWithName:@"lock_on" tableName:@"btable 2"] forState:UIControlStateHighlighted];
     
     logo.image = [UIImage imageWithName:@"sanguosha" tableName:@"btable 2"];
 }
@@ -95,9 +91,8 @@
     }
 }
 
-- (IBAction)cancel:(id)sender {
-    usrName.text = @"";
-    password.text = @"";
+- (IBAction)lock:(id)sender {
+    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

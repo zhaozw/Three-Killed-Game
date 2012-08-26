@@ -20,5 +20,19 @@
 	<string>265,198,120,30</string>
 	<key>back_on</key>
 	<string>390,198,120,30</string>
+	<key>input_background</key>
+	<string>10,11,372,103</string>
+	<key>login</key>
+	<string>290,244,50,50</string>
+	<key>login_on</key>
+	<string>402,10,48,49</string>
+	<key>lock</key>
+	<string>458,1,18,22</string>
+	<key>lock_on</key>
+	<string>476,1,16,23</string>
+	<key>unlock</key>
+	<string>493,1,17,23</string>
+	<key>unlock_on</key>
+	<string>458,23,18,23</string>
 </dict>
 </plist>

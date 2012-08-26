@@ -12,7 +12,7 @@
     IBOutlet UITextField *usrName;
     IBOutlet UITextField *password;
     IBOutlet UIButton *login;
-    IBOutlet UIButton *cancel;
+    IBOutlet UIButton *lock;
     IBOutlet UIImageView *logo;
 }
 @property (nonatomic, retain)  IBOutlet UIImageView *inputBackgroundView;
@@ -20,5 +20,5 @@
 @property (nonatomic, retain)  IBOutlet UIImageView *passwordBGView;
 
 - (IBAction)login:(id)sender;
-- (IBAction)cancel:(id)sender;
+- (IBAction)lock:(id)sender;
 @end
