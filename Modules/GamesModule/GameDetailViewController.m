@@ -178,7 +178,7 @@
     imageView.backgroundColor = [UIColor blackColor];
     imageView.alpha = 0.5;
     
-    UIImageView *portriatView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 42, 39)];
+    UIImageView *portriatView = [[UIImageView alloc] initWithFrame:CGRectMake(4, 4, 42, 37)];
     portriatView.image = [UIImage imageWithName:@"female_face" tableName:@"utl 2"];
     portriatView.layer.cornerRadius = 5;
     portriatView.layer.masksToBounds = YES;

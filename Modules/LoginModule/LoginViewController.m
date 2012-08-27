@@ -7,7 +7,6 @@
 //
 
 #import "LoginViewController.h"
-#import "APILibrary.h"
 #import "MBProgressHUD.h"
 #import "HomeViewController.h"
 #import "AppDelegate+TKAdditions.h"
@@ -90,24 +89,32 @@
     [password resignFirstResponder];
 }
 
+- (void)handleLoginRequest {
+    BOOL status = NO;
+    NSString *error = nil;
+    AccountData *ad = [[[AccountData alloc] init] autorelease];
+    ad.usrName = usrName.text;
+    ad.password = password.text;
+    [APILibrary sharedInstance].userData = ad;
+    [APILibrary apiLibrary:&status metError:&error loginWithUserData:[APILibrary sharedInstance].userData withDelegate:self];
+}
+
+- (void)apiLibraryDidReceivedLoginResult:(id)result{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+     [SHARED_APP_DELEGATE() loadNavigationContainer];
+}
+
+- (void)apiLibraryDidReceivedError:(NSString *)error {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [APILibrary alertWithException:error];
+}
+
 - (IBAction)login:(id)sender {
     [self UserDefautSynchronize];
     [self forcedResignFirstResponder];
     if (usrName.text.length > 0 && password.text.length > 0) {
-        AccountData *ad = [[[AccountData alloc] init] autorelease];
-        ad.usrName = usrName.text;
-        ad.password = password.text;
-        [APILibrary sharedInstance].userData = ad;
-        BOOL status = NO;
-        NSString *error = nil;
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [APILibrary apiLibrary:&status metError:&error loginWithUserData:[APILibrary sharedInstance].userData];
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        if (status) {
-            [SHARED_APP_DELEGATE() loadNavigationContainer];
-        } else {
-            [APILibrary alertWithException:error];
-        }
+        [self performSelector:@selector(handleLoginRequest) withObject:nil afterDelay:0.5];
     } else {
         NSString *preCheckError = NSLocalizedString(@"Please input all values", nil);
         [APILibrary alertWithException:preCheckError];

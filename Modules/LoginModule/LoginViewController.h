@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "APILibrary.h"
 
-@interface LoginViewController : UIViewController <UITextFieldDelegate>{
+@interface LoginViewController : UIViewController <UITextFieldDelegate,APILibraryDelegate>{
     IBOutlet UITextField *usrName;
     IBOutlet UITextField *password;
     IBOutlet UIButton *login;

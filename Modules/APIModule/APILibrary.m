@@ -160,7 +160,8 @@
 //http://sgol.sinaapp.com/auth?username=newstar&password=demo
 + (BOOL)apiLibrary:(BOOL *)status
           metError:(NSString **)error
-loginWithUserData:(AccountData *)account {
+loginWithUserData:(AccountData *)account
+withDelegate:(id<APILibraryDelegate>)delegate {
     NSString *host = [[APILibrary sharedInstance] host];
     NSString *urlString = [NSString stringWithFormat:@"%@/auth/api?username=%@&password=%@&token=%@",host,account.usrName,account.password,[APILibrary sharedInstance].uniqueIdentifier];
     NSURL *url = [NSURL URLWithString:urlString];
@@ -178,16 +179,24 @@ loginWithUserData:(AccountData *)account {
             if (errDictionary) {
                 *error = [errDictionary forcedStringForKey:@"message"];
             } else {
+                *status = YES;
                 NSDictionary *response = [obj dictionaryForKey:@"response"];
                 account.email = [response forcedStringForKey:@"email"];
                 account.firstName = [response forcedStringForKey:@"first_name"];
                 account.lastName = [response forcedStringForKey:@"last_name"];
                 account.playerID = [response forcedStringForKey:@"id"];
-                *status = YES;
+                if ([delegate respondsToSelector:@selector(apiLibraryDidReceivedLoginResult:)]) {
+                    [delegate apiLibraryDidReceivedLoginResult:response];
+                }
             }
         }
     } else {
         *error = [errorRequest description];
+    }
+    if (!*status) {
+        if ([delegate respondsToSelector:@selector(apiLibraryDidReceivedError:)]) {
+            [delegate apiLibraryDidReceivedError:*error];
+        }
     }
     return *status;
 }

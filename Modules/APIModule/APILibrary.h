@@ -24,6 +24,7 @@
 - (void)apiLibraryDidReceivedCloseResult:(id)result;
 - (void)apiLibraryDidReceivedOneononeResult:(id)result;
 - (void)apiLibraryDidReceivedRankingResult:(id)result;
+- (void)apiLibraryDidReceivedLoginResult:(id)result;
 @end
 
 @interface APILibrary : NSObject {
@@ -47,7 +48,8 @@
     helloWithParam:(id)param;
 + (BOOL)apiLibrary:(BOOL *)status
           metError:(NSString **)error
- loginWithUserData:(AccountData *)account;
+ loginWithUserData:(AccountData *)account
+      withDelegate:(id<APILibraryDelegate>)delegate;
 + (BOOL)apiLibrary:(BOOL *)status
           metError:(NSString **)error
 getAvalibelGamesWithParam:(id)param
