@@ -21,8 +21,6 @@
     CGPoint inputUp;
 }
 @property (nonatomic, retain)  IBOutlet UIImageView *inputBackgroundView;
-@property (nonatomic, retain)  IBOutlet UIImageView *userNameBGView;
-@property (nonatomic, retain)  IBOutlet UIImageView *passwordBGView;
 
 - (IBAction)login:(id)sender;
 - (IBAction)lock:(id)sender;

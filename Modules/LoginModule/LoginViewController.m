@@ -17,13 +17,9 @@
 
 @implementation LoginViewController
 @synthesize inputBackgroundView;
-@synthesize userNameBGView;
-@synthesize passwordBGView;
 
 - (void)dealloc {
     self.inputBackgroundView = nil;
-    self.userNameBGView = nil;
-    self.passwordBGView = nil;
 
     [super dealloc];
 }
@@ -33,10 +29,8 @@
     [super viewDidLoad];
     inputOrigin = self.inputBackgroundView.frame.origin;
     inputUp = CGPointMake(inputOrigin.x, 20);
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_l.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"back_s.png"]];
     self.inputBackgroundView.image = [UIImage imageWithName:@"input_background" tableName:@"btable 2"];
-    userNameBGView.image = [UIImage imageNamed:@"title_back.png"];
-    passwordBGView.image = [UIImage imageNamed:@"title_back.png"];
     
     
     NSDictionary *config = [[NSUserDefaults standardUserDefaults] objectForKey:@"config"];

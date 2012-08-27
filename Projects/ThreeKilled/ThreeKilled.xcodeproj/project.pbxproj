@@ -29,8 +29,6 @@
 		06FE307E15E59DA500DE5358 /* hall_2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06FE307D15E59DA500DE5358 /* hall_2.plist */; };
 		06FE308015E59DB300DE5358 /* table_2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06FE307F15E59DB300DE5358 /* table_2.plist */; };
 		4E34AC0C15DE4CD300374040 /* game_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E34AC0915DE4CD200374040 /* game_bg.png */; };
-		4E34AC0D15DE4CD300374040 /* home_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E34AC0A15DE4CD200374040 /* home_bg.png */; };
-		4E34AC0E15DE4CD300374040 /* home_bg2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E34AC0B15DE4CD200374040 /* home_bg2.png */; };
 		4E34AC1B15DE4F5900374040 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E34AC1A15DE4F5900374040 /* QuartzCore.framework */; };
 		4E51C53415E60E7E0003ED16 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E51C52A15E60E7E0003ED16 /* EGORefreshTableHeaderView.m */; };
 		4E51C53515E60E7E0003ED16 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E51C52C15E60E7E0003ED16 /* blackArrow.png */; };
@@ -97,9 +95,7 @@
 		4E69C91015DA4DE0003EEE79 /* Foundation+KGOAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C90D15DA4DE0003EEE79 /* Foundation+KGOAdditions.m */; };
 		4E69C91115DA4DE0003EEE79 /* UIKit+KGOAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C90F15DA4DE0003EEE79 /* UIKit+KGOAdditions.m */; };
 		4E69C91515DA4E06003EEE79 /* APILibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C91415DA4E06003EEE79 /* APILibrary.m */; };
-		4E9A51C915DC82C500A0D4A1 /* back_l.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51C315DC82C500A0D4A1 /* back_l.png */; };
 		4E9A51CA15DC82C500A0D4A1 /* back_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51C415DC82C500A0D4A1 /* back_s.png */; };
-		4E9A51CB15DC82C500A0D4A1 /* table2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51C515DC82C500A0D4A1 /* table2.png */; };
 		4E9A5FB015D9DBD900BD8EC6 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A5FAF15D9DBD900BD8EC6 /* Config.plist */; };
 		4E9BDE4615DB863D00D2F076 /* GameRoleInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDE4515DB863D00D2F076 /* GameRoleInstance.m */; };
 		4E9BDE4F15DB96EC00D2F076 /* GameUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDE4E15DB96EC00D2F076 /* GameUserData.m */; };
@@ -146,8 +142,6 @@
 		06FE307D15E59DA500DE5358 /* hall_2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hall_2.plist; sourceTree = "<group>"; };
 		06FE307F15E59DB300DE5358 /* table_2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = table_2.plist; sourceTree = "<group>"; };
 		4E34AC0915DE4CD200374040 /* game_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_bg.png; sourceTree = "<group>"; };
-		4E34AC0A15DE4CD200374040 /* home_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_bg.png; sourceTree = "<group>"; };
-		4E34AC0B15DE4CD200374040 /* home_bg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_bg2.png; sourceTree = "<group>"; };
 		4E34AC1A15DE4F5900374040 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4E51C52915E60E7E0003ED16 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		4E51C52A15E60E7E0003ED16 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
@@ -269,9 +263,7 @@
 		4E69C91315DA4E06003EEE79 /* APILibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APILibrary.h; sourceTree = "<group>"; };
 		4E69C91415DA4E06003EEE79 /* APILibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APILibrary.m; sourceTree = "<group>"; };
 		4E69C92415DA53D1003EEE79 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		4E9A51C315DC82C500A0D4A1 /* back_l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_l.png; sourceTree = "<group>"; };
 		4E9A51C415DC82C500A0D4A1 /* back_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_s.png; sourceTree = "<group>"; };
-		4E9A51C515DC82C500A0D4A1 /* table2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table2.png; sourceTree = "<group>"; };
 		4E9A5FAF15D9DBD900BD8EC6 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		4E9BDE4415DB863D00D2F076 /* GameRoleInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRoleInstance.h; sourceTree = "<group>"; };
 		4E9BDE4515DB863D00D2F076 /* GameRoleInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameRoleInstance.m; sourceTree = "<group>"; };
@@ -663,11 +655,7 @@
 			isa = PBXGroup;
 			children = (
 				4E34AC0915DE4CD200374040 /* game_bg.png */,
-				4E34AC0A15DE4CD200374040 /* home_bg.png */,
-				4E34AC0B15DE4CD200374040 /* home_bg2.png */,
-				4E9A51C315DC82C500A0D4A1 /* back_l.png */,
 				4E9A51C415DC82C500A0D4A1 /* back_s.png */,
-				4E9A51C515DC82C500A0D4A1 /* table2.png */,
 				4ED3765D15D9E2ED003EE814 /* Default-Portrait.png */,
 				4ED3765E15D9E2ED003EE814 /* Default.png */,
 				4ED3765F15D9E2ED003EE814 /* Default@2x.png */,
@@ -807,12 +795,8 @@
 				4E69C84415DA4C6E003EEE79 /* NewGameViewController.xib in Resources */,
 				4E69C85015DA4CB2003EEE79 /* LoginViewController.xib in Resources */,
 				4E69C85515DA4CBC003EEE79 /* HomeViewController.xib in Resources */,
-				4E9A51C915DC82C500A0D4A1 /* back_l.png in Resources */,
 				4E9A51CA15DC82C500A0D4A1 /* back_s.png in Resources */,
-				4E9A51CB15DC82C500A0D4A1 /* table2.png in Resources */,
 				4E34AC0C15DE4CD300374040 /* game_bg.png in Resources */,
-				4E34AC0D15DE4CD300374040 /* home_bg.png in Resources */,
-				4E34AC0E15DE4CD300374040 /* home_bg2.png in Resources */,
 				066D5EAD15DFDF870068FB3D /* btable 2.png in Resources */,
 				066D5EAF15DFDF870068FB3D /* btable1 2.png in Resources */,
 				066D5EB215DFDF870068FB3D /* gameIcon.png in Resources */,
@@ -930,8 +914,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -958,8 +942,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -979,8 +963,8 @@
 		4EFC97B515D8D941003587DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThreeKilled/ThreeKilled-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1001,8 +985,8 @@
 		4EFC97B615D8D941003587DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThreeKilled/ThreeKilled-Prefix.pch";
 				HEADER_SEARCH_PATHS = (

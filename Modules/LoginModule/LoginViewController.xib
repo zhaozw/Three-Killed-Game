@@ -174,7 +174,7 @@
 							</object>
 						</array>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{45, 95}, {372, 103}}</string>
+						<string key="NSFrame">{{44, 95}, {372, 103}}</string>
 						<reference key="NSSuperview" ref="436738103"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="664284947"/>
@@ -407,8 +407,6 @@
 						<string key="login">UIButton</string>
 						<string key="logo">UIImageView</string>
 						<string key="password">UITextField</string>
-						<string key="passwordBGView">UIImageView</string>
-						<string key="userNameBGView">UIImageView</string>
 						<string key="usrName">UITextField</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -431,14 +429,6 @@
 						<object class="IBToOneOutletInfo" key="password">
 							<string key="name">password</string>
 							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="passwordBGView">
-							<string key="name">passwordBGView</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="userNameBGView">
-							<string key="name">userNameBGView</string>
-							<string key="candidateClassName">UIImageView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="usrName">
 							<string key="name">usrName</string>
