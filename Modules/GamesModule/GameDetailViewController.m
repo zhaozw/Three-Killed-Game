@@ -178,7 +178,7 @@
     imageView.backgroundColor = [UIColor blackColor];
     imageView.alpha = 0.5;
     
-    UIImageView *portriatView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 47, 39)];
+    UIImageView *portriatView = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 42, 39)];
     portriatView.image = [UIImage imageWithName:@"female_face" tableName:@"utl 2"];
     portriatView.layer.cornerRadius = 5;
     portriatView.layer.masksToBounds = YES;
@@ -202,11 +202,12 @@
     [imageView addSubview:seatlabel];
     
     
-    UILabel *namelabel = [[[UILabel alloc] initWithFrame:CGRectMake(47, 4, 13, 45)] autorelease];
+    UILabel *namelabel = [[[UILabel alloc] initWithFrame:CGRectMake(46, 4, 16, 45)] autorelease];
     namelabel.text = [NSString stringWithFormat:@"%@号位",aRole.seatNum];
     namelabel.textColor = [UIColor yellowColor];
     namelabel.font = [UIFont boldSystemFontOfSize:12];
     namelabel.numberOfLines = 4;
+    namelabel.textAlignment = UITextAlignmentCenter;
     namelabel.backgroundColor = [UIColor clearColor];
     [imageView addSubview:namelabel];
     
