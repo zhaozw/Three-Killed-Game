@@ -8,8 +8,6 @@
 
 #import "HomeViewController.h"
 #import "NewGameViewController.h"
-#import "RangkingsViewController.h"
-#import "GamesViewController.h"
 #import "MBProgressHUD.h"
 #import "Foundation+KGOAdditions.h"
 #import "UIKit+KGOAdditions.h"

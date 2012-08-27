@@ -10,7 +10,6 @@
 #import "MBProgressHUD.h"
 #import "Foundation+KGOAdditions.h"
 #import "GameRoleInstance.h"
-#import "ObserveViewController.h"
 #import "Foundation+KGOAdditions.h"
 #import "UIKit+KGOAdditions.h"
 #import <QuartzCore/QuartzCore.h>
@@ -187,7 +186,7 @@
     portriatView.alpha = 0.5;
     [imageView addSubview:portriatView];
     
-    UILabel *seatlabel = [[[UILabel alloc] initWithFrame:CGRectMake(2, 39, 47, 24)] autorelease];
+    UILabel *seatlabel = [[[UILabel alloc] initWithFrame:CGRectMake(2, 39, 58, 24)] autorelease];
     seatlabel.textColor = [UIColor yellowColor];
     seatlabel.font = [UIFont boldSystemFontOfSize:10];
     seatlabel.numberOfLines = 2;
@@ -247,10 +246,6 @@
             [alertView show];
             [alertView release];
         } else {
-            ObserveViewController *observeVC = [[[ObserveViewController alloc] initWithNibName:@"ObserveViewController" bundle:nil] autorelease];
-            observeVC.currentGame = self.currentGame;
-            observeVC.currentRole = aRole;
-            [self.navigationController pushViewController:observeVC animated:YES];
         }
     }
 }

@@ -5,3 +5,7 @@
 "_Login_" = "Login";
 "_Cancel_" = "Cancel";
 "_Game_" = "Game";
+"Release to refresh..." = "松开即可刷新...";
+"Pull down to refresh..." = "下拉可以刷新...";
+"Loading..." = "加载中...";
+"Last Updated:" = "最后更新:";

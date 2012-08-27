@@ -51,7 +51,6 @@
 		4E16A29715E37BED007A7754 /* NSIndexSet+AQIndexesOutsideSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E16A28B15E37BED007A7754 /* NSIndexSet+AQIndexesOutsideSet.m */; };
 		4E16A29815E37BED007A7754 /* NSIndexSet+AQIsSetContiguous.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E16A28D15E37BED007A7754 /* NSIndexSet+AQIsSetContiguous.m */; };
 		4E16A29915E37BED007A7754 /* UIColor+AQGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E16A28F15E37BED007A7754 /* UIColor+AQGridView.m */; };
-		4E16A2B015E387D2007A7754 /* SpringBoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E16A2AF15E387D2007A7754 /* SpringBoardCell.m */; };
 		4E34ABFF15DE403500374040 /* home_title_bar_reverse.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E34ABFD15DE403500374040 /* home_title_bar_reverse.png */; };
 		4E34AC0015DE403500374040 /* home_title_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E34ABFE15DE403500374040 /* home_title_bar.png */; };
 		4E34AC0C15DE4CD300374040 /* game_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E34AC0915DE4CD200374040 /* game_bg.png */; };
@@ -76,12 +75,8 @@
 		4E69C83E15DA4C6E003EEE79 /* GameDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C82F15DA4C6E003EEE79 /* GameDetailViewController.m */; };
 		4E69C83F15DA4C6E003EEE79 /* GameDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E69C83015DA4C6E003EEE79 /* GameDetailViewController.xib */; };
 		4E69C84015DA4C6E003EEE79 /* GameInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C83215DA4C6E003EEE79 /* GameInstance.m */; };
-		4E69C84115DA4C6E003EEE79 /* GamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C83415DA4C6E003EEE79 /* GamesViewController.m */; };
-		4E69C84215DA4C6E003EEE79 /* GamesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E69C83515DA4C6E003EEE79 /* GamesViewController.xib */; };
 		4E69C84315DA4C6E003EEE79 /* NewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C83815DA4C6E003EEE79 /* NewGameViewController.m */; };
 		4E69C84415DA4C6E003EEE79 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E69C83915DA4C6E003EEE79 /* NewGameViewController.xib */; };
-		4E69C84515DA4C6E003EEE79 /* RangkingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C83C15DA4C6E003EEE79 /* RangkingsViewController.m */; };
-		4E69C84615DA4C6E003EEE79 /* RangkingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E69C83D15DA4C6E003EEE79 /* RangkingsViewController.xib */; };
 		4E69C84F15DA4CB2003EEE79 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C84D15DA4CB2003EEE79 /* LoginViewController.m */; };
 		4E69C85015DA4CB2003EEE79 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E69C84E15DA4CB2003EEE79 /* LoginViewController.xib */; };
 		4E69C85415DA4CBC003EEE79 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C85215DA4CBC003EEE79 /* HomeViewController.m */; };
@@ -147,8 +142,6 @@
 		4E9A51FA15DC875B00A0D4A1 /* title_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51F715DC875B00A0D4A1 /* title_back.png */; };
 		4E9A5FB015D9DBD900BD8EC6 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A5FAF15D9DBD900BD8EC6 /* Config.plist */; };
 		4E9BDE4615DB863D00D2F076 /* GameRoleInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDE4515DB863D00D2F076 /* GameRoleInstance.m */; };
-		4E9BDE4B15DB8D9B00D2F076 /* ObserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDE4915DB8D9B00D2F076 /* ObserveViewController.m */; };
-		4E9BDE4C15DB8D9B00D2F076 /* ObserveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E9BDE4A15DB8D9B00D2F076 /* ObserveViewController.xib */; };
 		4E9BDE4F15DB96EC00D2F076 /* GameUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDE4E15DB96EC00D2F076 /* GameUserData.m */; };
 		4E9BDE5215DBABB700D2F076 /* RankingData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDE5115DBABB600D2F076 /* RankingData.m */; };
 		4EB2F66F15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2F66E15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m */; };
@@ -227,8 +220,6 @@
 		4E16A28D15E37BED007A7754 /* NSIndexSet+AQIsSetContiguous.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexSet+AQIsSetContiguous.m"; sourceTree = "<group>"; };
 		4E16A28E15E37BED007A7754 /* UIColor+AQGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AQGridView.h"; sourceTree = "<group>"; };
 		4E16A28F15E37BED007A7754 /* UIColor+AQGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AQGridView.m"; sourceTree = "<group>"; };
-		4E16A2AE15E387D2007A7754 /* SpringBoardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBoardCell.h; sourceTree = "<group>"; };
-		4E16A2AF15E387D2007A7754 /* SpringBoardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringBoardCell.m; sourceTree = "<group>"; };
 		4E34ABFD15DE403500374040 /* home_title_bar_reverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_title_bar_reverse.png; sourceTree = "<group>"; };
 		4E34ABFE15DE403500374040 /* home_title_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_title_bar.png; sourceTree = "<group>"; };
 		4E34AC0915DE4CD200374040 /* game_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_bg.png; sourceTree = "<group>"; };
@@ -257,15 +248,9 @@
 		4E69C83015DA4C6E003EEE79 /* GameDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameDetailViewController.xib; sourceTree = "<group>"; };
 		4E69C83115DA4C6E003EEE79 /* GameInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameInstance.h; sourceTree = "<group>"; };
 		4E69C83215DA4C6E003EEE79 /* GameInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameInstance.m; sourceTree = "<group>"; };
-		4E69C83315DA4C6E003EEE79 /* GamesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamesViewController.h; sourceTree = "<group>"; };
-		4E69C83415DA4C6E003EEE79 /* GamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamesViewController.m; sourceTree = "<group>"; };
-		4E69C83515DA4C6E003EEE79 /* GamesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GamesViewController.xib; sourceTree = "<group>"; };
 		4E69C83715DA4C6E003EEE79 /* NewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGameViewController.h; sourceTree = "<group>"; };
 		4E69C83815DA4C6E003EEE79 /* NewGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGameViewController.m; sourceTree = "<group>"; };
 		4E69C83915DA4C6E003EEE79 /* NewGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewGameViewController.xib; sourceTree = "<group>"; };
-		4E69C83B15DA4C6E003EEE79 /* RangkingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangkingsViewController.h; sourceTree = "<group>"; };
-		4E69C83C15DA4C6E003EEE79 /* RangkingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangkingsViewController.m; sourceTree = "<group>"; };
-		4E69C83D15DA4C6E003EEE79 /* RangkingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RangkingsViewController.xib; sourceTree = "<group>"; };
 		4E69C84C15DA4CB2003EEE79 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		4E69C84D15DA4CB2003EEE79 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4E69C84E15DA4CB2003EEE79 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -382,9 +367,6 @@
 		4E9A5FAF15D9DBD900BD8EC6 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		4E9BDE4415DB863D00D2F076 /* GameRoleInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRoleInstance.h; sourceTree = "<group>"; };
 		4E9BDE4515DB863D00D2F076 /* GameRoleInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameRoleInstance.m; sourceTree = "<group>"; };
-		4E9BDE4815DB8D9B00D2F076 /* ObserveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObserveViewController.h; sourceTree = "<group>"; };
-		4E9BDE4915DB8D9B00D2F076 /* ObserveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObserveViewController.m; sourceTree = "<group>"; };
-		4E9BDE4A15DB8D9B00D2F076 /* ObserveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ObserveViewController.xib; sourceTree = "<group>"; };
 		4E9BDE4D15DB96EC00D2F076 /* GameUserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameUserData.h; sourceTree = "<group>"; };
 		4E9BDE4E15DB96EC00D2F076 /* GameUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameUserData.m; sourceTree = "<group>"; };
 		4E9BDE5015DBABB600D2F076 /* RankingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankingData.h; sourceTree = "<group>"; };
@@ -411,7 +393,7 @@
 		4EFC97B015D8D941003587DD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4EFCAA9515E20381003A0A1A /* IconGridScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IconGridScrollView.h; sourceTree = "<group>"; };
 		4EFCAA9615E20381003A0A1A /* IconGridScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IconGridScrollView.m; sourceTree = "<group>"; };
-		4EFCAA9815E20A77003A0A1A /* AutoIconGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; path = AutoIconGrid.h; sourceTree = "<group>"; };
+		4EFCAA9815E20A77003A0A1A /* AutoIconGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoIconGrid.h; sourceTree = "<group>"; };
 		4EFCAA9915E20A77003A0A1A /* AutoIconGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoIconGrid.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -565,14 +547,6 @@
 				4E69C83015DA4C6E003EEE79 /* GameDetailViewController.xib */,
 				4E69C83115DA4C6E003EEE79 /* GameInstance.h */,
 				4E69C83215DA4C6E003EEE79 /* GameInstance.m */,
-				4E69C83315DA4C6E003EEE79 /* GamesViewController.h */,
-				4E69C83415DA4C6E003EEE79 /* GamesViewController.m */,
-				4E69C83515DA4C6E003EEE79 /* GamesViewController.xib */,
-				4E16A2AE15E387D2007A7754 /* SpringBoardCell.h */,
-				4E16A2AF15E387D2007A7754 /* SpringBoardCell.m */,
-				4E9BDE4815DB8D9B00D2F076 /* ObserveViewController.h */,
-				4E9BDE4915DB8D9B00D2F076 /* ObserveViewController.m */,
-				4E9BDE4A15DB8D9B00D2F076 /* ObserveViewController.xib */,
 			);
 			path = GamesModule;
 			sourceTree = "<group>";
@@ -585,16 +559,6 @@
 				4E69C83915DA4C6E003EEE79 /* NewGameViewController.xib */,
 			);
 			path = NewGameModule;
-			sourceTree = "<group>";
-		};
-		4E69C83A15DA4C6E003EEE79 /* RanksModule */ = {
-			isa = PBXGroup;
-			children = (
-				4E69C83B15DA4C6E003EEE79 /* RangkingsViewController.h */,
-				4E69C83C15DA4C6E003EEE79 /* RangkingsViewController.m */,
-				4E69C83D15DA4C6E003EEE79 /* RangkingsViewController.xib */,
-			);
-			path = RanksModule;
 			sourceTree = "<group>";
 		};
 		4E69C86215DA4D72003EEE79 /* ASIHTTP */ = {
@@ -821,7 +785,6 @@
 				4E69C90315DA4DAE003EEE79 /* DataModule */,
 				4E69C82D15DA4C6E003EEE79 /* GamesModule */,
 				4E69C83615DA4C6E003EEE79 /* NewGameModule */,
-				4E69C83A15DA4C6E003EEE79 /* RanksModule */,
 				4E9A5FAA15D9DB7E00BD8EC6 /* HomeModule */,
 				4E9A5FAB15D9DB7E00BD8EC6 /* LoginModule */,
 				4EB2F96315D8FEEC00FD9F05 /* module.txt */,
@@ -992,12 +955,9 @@
 				4ED3766715D9E2ED003EE814 /* Icon.png in Resources */,
 				4ED3766815D9E2ED003EE814 /* Icon@2x.png in Resources */,
 				4E69C83F15DA4C6E003EEE79 /* GameDetailViewController.xib in Resources */,
-				4E69C84215DA4C6E003EEE79 /* GamesViewController.xib in Resources */,
 				4E69C84415DA4C6E003EEE79 /* NewGameViewController.xib in Resources */,
-				4E69C84615DA4C6E003EEE79 /* RangkingsViewController.xib in Resources */,
 				4E69C85015DA4CB2003EEE79 /* LoginViewController.xib in Resources */,
 				4E69C85515DA4CBC003EEE79 /* HomeViewController.xib in Resources */,
-				4E9BDE4C15DB8D9B00D2F076 /* ObserveViewController.xib in Resources */,
 				4E9A51C615DC82C500A0D4A1 /* 12.png in Resources */,
 				4E9A51C715DC82C500A0D4A1 /* 16.png in Resources */,
 				4E9A51C815DC82C500A0D4A1 /* 21.png in Resources */,
@@ -1079,9 +1039,7 @@
 				4E69C82B15DA4BF4003EEE79 /* MBProgressHUD.m in Sources */,
 				4E69C83E15DA4C6E003EEE79 /* GameDetailViewController.m in Sources */,
 				4E69C84015DA4C6E003EEE79 /* GameInstance.m in Sources */,
-				4E69C84115DA4C6E003EEE79 /* GamesViewController.m in Sources */,
 				4E69C84315DA4C6E003EEE79 /* NewGameViewController.m in Sources */,
-				4E69C84515DA4C6E003EEE79 /* RangkingsViewController.m in Sources */,
 				4E69C84F15DA4CB2003EEE79 /* LoginViewController.m in Sources */,
 				4E69C85415DA4CBC003EEE79 /* HomeViewController.m in Sources */,
 				4E69C8D115DA4D73003EEE79 /* ASIAuthenticationDialog.m in Sources */,
@@ -1125,7 +1083,6 @@
 				4E69C91115DA4DE0003EEE79 /* UIKit+KGOAdditions.m in Sources */,
 				4E69C91515DA4E06003EEE79 /* APILibrary.m in Sources */,
 				4E9BDE4615DB863D00D2F076 /* GameRoleInstance.m in Sources */,
-				4E9BDE4B15DB8D9B00D2F076 /* ObserveViewController.m in Sources */,
 				4E9BDE4F15DB96EC00D2F076 /* GameUserData.m in Sources */,
 				4E9BDE5215DBABB700D2F076 /* RankingData.m in Sources */,
 				4EFCAA9A15E20A77003A0A1A /* AutoIconGrid.m in Sources */,
@@ -1139,7 +1096,6 @@
 				4E16A29715E37BED007A7754 /* NSIndexSet+AQIndexesOutsideSet.m in Sources */,
 				4E16A29815E37BED007A7754 /* NSIndexSet+AQIsSetContiguous.m in Sources */,
 				4E16A29915E37BED007A7754 /* UIColor+AQGridView.m in Sources */,
-				4E16A2B015E387D2007A7754 /* SpringBoardCell.m in Sources */,
 				4E51C53415E60E7E0003ED16 /* EGORefreshTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
