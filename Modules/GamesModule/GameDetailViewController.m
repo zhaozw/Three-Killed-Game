@@ -210,11 +210,7 @@
     namelabel.textAlignment = UITextAlignmentCenter;
     namelabel.backgroundColor = [UIColor clearColor];
     [imageView addSubview:namelabel];
-    
-    //        UIControl *control = [[[UIControl alloc] initWithFrame:frame] autorelease];
-    //        control.tag = i;
-    //        [control addSubview:imageView];
-    //        [control addTarget:self action:@selector(thumbnailTapped:) forControlEvents:UIControlEventTouchUpInside];
+
     return imageView;
 }
 
@@ -229,26 +225,6 @@
     iconView.icons = nil;
     [iconView addIcons:views];
     [self performSelector:@selector(handleAnimation) withObject:nil afterDelay:0.1];
-}
-
-#pragma mark - IconGridDelegate
-- (void)thumbnailTapped:(id)sender
-{
-    UIControl *control = (UIControl *)sender;
-    if (control.tag < self.feakAllRoles.count) {
-        GameRoleInstance *aRole = [self.feakAllRoles objectAtIndex:control.tag];
-        if (aRole.killedBy.length > 0 && ![aRole.killedBy isEqualToString:@"0"]) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"注意" 
-                                                                message:@"确定要复活角色吗？" 
-                                                               delegate:self 
-                                                      cancelButtonTitle:@"取消" 
-                                                      otherButtonTitles:@"确定", nil];
-            alertView.tag = control.tag;
-            [alertView show];
-            [alertView release];
-        } else {
-        }
-    }
 }
 
 - (void)iconGridFrameDidChange:(AutoIconGrid *)iconGrid
@@ -340,7 +316,7 @@
     self.currentRole = aRole;
     self.currentGame.name = [role forcedStringForKey:@"game_name"];
     self.currentGame.gameTypeID = [role forcedStringForKey:@"game_type_id"];
-    [charactorButton setImage:[UIImage imageWithName:[[APILibrary sharedInstance] charactorKeyWithRoleID:self.currentRole.roleID] tableName:@"selcharacter"] forState:UIControlStateNormal];
+    [charactorButton setImage:[UIImage imageWithName:@"shenfen" tableName:@"selcharacter"] forState:UIControlStateNormal];
     [charactorButton setImage:[UIImage imageWithName:[[APILibrary sharedInstance] charactorKeyWithRoleID:self.currentRole.roleID] tableName:@"selcharacter"] forState:UIControlStateHighlighted];
 }
 
