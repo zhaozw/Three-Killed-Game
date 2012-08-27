@@ -77,56 +77,56 @@ maxColumns = _maxColumns, alignment = _alignment, icons = _icons;
     }
     points = malloc(icons.count * sizeof(CGPoint));
     if (icons.count == 5) {
-        points[0] = CGPointMake(2, 0);
-        points[1] = CGPointMake(4, 1);
-        points[2] = CGPointMake(3, 3);
-        points[3] = CGPointMake(1, 3);
-        points[4] = CGPointMake(0, 1);
-    } else if (icons.count == 6) {
-        points[0] = CGPointMake(2, 0);
-        points[1] = CGPointMake(4, 1);
-        points[2] = CGPointMake(3, 3);
-        points[3] = CGPointMake(2, 3);
-        points[4] = CGPointMake(1, 3);
-        points[5] = CGPointMake(0, 1);
-    } else if (icons.count == 7) {
-        points[0] = CGPointMake(2, 0);
-        points[1] = CGPointMake(4, 1);
-        points[2] = CGPointMake(4, 2);
-        points[3] = CGPointMake(3, 3);
-        points[4] = CGPointMake(1, 3);
-        points[5] = CGPointMake(0, 2);
-        points[6] = CGPointMake(0, 1);
-    } else if (icons.count == 8) {
-        points[0] = CGPointMake(1, 0);
-        points[1] = CGPointMake(3, 0);
-        points[2] = CGPointMake(4, 1);
-        points[3] = CGPointMake(4, 2);
-        points[4] = CGPointMake(3, 3);
-        points[5] = CGPointMake(1, 3);
-        points[6] = CGPointMake(0, 2);
-        points[7] = CGPointMake(0, 1);
-    } else if (icons.count == 9) {
-        points[0] = CGPointMake(1, 0);
-        points[1] = CGPointMake(3, 0);
-        points[2] = CGPointMake(4, 1);
-        points[3] = CGPointMake(4, 2);
-        points[4] = CGPointMake(3, 3);
-        points[5] = CGPointMake(2, 3);
-        points[6] = CGPointMake(1, 3);
-        points[7] = CGPointMake(0, 2);
-        points[8] = CGPointMake(0, 1);
-    } else if (icons.count == 10) {
-        points[0] = CGPointMake(1, 0);
-        points[1] = CGPointMake(2, 0);
-        points[2] = CGPointMake(3, 0);
+        points[4] = CGPointMake(2, 0);
         points[3] = CGPointMake(4, 1);
+        points[2] = CGPointMake(3, 3);
+        points[1] = CGPointMake(1, 3);
+        points[0] = CGPointMake(0, 1);
+    } else if (icons.count == 6) {
+        points[5] = CGPointMake(2, 0);
+        points[4] = CGPointMake(4, 1);
+        points[3] = CGPointMake(3, 3);
+        points[2] = CGPointMake(2, 3);
+        points[1] = CGPointMake(1, 3);
+        points[0] = CGPointMake(0, 1);
+    } else if (icons.count == 7) {
+        points[6] = CGPointMake(2, 0);
+        points[5] = CGPointMake(4, 1);
         points[4] = CGPointMake(4, 2);
-        points[5] = CGPointMake(3, 3);
-        points[6] = CGPointMake(2, 3);
-        points[7] = CGPointMake(1, 3);
-        points[8] = CGPointMake(0, 2);
-        points[9] = CGPointMake(0, 1);
+        points[3] = CGPointMake(3, 3);
+        points[2] = CGPointMake(1, 3);
+        points[1] = CGPointMake(0, 2);
+        points[0] = CGPointMake(0, 1);
+    } else if (icons.count == 8) {
+        points[7] = CGPointMake(1, 0);
+        points[6] = CGPointMake(3, 0);
+        points[5] = CGPointMake(4, 1);
+        points[4] = CGPointMake(4, 2);
+        points[3] = CGPointMake(3, 3);
+        points[2] = CGPointMake(1, 3);
+        points[1] = CGPointMake(0, 2);
+        points[0] = CGPointMake(0, 1);
+    } else if (icons.count == 9) {
+        points[8] = CGPointMake(1, 0);
+        points[7] = CGPointMake(3, 0);
+        points[6] = CGPointMake(4, 1);
+        points[5] = CGPointMake(4, 2);
+        points[4] = CGPointMake(3, 3);
+        points[3] = CGPointMake(2, 3);
+        points[2] = CGPointMake(1, 3);
+        points[1] = CGPointMake(0, 2);
+        points[0] = CGPointMake(0, 1);
+    } else if (icons.count == 10) {
+        points[9] = CGPointMake(1, 0);
+        points[8] = CGPointMake(2, 0);
+        points[7] = CGPointMake(3, 0);
+        points[6] = CGPointMake(4, 1);
+        points[5] = CGPointMake(4, 2);
+        points[4] = CGPointMake(3, 3);
+        points[3] = CGPointMake(2, 3);
+        points[2] = CGPointMake(1, 3);
+        points[1] = CGPointMake(0, 2);
+        points[0] = CGPointMake(0, 1);
     }
     
     for (int i = 0; i < icons.count; i++) {
