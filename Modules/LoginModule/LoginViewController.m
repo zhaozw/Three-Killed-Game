@@ -11,6 +11,7 @@
 #import "HomeViewController.h"
 #import "AppDelegate+TKAdditions.h"
 #import "UIKit+KGOAdditions.h"
+#import "KeychainWrapper.h"
 @interface LoginViewController ()
 
 @end
@@ -41,8 +42,9 @@
         NSDictionary *credential = [config objectForKey:@"credential"];
         locked = [credential objectForKey:@"locked"];
         if (locked.boolValue) {
-            account = [credential objectForKey:@"account"];
-            pwd = [credential objectForKey:@"password"];
+            KeychainWrapper *wapper = [[[KeychainWrapper alloc] init] autorelease];
+            account = [wapper myObjectForKey:(id)kSecAttrAccount];
+            pwd = [wapper myObjectForKey:(id)kSecValueData];
         }
     }
     usrName.text = account ? account : @"";
@@ -119,8 +121,9 @@
     NSMutableDictionary *config = [NSMutableDictionary dictionary];
     NSMutableDictionary *credential = [NSMutableDictionary dictionary];
     [credential setObject:[NSNumber numberWithBool:lockStatus] forKey:@"locked"];
-    [credential setObject:usrName.text.length > 0 ? usrName.text : @"" forKey:@"account"];
-    [credential setObject:password.text.length > 0 ? password.text : @"" forKey:@"password"];
+    KeychainWrapper *keywapper = [[[KeychainWrapper alloc] init] autorelease];
+    [keywapper mySetObject:usrName.text.length > 0 ? usrName.text : @"" forKey:(id)kSecAttrAccount];
+    [keywapper mySetObject:password.text.length > 0 ? password.text : @"" forKey:(id)kSecValueData];
     [config setObject:credential forKey:@"credential"];
     [[NSUserDefaults standardUserDefaults] setObject:config forKey:@"config"];
     [[NSUserDefaults standardUserDefaults] synchronize];

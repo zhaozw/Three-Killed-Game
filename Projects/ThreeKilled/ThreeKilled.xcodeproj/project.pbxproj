@@ -103,6 +103,8 @@
 		4EB2F66F15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2F66E15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m */; };
 		4EB2F67215D8EE7200FD9F05 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB2F67115D8EE7200FD9F05 /* MainWindow.xib */; };
 		4EB2F96415D8FEEC00FD9F05 /* module.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4EB2F96315D8FEEC00FD9F05 /* module.txt */; };
+		4EC6207215EB67FC0049E0C1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EC6207115EB67FC0049E0C1 /* Security.framework */; };
+		4EC6207615EB68630049E0C1 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC6207515EB68630049E0C1 /* KeychainWrapper.m */; };
 		4ED3766315D9E2ED003EE814 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ED3765D15D9E2ED003EE814 /* Default-Portrait.png */; };
 		4ED3766415D9E2ED003EE814 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ED3765E15D9E2ED003EE814 /* Default.png */; };
 		4ED3766515D9E2ED003EE814 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ED3765F15D9E2ED003EE814 /* Default@2x.png */; };
@@ -275,6 +277,9 @@
 		4EB2F66E15D8EDC500FD9F05 /* AppDelegate+TKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+TKAdditions.m"; sourceTree = "<group>"; };
 		4EB2F67115D8EE7200FD9F05 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		4EB2F96315D8FEEC00FD9F05 /* module.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = module.txt; sourceTree = "<group>"; };
+		4EC6207115EB67FC0049E0C1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4EC6207415EB68630049E0C1 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		4EC6207515EB68630049E0C1 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		4ED3765D15D9E2ED003EE814 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
 		4ED3765E15D9E2ED003EE814 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4ED3765F15D9E2ED003EE814 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -303,6 +308,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EC6207215EB67FC0049E0C1 /* Security.framework in Frameworks */,
 				4E34AC1B15DE4F5900374040 /* QuartzCore.framework in Frameworks */,
 				4E69C86115DA4D2C003EEE79 /* CFNetwork.framework in Frameworks */,
 				4E69C85F15DA4D25003EEE79 /* SystemConfiguration.framework in Frameworks */,
@@ -592,6 +598,8 @@
 				4E69C84C15DA4CB2003EEE79 /* LoginViewController.h */,
 				4E69C84D15DA4CB2003EEE79 /* LoginViewController.m */,
 				4E69C84E15DA4CB2003EEE79 /* LoginViewController.xib */,
+				4EC6207415EB68630049E0C1 /* KeychainWrapper.h */,
+				4EC6207515EB68630049E0C1 /* KeychainWrapper.m */,
 			);
 			path = LoginModule;
 			sourceTree = "<group>";
@@ -669,7 +677,6 @@
 		4EFC979115D8D941003587DD = {
 			isa = PBXGroup;
 			children = (
-				4E34AC1A15DE4F5900374040 /* QuartzCore.framework */,
 				4EB2F96215D8FEEC00FD9F05 /* Modules */,
 				4EB2F73A15D8F26300FD9F05 /* Contrib */,
 				4EB2F67315D8F21600FD9F05 /* Common */,
@@ -695,6 +702,8 @@
 				4E69C85A15DA4D16003EEE79 /* libz.dylib */,
 				4E69C85815DA4D0F003EEE79 /* libxml2.dylib */,
 				4E69C85615DA4D02003EEE79 /* libxml2.2.7.3.dylib */,
+				4EC6207115EB67FC0049E0C1 /* Security.framework */,
+				4E34AC1A15DE4F5900374040 /* QuartzCore.framework */,
 				4E69C86015DA4D2C003EEE79 /* CFNetwork.framework */,
 				4E69C85E15DA4D25003EEE79 /* SystemConfiguration.framework */,
 				4E69C85C15DA4D1E003EEE79 /* MobileCoreServices.framework */,
@@ -891,6 +900,7 @@
 				4E9BDE5215DBABB700D2F076 /* RankingData.m in Sources */,
 				4EFCAA9A15E20A77003A0A1A /* AutoIconGrid.m in Sources */,
 				4E51C53415E60E7E0003ED16 /* EGORefreshTableHeaderView.m in Sources */,
+				4EC6207615EB68630049E0C1 /* KeychainWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -914,8 +924,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -942,8 +952,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -963,8 +973,8 @@
 		4EFC97B515D8D941003587DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThreeKilled/ThreeKilled-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -985,8 +995,8 @@
 		4EFC97B615D8D941003587DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThreeKilled/ThreeKilled-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
