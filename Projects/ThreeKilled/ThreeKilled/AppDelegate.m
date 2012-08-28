@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "AppDelegate+TKAdditions.h"
+#import "TKEncrypt.h"
+
+const NSString *kEncryptKey = @"hello";
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -20,6 +23,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//    [TKEncrypt encrypt:@"gameIcon" withKey:@"hello"];
+//    [TKEncrypt encrypt:@"hall 2" withKey:@"hello"];
+//    [TKEncrypt encrypt:@"selcharacter" withKey:@"hello"];
+//    [TKEncrypt encrypt:@"btable 2" withKey:@"hello"];
+//    [TKEncrypt encrypt:@"btable1 2" withKey:@"hello"];
+//    [TKEncrypt encrypt:@"gameIcon 2" withKey:@"hello"];
+//    [TKEncrypt encrypt:@"table 2" withKey:@"hello"];
+//    [TKEncrypt encrypt:@"table1 2" withKey:@"hello"];
+//    [TKEncrypt encrypt:@"utl 2" withKey:@"hello"];
+//    [TKEncrypt encrypt:@"hall_2" withKey:@"hello"];
+//    [TKEncrypt encrypt:@"table_2" withKey:@"hello"];
+    
     BOOL success = [self helloRequest];
     if (success)[self loadLoginViewController];
     return YES;

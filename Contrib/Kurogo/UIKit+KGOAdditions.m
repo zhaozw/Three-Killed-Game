@@ -9,6 +9,7 @@
 
 #import "UIKit+KGOAdditions.h"
 #import "Foundation+KGOAdditions.h"
+#import "FBEncryptorAES.h"
 static inline double radians (double degrees) {return degrees * M_PI/180;}
 @implementation UIImage (KGOAdditions)
 
@@ -50,13 +51,14 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     return subImage;
 }
 
-+ (UIImage *)imageWithName:(NSString *)imageName tableName:(NSString *)tableName {
++ (UIImage *)imageWithName:(NSString *)aimageName tableName:(NSString *)tableName {
+    NSString *imageName = [FBEncryptorAES encryptBase64String:aimageName keyString:kEncryptorKey separateLines:NO];
     UIImage *tableImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",tableName]];
     if (tableImage) {
         NSString *mainFile = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@",tableName] ofType:@"plist"];
         NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:mainFile];
         if (dictionary) {
-            NSString *rectString = [dictionary stringForKey:imageName];
+            NSString *rectString = [FBEncryptorAES decryptBase64String:[dictionary stringForKey:imageName] keyString:kEncryptorKey];
             if (rectString.length >0) {
                 NSArray *values = [rectString componentsSeparatedByString:@","];
                 CGRect rect = CGRectMake([[values objectAtIndex:0] floatValue], [[values objectAtIndex:1] floatValue], [[values objectAtIndex:2] floatValue], [[values objectAtIndex:3] floatValue]);

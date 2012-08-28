@@ -95,6 +95,9 @@
 		4E69C91015DA4DE0003EEE79 /* Foundation+KGOAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C90D15DA4DE0003EEE79 /* Foundation+KGOAdditions.m */; };
 		4E69C91115DA4DE0003EEE79 /* UIKit+KGOAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C90F15DA4DE0003EEE79 /* UIKit+KGOAdditions.m */; };
 		4E69C91515DA4E06003EEE79 /* APILibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E69C91415DA4E06003EEE79 /* APILibrary.m */; };
+		4E969D8815ECAE7F001565AB /* FBEncryptorAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E969D8515ECAE7F001565AB /* FBEncryptorAES.m */; };
+		4E969D8915ECAE7F001565AB /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E969D8715ECAE7F001565AB /* NSData+Base64.m */; };
+		4E969D8D15ECAFF7001565AB /* TKEncrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E969D8C15ECAFF7001565AB /* TKEncrypt.m */; };
 		4E9A51CA15DC82C500A0D4A1 /* back_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A51C415DC82C500A0D4A1 /* back_s.png */; };
 		4E9A5FB015D9DBD900BD8EC6 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A5FAF15D9DBD900BD8EC6 /* Config.plist */; };
 		4E9BDE4615DB863D00D2F076 /* GameRoleInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BDE4515DB863D00D2F076 /* GameRoleInstance.m */; };
@@ -265,6 +268,12 @@
 		4E69C91315DA4E06003EEE79 /* APILibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APILibrary.h; sourceTree = "<group>"; };
 		4E69C91415DA4E06003EEE79 /* APILibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APILibrary.m; sourceTree = "<group>"; };
 		4E69C92415DA53D1003EEE79 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		4E969D8415ECAE7F001565AB /* FBEncryptorAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBEncryptorAES.h; sourceTree = "<group>"; };
+		4E969D8515ECAE7F001565AB /* FBEncryptorAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBEncryptorAES.m; sourceTree = "<group>"; };
+		4E969D8615ECAE7F001565AB /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		4E969D8715ECAE7F001565AB /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		4E969D8B15ECAFF7001565AB /* TKEncrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKEncrypt.h; sourceTree = "<group>"; };
+		4E969D8C15ECAFF7001565AB /* TKEncrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKEncrypt.m; sourceTree = "<group>"; };
 		4E9A51C415DC82C500A0D4A1 /* back_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_s.png; sourceTree = "<group>"; };
 		4E9A5FAF15D9DBD900BD8EC6 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		4E9BDE4415DB863D00D2F076 /* GameRoleInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRoleInstance.h; sourceTree = "<group>"; };
@@ -554,6 +563,8 @@
 				4E9BDE4E15DB96EC00D2F076 /* GameUserData.m */,
 				4E9BDE5015DBABB600D2F076 /* RankingData.h */,
 				4E9BDE5115DBABB600D2F076 /* RankingData.m */,
+				4E969D8B15ECAFF7001565AB /* TKEncrypt.h */,
+				4E969D8C15ECAFF7001565AB /* TKEncrypt.m */,
 			);
 			path = DataModule;
 			sourceTree = "<group>";
@@ -580,6 +591,17 @@
 				4E69C91415DA4E06003EEE79 /* APILibrary.m */,
 			);
 			path = APIModule;
+			sourceTree = "<group>";
+		};
+		4E969D8315ECAE7F001565AB /* FBEncrypt */ = {
+			isa = PBXGroup;
+			children = (
+				4E969D8415ECAE7F001565AB /* FBEncryptorAES.h */,
+				4E969D8515ECAE7F001565AB /* FBEncryptorAES.m */,
+				4E969D8615ECAE7F001565AB /* NSData+Base64.h */,
+				4E969D8715ECAE7F001565AB /* NSData+Base64.m */,
+			);
+			path = FBEncrypt;
 			sourceTree = "<group>";
 		};
 		4E9A5FAA15D9DB7E00BD8EC6 /* HomeModule */ = {
@@ -634,6 +656,7 @@
 		4EB2F73A15D8F26300FD9F05 /* Contrib */ = {
 			isa = PBXGroup;
 			children = (
+				4E969D8315ECAE7F001565AB /* FBEncrypt */,
 				4E51C52615E60E7E0003ED16 /* EGOTableViewPullRefresh */,
 				4E69C90B15DA4DE0003EEE79 /* Kurogo */,
 				4E69C86215DA4D72003EEE79 /* ASIHTTP */,
@@ -901,6 +924,9 @@
 				4EFCAA9A15E20A77003A0A1A /* AutoIconGrid.m in Sources */,
 				4E51C53415E60E7E0003ED16 /* EGORefreshTableHeaderView.m in Sources */,
 				4EC6207615EB68630049E0C1 /* KeychainWrapper.m in Sources */,
+				4E969D8815ECAE7F001565AB /* FBEncryptorAES.m in Sources */,
+				4E969D8915ECAE7F001565AB /* NSData+Base64.m in Sources */,
+				4E969D8D15ECAFF7001565AB /* TKEncrypt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

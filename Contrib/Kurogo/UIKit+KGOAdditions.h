@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 
 #define IS_IPAD_OR_PORTRAIT(orientation) (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad || (orientation) == UIInterfaceOrientationPortrait)
-
+#define kEncryptorKey @"hello"
 @interface UIImage (KGOAdditions)
 
 + (UIImage *)imageWithPathName:(NSString *)pathName;
