@@ -192,9 +192,9 @@
         [tempCheck removeObjectForKey:(id)kSecClass];
         
         // You can update only a single keychain item at a time.
-//        NSAssert(SecItemUpdate((CFDictionaryRef)updateItem,
-//                               (CFDictionaryRef)tempCheck) == noErr,
-//                 @"Couldn't update the Keychain Item." );
+        NSAssert(SecItemUpdate((CFDictionaryRef)updateItem,
+                               (CFDictionaryRef)tempCheck) == noErr,
+                 @"Couldn't update the Keychain Item." );
     }
     else
     {
@@ -203,8 +203,8 @@
         //  and the other values were added to the keychainData dictionary previously.
         
         // No pointer to the newly-added items is needed, so pass NULL for the second parameter:
-//        NSAssert(SecItemAdd((CFDictionaryRef)[self dictionaryToSecItemFormat:keychainData],
-//                            NULL) == noErr, @"Couldn't add the Keychain Item." );
+        NSAssert(SecItemAdd((CFDictionaryRef)[self dictionaryToSecItemFormat:keychainData],
+                            NULL) == noErr, @"Couldn't add the Keychain Item." );
     }
 }
 
