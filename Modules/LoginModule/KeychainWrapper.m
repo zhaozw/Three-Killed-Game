@@ -78,11 +78,9 @@
     {
         // Format the data in the keychainData dictionary into the format needed for a query
         //  and put it into tmpDictionary:
-        NSMutableDictionary *tmpDictionary =
-        [self dictionaryToSecItemFormat:keychainData];
+        NSMutableDictionary *tmpDictionary = [self dictionaryToSecItemFormat:keychainData];
         // Delete the keychain item in preparation for resetting the values:
-        NSAssert(SecItemDelete((CFDictionaryRef)tmpDictionary) == noErr,
-                 @"Problem deleting current keychain item." );
+        NSAssert(SecItemDelete((CFDictionaryRef)tmpDictionary) == noErr,@"Problem deleting current keychain item." );
     }
     
     // Default generic data for Keychain Item:
